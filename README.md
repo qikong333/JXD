@@ -1,16 +1,26 @@
-# seo
+This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
 
+## How to use this template
 
-http://www.jianshu.com/p/9cbd9ef348e9
+*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
 
-http://www.jianshu.com/p/a7045c12a726
+To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
 
-http://www.jianshu.com/p/a34b35a4fc7e
+### With the Ionic CLI:
 
-http://www.jianshu.com/p/a68e8ac6908a
+Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
 
-http://www.jianshu.com/p/08026c941029
+```bash
+$ sudo npm install -g ionic cordova
+$ ionic start myTabs tabs
+```
 
+Then, to run it, cd into `myTabs` and run:
 
- 的幅度幅度
-131213232132132
+```bash
+$ ionic cordova platform add ios
+$ ionic cordova run ios
+```
+
+Substitute ios for android if not on a Mac.
+
