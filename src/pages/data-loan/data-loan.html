@@ -1,0 +1,105 @@
+<!--
+  Generated template for the DataLoanPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar hideBackButton>
+        <button navPop><i class="icon-fanhui iconfont"></i></button>
+        <ion-title *ngIf='loan'>小额贷</ion-title>
+        <ion-title *ngIf='!loan'>蓝白贷</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content style='background:#ededed;'>
+
+        <ion-row style='background:#fff;'>
+            <ion-col col-12 style="padding-left:0;padding-right:0;">
+                <div class="money">
+                    <h3>申请借款额度</h3>
+                    <div class="text">{{saturation | number:'1.2-2'}}<i>元</i></div>
+                </div>
+                <div class="boxMoney">
+                    <ion-range [min]="min_money" [max]="max_money" step='100' [(ngModel)]="saturation" debounce="700" color="secondary"  (ionChange)="change()"></ion-range>
+                </div>
+
+             </ion-col>
+       </ion-row>
+
+        <ion-row class="box">
+            <dl tappable (click)="use_dataSelect()">
+                <span>资金用途</span>
+                <i  class="icon iconfont icon-gengduo"></i>
+                <p style="margin: 0;">{{use_data}}</p>
+            </dl>
+             <dl tappable (click)="date_dataSelect()">
+                <span>借款期限</span>
+                <i  class="icon iconfont icon-gengduo"></i>
+                <p style="margin: 0;">{{timecode_data}}</p>
+            </dl>
+
+            <dl tappable (click)="repay_dataSelect()">
+                <span>还款方式</span>
+                <i  class="icon iconfont icon-gengduo"></i>
+                <p style="margin: 0;">{{huankuan_data}}</p>
+            </dl>
+             <dl>
+                <span>总利息</span>
+                <i  class="icon iconfont icon-gengduo"></i>
+                <p style="margin: 0;">{{all_code}}</p>
+            </dl>
+        </ion-row>
+                   
+
+         <ion-row>
+            <ion-col col-12 class="xian"> </ion-col>
+         </ion-row>
+        
+        <ion-row class="box">
+            <dl>
+                <span>收款账户</span>
+                <i  class="icon iconfont icon-gengduo"></i>
+                <p style="margin: 0;">{{bank}}</p>
+            </dl>
+        </ion-row>
+
+
+        <ion-row>
+            <ion-col col-12 class="xian"> </ion-col>
+        </ion-row>
+
+
+
+        <!--<ion-row class="box" *ngIf="coupon=='无可用券'" (click)="toChooseCoupons()">
+            <dl>
+                <span>优惠券</span>
+                <i class="icon iconfont icon-gengduo"></i>
+                <p style="margin: 0;">{{coupon}}</p>
+            </dl>
+        </ion-row>-->
+
+
+        <ion-row class="box" tappable *ngIf="coupon!='无可用券'">
+            <dl>
+                <span>优惠券</span>
+                <i class="icon iconfont icon-gengduo"></i>
+                <p style="margin: 0;">等待上线</p>
+            </dl>
+        </ion-row>
+
+
+        <ion-row class="box2">
+            <p>
+                <i tappable (click)='agree()' class="icon icon-font" [ngClass]="{true:'icon-yixuan' ,false:'icon-weixuan'}[active]"></i> 提交则表示已阅读
+                <a tappable >《平台服务协议》</a>、
+                <a tappable >《授权委托书》</a>、
+                <a tappable >《借款协议》</a>，同意授权查询/报送贷款相关信息至金融信用信息基础数据库(人行征信系统)。</p>
+            <button class="tj_btn" [disabled]="!active">
+                <a tappable  (click)="toVerification()">申请借款</a>
+            </button>
+        </ion-row>
+      
+</ion-content>

@@ -1,0 +1,104 @@
+<!--
+  Generated template for the RegisterPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar hideBackButton>
+        <button navPop><i class="icon-fanhui iconfont"></i></button>
+        <ion-title>注册</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+    <div *ngIf='!finish'>
+        <ion-row class="box1">
+            <ion-col col-1>
+                <i class="icon-shouji iconfont"></i>
+            </ion-col>
+            <ion-col col-10>
+                <input id="username" #user type="text" name="username" (keyup)="showPhoneCleanButton(username)" value="" placeholder='手机号码(手机实名需为本人)' maxlength="11" required [(ngModel)]="username" pattern="^1[34578]\\d{9}$">
+            </ion-col>
+            <ion-col col-1 text-right *ngIf="isCleanName">
+                <div tappable (click)="usernameCtrl()">
+                    <i class="icon-shanchu iconfont"></i>
+                </div>
+            </ion-col>
+        </ion-row>
+
+        <ion-row class="box1">
+            <ion-col col-1>
+                <i class="icon-mima iconfont"></i>
+            </ion-col>
+            <ion-col col-8>
+                <input type="password" #pw name="password" (keyup)="showPasswordCleanButton(password)" value="" placeholder='密码6-20位(字母+数字)' maxlength="20" minlength="6" required [(ngModel)]="password" id="passwordcode" pattern="^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$">
+            </ion-col>
+            <ion-col col-1 text-right>
+                <div tappable (click)="passwordCtrl()" *ngIf="isCleanPassword">
+                    <i class="icon-shanchu iconfont"></i>
+                </div>
+            </ion-col>
+            <ion-col tappable (click)='seaPassword()' col-2 text-right>
+                <i class="iconfont" [ngClass]="{false:'icon-display-copy' ,true:'icon-baomi'}[active]"></i>
+                <!-- <i class="iconfont" [ngClass]="{'icon-display-copy':!active ,'icon-baomi':active}"></i> -->
+            </ion-col>
+        </ion-row>
+
+        <ion-row class="box1">
+            <ion-col col-1>
+                <i class="icon-duanxin iconfont"></i>
+            </ion-col>
+            <ion-col col-7>
+                <input type="text" name="yzcode" value="" placeholder='短信验证码' maxlength="6" required [(ngModel)]="yzcode">
+                <!-- <input type="text" name="yzcode" value="" placeholder='短信验证码' maxlength="6" required [(ngModel)]="yzcode" pattern="[0-9]{6}"> -->
+            </ion-col>
+            <ion-col col-4>
+                <!--<button ion-button full class="yzcode" tappable (click)="showTuCode(refForm.value.username)" [disabled]="isGetCode">获取验证码</button>-->
+                <!--<button ion-button full class="yzcode" [disabled]="isGetCode" tappable (click)="showTuCode()">{{codeText}}</button>-->
+                <page-verification-code [user_phone]="user.value" [user_password]="pw.value" (state)="godata($event)"></page-verification-code>
+            </ion-col>
+        </ion-row>
+
+        <ion-row class="box2">
+            <ion-col>
+                <!--<button type="submit" ion-button full tappable (click)="submitMethod(refForm.value)" [disabled]="!refForm.form.valid">立即注册</button>-->
+                <button type="submit" ion-button full tappable (click)="goRegister()" [disabled]='btn_state'>立即注册</button>
+            </ion-col>
+        </ion-row>
+
+        <ion-row class="box3">
+            <ion-col text-center>
+                已有账号？
+                <span tappable (click)="toLoginPage()">去登录</span>
+            </ion-col>
+        </ion-row>
+
+        <ion-row class="box3">
+            <ion-col text-center>
+                注册即表示同意<span tappable (click)='showAgreement(1)'>《马蜂钱包注册协议》</span>
+            </ion-col>
+        </ion-row>
+    </div>
+
+
+
+    <div class="success" *ngIf='finish'>
+        <ion-row>
+            <ion-col text-center>
+                <i class="icon-chenggong iconfont"></i>
+                <h1>注册成功</h1>
+            </ion-col>
+        </ion-row>
+
+        <ion-row padding>
+            <ion-col text-center>
+                <p>您需完成信息认证，才能获取借款额度</p>
+                <button ion-button full tappable (click)='goQuota()'>前往认证</button>
+                <p class="first" tappable (click)='goHome()'>回到首页</p>
+            </ion-col>
+        </ion-row>
+    </div>
+</ion-content>

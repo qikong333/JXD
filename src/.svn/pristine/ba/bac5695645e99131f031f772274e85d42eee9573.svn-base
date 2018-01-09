@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>马蜂钱包</title>
+    <meta name="viewport" viewport-fit=cover content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+
+
+    <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" type="text/css" href="assets/font_albb/iconfont.css" />
+
+    <script src="assets/font_albb/iconfont.js"></script>
+
+    <script src="assets/js/screencom.min.js"></script>
+
+    <script src="assets/js/aes.js"></script>
+
+    <script src="assets/js/mode-ecb-min.js"></script>
+
+    <!--<script src="assets/js/an.js"></script>-->
+
+    <meta name="theme-color" content="#4e8ef7">
+
+    <!-- cordova.js required for cordova apps -->
+    <script src="cordova.js"></script>
+
+    <!--un-comment this code to enable service worker-->
+
+    <link href="build/main.css" rel="stylesheet">
+
+
+
+
+</head>
+
+<body>
+    <!--<div class="appSplash">
+        <div style="font-size: 30px;text-align: center">这里可以放广告图片</div>
+        <img src="./assets/img/qr_code.png" alt="">
+    </div>-->
+
+    <!-- Ionic's root component and where the app will load -->
+    <ion-app></ion-app>
+
+    <!-- The polyfills js is generated during the build process -->
+    <script src="build/polyfills.js"></script>
+
+    <!-- The bundle js is generated during the build process -->
+    <script src="build/vendor.js"></script>
+
+    <script src="build/main.js"></script>
+
+    <!-- 白骑士 -->
+    <script type="text/javascript"> 
+        (function () {
+            setTimeout(
+                () => {
+                    var id = 'mfqb' + new Date().getTime();
+
+                    function dfCallBack() {
+                        localStorage.setItem('tokenKey', id);
+                    }
+                    function timeoutCallBack() {
+                        console.log('faile');
+                    }
+
+                    var extParams = {
+                        imei: localStorage.getItem('uuid'),//设备id
+                        longitude: localStorage.getItem('gpsx'),//经度
+                        latitude: localStorage.getItem('gpsy')//纬度
+                    }
+
+                    _saber = {
+                        partnerId: 'jiuxiangdai',
+                        tokenKey: id,
+                        appId: 'bqs01',
+                        extParams: extParams,
+                        callback: dfCallBack,
+                        timeoutCallBack: timeoutCallBack
+                    };
+                    var aa = document.createElement('script'); aa.async = true;
+                    aa.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'df.baiqishi.com/static/webdf/saber.js?t=' + (new Date().getTime() / 3600000).toFixed(0);
+                    var bb = document.getElementsByTagName('script')[0];
+                    bb.parentNode.insertBefore(aa, bb);
+
+                }, 0)
+
+        })();
+    </script>
+    <!-- 同盾 -->
+    <script type="text/javascript">
+        (function () {
+            let tongdun = localStorage.getItem('tongdun');
+            _fmOpt = {
+                partner: 'shanshankj',
+                appName: 'shanshankjxd_web',
+                token: tongdun,
+                fpHost: 'https://fp.fraudmetrix.cn',
+                staticHost: 'static.fraudmetrix.cn',
+                tcpHost: 'fpflash.fraudmetrix.cn',
+                wsHost: 'fp.fraudmetrix.cn:9090'
+            };
+            var cimg = new Image(1, 1);
+            cimg.onload = function () {
+                _fmOpt.imgLoaded = true;
+            };
+            cimg.src = "https://fp.fraudmetrix.cn/fp/clear.png?partnerCode= " + _fmOpt.partner + "&appName=" + _fmOpt.appName + "&tokenId=" + _fmOpt.token;
+            var fm = document.createElement('script'); fm.type = 'text/javascript'; fm.async = true;
+            fm.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'static.fraudmetrix.cn/fm.js?ver=0.1&t =' + (new Date().getTime() / 3600000).toFixed(0);
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(fm, s);
+        })();
+    </script>
+</body>
+
+</html>

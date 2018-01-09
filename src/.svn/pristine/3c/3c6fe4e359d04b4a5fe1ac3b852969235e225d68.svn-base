@@ -1,0 +1,165 @@
+import { Http } from '@angular/http';
+import { ServiceInterfaceProvider } from './../providers/service-interface/service-interface';
+import { Device } from '@ionic-native/device';
+import { APP_ID, IOS_ID, SERVER_URL } from './../providers/constants/constants';
+import { UtilsProvider } from './../providers/utils/utils';
+import { Component, ViewChild, OnInit } from '@angular/core';
+import { Platform, Events, IonicApp, Nav, ToastController, AlertController, App } from 'ionic-angular';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { NativeServiceProvider } from '../providers/native-service/native-service';
+import { VERSION_NUM } from '../providers/constants/constants';
+import { Keyboard } from '@ionic-native/keyboard';
+import { HelpersProvider } from '../providers/helpers/helpers';
+
+@Component({
+  templateUrl: 'app.html'
+})
+export class MyApp implements OnInit {
+  rootPage: any = 'TabsPage';
+  backButtonPressed: boolean = false;  //用于判断返回键是否触发
+  @ViewChild('nav') nav: Nav;
+
+
+
+  constructor(
+
+    public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
+    public events: Events,
+    public ionicApp: IonicApp,
+    public toastCtrl: ToastController,
+    public alertCtrl: AlertController,
+    private serviceinterface: ServiceInterfaceProvider,
+    private native: NativeServiceProvider,
+    public app: App,
+    public utils: UtilsProvider,
+    public keyboard: Keyboard,
+    private device: Device,
+    public http: Http,
+    public helpers:HelpersProvider
+  ) {
+
+    localStorage.setItem('uuid', this.device.uuid);//设备id
+
+    this.serviceinterface.GBS()//gps
+      .map(data => data.json())
+      .subscribe(
+      data => {
+        let x = data.content.point.x;//经度
+        let y = data.content.point.y;//纬度
+        let address = data.content.address_detail.province + ',' + data.content.address_detail.city;
+        localStorage.setItem('gpsx', x);
+        localStorage.setItem('gpsy', y);
+        localStorage.setItem('gps', address);
+
+      }, err => {
+        // this.utils.showAlert('gps定位出错,稍候重试')
+      });
+
+      // 同盾接口
+      this.http.get(SERVER_URL + `/cf_main/tongDunAPI/getToken`) 
+      .map(data => data.json())
+      .subscribe(
+        data => {
+          console.log(data);
+          localStorage.setItem('tongdun',data.data.token);
+        },
+        err => {this.utils.showBlock('服务器连接错误')}
+      )
+
+
+    // this.route.load(Routes);
+    platform.ready().then(() => {
+
+      this.keyboard.disableScroll(false);
+      this.keyboard.hideKeyboardAccessoryBar(false);
+
+      statusBar.styleDefault();
+      splashScreen.hide();
+      console.log(platform.versions());
+
+
+      if (this.native.isAndroid()) {
+        this.native.getSMSprower();
+        this.registerBackButtonAction();//注册返回按键事件
+      }
+
+      // 版本升级
+      this.serviceinterface.appUpData()
+        .map(data => data.json())
+        .subscribe(
+        data => {
+          console.log(data);
+
+          if (this.native.isAndroid()) {
+            if (data.data.id != APP_ID) {
+              this.native.isUpdata2(data.data.id, data.data.isUpdateId, data.data.appVersion, data.data.isupdate, data.msg, data.data.downloadUrl);
+              // this.native.isUpdata(data.data.appVersion, data.data.isupdate, data.msg, data.data.downloadUrl);
+              // data.msg//描述
+              // data.data.isupdate//是否必须更新
+              // data.data.appVersion//版本号
+              // data.data.downloadUrl//下载地址
+            }
+          }else if (this.native.isIos()) {
+            if (data.data.iosVer != IOS_ID) {
+              this.native.iosUp(data.data.iosVer,data.data.iosIsupdateVer);
+            }
+          }
+        }
+        )
+
+
+    });
+  }
+
+  /**
+    * 返回键方法
+    */
+  registerBackButtonAction() {
+    this.platform.registerBackButtonAction(() => {
+
+      let activePortal = this.ionicApp._overlayPortal.getActive() || this.ionicApp._modalPortal.getActive();//呈现框和模态框
+      let otherActive = this.ionicApp._loadingPortal.getActive();//加载框
+
+      if (otherActive) {//加载框的时候禁止返回键
+        return;
+      } else if (activePortal) {
+
+        activePortal.dismiss().catch(() => { });
+        return;
+      } else {
+
+        let is = this.app.getActiveNav().canGoBack();//是否可以返回
+        if (is) {
+          this.app.getActiveNav().pop();
+        } else {
+          this.exit();
+        }
+
+      }
+    }, 101);
+  }
+
+  /**
+   * 退出的方法
+   */
+  exit() {
+    if (this.backButtonPressed) { //当触发标志为true时，即2秒内双击返回按键则退出APP
+      this.platform.exitApp();
+    } else {
+      this.utils.showBlock('再按一次退出应用', 2000);
+
+      this.backButtonPressed = true;
+      setTimeout(() => this.backButtonPressed = false, 2000);//2秒内没有再次点击返回则将触发标志标记为false
+    }
+  }
+
+
+
+  ngOnInit() {
+    this.helpers.getbqsToken();
+  }
+
+}

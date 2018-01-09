@@ -1,0 +1,130 @@
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar hideBackButton>
+        <ion-title>马蜂钱包</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <network-fail *ngIf="boxState == 10"></network-fail>
+
+    <!--下拉刷新-->
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content>
+        </ion-refresher-content>
+    </ion-refresher>
+
+    <!-- 网络连接失败 -->
+    
+    <ion-row class="box1">
+    </ion-row>
+    
+    <!-- 网络连接失败 -->
+    <network-show *ngIf="boxState == 10" (willEnt)='willEnt()'></network-show>
+
+    <!--链接失败显示-->
+    <!-- <ion-row *ngIf="boxState == 10"> -->
+    <!-- <ion-row>
+        <div class="false_box">
+            <i class="icon iconfont icon-xitong_duankailianjie"></i>
+            <span>连接失败</span>
+            <p>请检查您的手机是否联网</p>
+            <div class="false_btn">
+                <a tappable (click)='reload()'>重新加载</a>
+            </div>
+        </div>
+    </ion-row> -->
+
+    <div *ngIf="boxState != 10">
+
+        <!--<ion-row>
+            <ion-col col-12 style="padding-left:0;padding-right:0;">
+                <div class="money">
+                    <h3>申请借款额度</h3>
+                    <div class="text">{{saturation | mfqbNum:'0'}}<i>元</i>
+                    </div>
+                </div>
+                <div class="boxMoney">
+                    <ion-range [min]="min_money" [max]="max_money" step='100' [(ngModel)]="saturation" color="secondary" (ionChange)="changeMoney()">
+                    </ion-range>
+                </div>
+
+                <div>
+                    <div class="jk_data" tappable (click)="dataSelect()">
+                        <h3>借款期限</h3>
+                        <i class="icon iconfont icon-gengduo"></i>
+                        <h2>{{time_limit}}个月</h2>
+                    </div>
+                    <div class="jk_data">
+                        <h3>借款金额</h3>
+                        <i></i>
+                        <h2>{{realMoney | mfqbNum:'2'}}元</h2>
+                    </div>
+                    <div class="jk_btn" tappable (click)="toLoan()">
+                        <a>申请借款</a>
+                    </div>
+                </div>
+
+            </ion-col>
+        </ion-row>-->
+
+        <ion-row>
+            <div class="content_all" style='border-bottom:1px solid #ededed;'  (click)='to_small()'>
+                 <div class='content_left'>
+                    <div class="title_1">小额贷</div>
+                    <div class="title_2">可贷额度：500-5000元</div>
+                    <div class="title_3">资料简单，最快3分钟到账</div>
+                </div>
+
+                <div class='content_right'>去借钱 <i class='icon icon-font icon-gengduo'></i></div>
+            </div>
+
+             <div class="content_all" (click)='to_blue()'>
+                 <div class='content_left'>
+                    <div class="title_1">蓝白贷</div>
+                    <div class="title_2">可贷额度：5000-2万元</div>
+                    <div class="title_3">提交工资流水，最快1天放款</div>
+                </div>
+
+                <div class='content_right'>去借钱 <i class='icon icon-font icon-gengduo'></i></div>
+            </div>
+        </ion-row>
+
+
+        <ion-row>
+            <ion-col col-12 class="xian"> </ion-col>
+        </ion-row>
+
+
+        <ion-row>
+            <ion-col col-4 class="help" on-tap="go_one()">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-guanyuwomen1"></use>
+                </svg>
+                <p>关于我们</p>
+            </ion-col>
+            <ion-col col-4 class="help" on-tap="go_two()">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-bangzhuzhongxin2"></use>
+                </svg>
+                <p>帮助中心</p>
+            </ion-col>
+            <ion-col col-4 class="help" on-tap="go_three()">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-xinshoubidu1"></use>
+                </svg>
+                <p>新手必读</p>
+            </ion-col>
+        </ion-row>
+    </div>
+
+
+</ion-content>

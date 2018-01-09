@@ -1,0 +1,34 @@
+<!--
+  Generated template for the AuditPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+<ion-header>
+
+    <ion-navbar hideBackButton>
+        <button navPop><i class="icon iconfont icon-fanhui"></i></button>
+        <ion-title>关于我们</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <div class="about_title">
+        <img src="assets/images/about_logo.png" />
+    </div>
+    <div class="about_news">
+        <!-- <p>马蜂钱包是东莞市马蜂科技网络有限公司旗下的一款基于移动互联网全流程化的网络借款APP，主要解决年轻白领与蓝领在日常生活中的小额借款需求，提供500-5000元小额度、7-21天短周期的灵活借款。</p>
+        <p>马蜂钱包采用互联网大数据方式，省去了传统金融服务的繁琐流程及手续，旨在提供一个简单方便、灵活快捷的借款新模式。</p> -->
+        <p>马蜂钱包是东莞市马蜂网络信息技术有限公司旗下的一款基于移动互联网全流程化的网络借款平台，主要解决年轻白领与蓝领在日常生活中的临时应急需求，提供500-5000元的小额、短期的灵活借款。</p>
+        <p>马蜂钱包采用互联网大数据方式，省去了传统金融服务的繁琐流程及手续，旨在提供一个简单方便、灵活快捷的借款新模式：一键申请，审核、放款0等待，款项秒到。</p>
+    </div>
+    <div class="about_foot">
+        <img src="assets/images/about_foot.png" />
+    </div>
+    <div class="botton"></div>
+
+</ion-content>

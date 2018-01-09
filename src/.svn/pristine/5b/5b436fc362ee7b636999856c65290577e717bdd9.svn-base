@@ -1,0 +1,614 @@
+import { MFQB_URL } from './../../providers/constants/constants';
+import { NativeServiceProvider } from './../../providers/native-service/native-service';
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { AlertController, ToastController } from 'ionic-angular';
+import { HttpServiceProvider } from '../../providers/http-service/http-service';
+import { SERVER_URL } from '../../providers/constants/constants';
+import { UtilsProvider } from '../../providers/utils/utils';
+import { HelpersProvider } from '../../providers/helpers/helpers';
+import { ServiceInterfaceProvider } from '../../providers/service-interface/service-interface';
+
+/**
+ * Generated class for the VerificationPage page.
+ *
+ * See http://ionicframework.com/docs/components/#navigation for more info
+ * on Ionic pages and navigation.
+ */
+@IonicPage({
+  name: 'VerificationPage'
+})
+@Component({
+  selector: 'page-verification',
+  templateUrl: 'verification.html',
+})
+export class VerificationPage {
+  title: string;
+  core1: any;
+
+  public yzcode;           //验证码
+
+  public isGetCode: boolean = false;        //是否允许获取验证码
+  public codeText: string;      //短信提示
+  public amount: number;        //次数
+  public core: number;          //60秒定时器
+  public coreTitle: string;     //按钮显示文字
+  public tuWinTitle;       //弹窗标题
+
+  isShow: any = "loan"; //判断提交按钮的显示情况
+
+  number: string;
+  phone: number;   //用户手机
+  pinPhone: string;   //拼接手机号码
+  userid: any = JSON.parse(localStorage.getItem("user")).userid;//用户id
+  userData: any;//用户信息数组
+  loanActive: boolean = true;
+  repayActive: boolean = true;
+
+  constructor(
+    public http: HttpServiceProvider,
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public alertCtrl: AlertController,
+    public toastCtrl: ToastController,
+    public httpservice: HttpServiceProvider,
+    public utils: UtilsProvider,
+    public helpers: HelpersProvider,
+    public native: NativeServiceProvider,
+    public modalCtrl: ModalController,
+    public serve:ServiceInterfaceProvider
+
+  ) {
+    this.codeText = '获取验证码';
+    this.amount = 0;
+
+    // this.isShow = this.navParams.get('page');
+    console.log(this.isShow);
+
+  }
+
+  ionViewWillLeave() {
+    this.helpers.hideTabs2();
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad VerificationPage');
+    let getItem = localStorage.getItem("user");
+    let json = JSON.parse(getItem);
+    this.phone = json.mobile;
+    let start = this.phone.toString().substring(0, 3);
+    let end = this.phone.toString().substring(7);;
+    this.pinPhone = start + "****" + end;
+    this.helpers.hideTabs1();
+
+  }
+
+  ionViewWillEnter() {
+    this.dataSerch();
+    this.core = 0;
+    this.core1 = "获取验证码";
+    this.tuWinTitle = '请按照图形输入字母数字';
+    this.isShow = this.navParams.get('page');
+  }
+
+
+  // /**
+  //   * 点击获取手机验证码
+  //   * 
+  //   */
+  // getSMS() {
+
+  //   this.number = '';
+  //   let params = {
+  //     loginName: this.phone,
+  //     params: 'RYDCF09072107'
+  //     // type:'RZ',
+  //   }
+  //   console.log(params)
+  //   this.http.get(SERVER_URL + '/cf_main/cf/mobieCode', params)
+  //     .map(data => data.json())
+  //     .subscribe(
+  //     data => {
+  //       console.log(data);
+  //       if (data.success) {
+
+  //         this.SMS_validation();//倒计时方法
+
+  //         let toast = this.toastCtrl.create({
+  //           message: data.msg,
+  //           duration: 800,
+  //           position: 'middle'
+  //         });
+  //         toast.present();
+  //       } else {
+  //         let alert = this.alertCtrl.create({
+  //           title: '网络错误，请检查网络再重新获取短信',
+  //           buttons: ['确定']
+  //         });
+  //         alert.present();
+  //       }
+
+  //     }
+  //     )
+  // }
+
+  /**
+   * 点击申请借款的提交按钮
+   */
+  go_loan() {
+    // 验证输入信息的准确性
+    let Verification = this.number;
+    // let reg = /^\d{6}$/;
+
+    if (Verification == null || Verification == undefined) {
+      this.showAlert('请输入短信验证码');
+      return;
+    }
+    // else if (!reg.test(Verification)) {
+    //   this.showAlert('请输入6位数字的手机验证码')
+    // }
+    else {
+      // //百融流水号设备反欺诈
+      // let brParam = {
+      //   no: this.userData.idcard,    //身份证号    
+      //   name: this.userData.name,  //用户姓名
+      //   cell: this.userData.mobile,  //手机号码
+      //   userid: this.userData.userId //用户id
+      // }
+      // this.helpers.bairong('lend', brParam);
+
+      this.toAudit_loan();
+    }
+  }
+
+  /**
+  * 提交手机验证码访问接口的方法
+  */
+  toAudit_loan() {
+
+    let params = {
+
+      loginName: this.phone,
+      params: 'RYDCF09072107',
+      mobileCode: this.number,
+
+    }
+    this.http.get(SERVER_URL + '/cf_main/cf/checkMobieCode', params)
+      .map(data => data.json())
+      .subscribe(
+      data => {
+        console.log(data);
+        if (data.success) {
+          this.loanActive = false;
+          this.new_loan();
+          // this.baiRong();//百融接口(2017/10/27这里取消百融接口查询)
+
+
+        } else {
+          this.showAlert(data.msg);
+        }
+      },
+      e => {
+        console.log(e);
+        this.utils.showBlock('服务器连接错误,请稍候重试');
+      }
+      )
+  }
+
+  /**
+   * 调用百融接口查询用户信息(2017/10/27这里取消百融接口查询)
+   */
+  baiRong() {
+
+    //百融接口
+    let p = {
+      cardNo: this.userData.idcard,
+      name: this.userData.name,
+      mobile: this.userData.mobile,
+      userid: this.userData.userId,
+      bankCard: this.userData.bankCards[0].bankCard
+    }
+    console.log(p);
+    this.http.post(SERVER_URL + `/cf_main/user/brTx`, p)
+      .map(data => data.json())
+      .subscribe(
+      data => {
+        console.log(data);
+        if (data.success) {
+
+          this.formLoan();//调用来自申请借款数据的方法
+
+        } else {
+          this.utils.showAlert(data.msg);
+        }
+
+      }, err => {
+        this.utils.showBlock('服务器连接错误,请稍候重试');
+      }
+      )
+
+  }
+
+  //新的借款接口
+  new_loan(){
+    let val_1=this.navParams.get('val_1');
+    let val_2=this.navParams.get('val_2');
+    let val_3=this.navParams.get('val_3');
+    let val_4=this.navParams.get('val_4');
+    let val_5=this.navParams.get('val_5');
+    let val_6=this.navParams.get('val_6');
+    this.serve.loan_SB(val_1,val_2,val_3,val_4,val_5,val_6).map(data => data.json()).subscribe(data => {
+        console.log(data);
+        this.loanActive=false;
+        if(data.success){
+          this.loanActive=true;
+          // this.showAlert(data.msg);
+            let alert = this.alertCtrl.create({
+              title: data.msg,
+              buttons: [
+                {
+                  text: '确定',
+                  handler: () => {
+                    this.navCtrl.push('AuditPage');
+                  }
+                }
+              ]
+            });
+            alert.present();
+        }else{
+          this.showAlert(data.msg);
+          this.loanActive=true;
+        }
+    })
+  }
+
+  /**
+     * 查询认证信息
+     */
+  dataSerch() {
+
+    this.httpservice.get(SERVER_URL + '/cf_main/cf/user/personalInformation', { loginName: localStorage.getItem('userPhone') })
+      .map(data => data.json())
+      .subscribe(
+      data => {
+        console.log(data);
+        if (data.success) {
+          this.userData = data.data.personalInformation;  //用户信息数组
+        }
+        else {
+          this.utils.showBlock(data.msg);
+        }
+
+      },
+      error => {
+        this.utils.showBlock('服务器连接错误,请稍候重试');
+      }
+      )
+  }
+
+
+
+
+  /**
+   * 申请借款页面提交获取验证码,提交申请连接后台接口的方法
+   */
+  formLoan() {
+
+    let getItem = localStorage.getItem("user");
+    let json = JSON.parse(getItem);
+    // this.userid = json.userid;
+    let time = new Date().getTime();//获取当前时间
+    let isAgree = this.navParams.get('isAgree');//银行卡认证情况
+
+    let params = {
+      userId: json.userid,            //用户id
+      loginName: json.mobile,            //手机号码     
+      bankId: this.navParams.get('bankId'),                 //收款账号id
+      loanAmounts: this.navParams.get('loanAmounts'),            //借款金额
+      loanDays: this.navParams.get('loanDays'),                //借款期限
+      counterFee: this.navParams.get('allCharge'),              //手续费
+      intoAmounts: this.navParams.get('intoAmounts'),          //实际到账金额
+      loanPenalty: this.navParams.get('loanPenalty'),        //利息
+      repaymentAmount: this.navParams.get('repaymentAmount'),  //还款金额
+      // isCoupon: this.navParams.get('isCoupon'),            //是否使用优惠卷
+      couponId: this.navParams.get('couponid'),           //优惠券
+      repaymentMode: 1,                  //还款方式(1到期一次清2分期还款)
+      loanTime: time,                 //开始 申请借款时间
+    }
+    console.log(params);
+    this.http.post(SERVER_URL + '/cf_main/user/confirmloanApplication', params)
+      .map(data => data.json())
+      .subscribe(
+      data => {
+        this.loanActive = true;
+
+        console.log(data);
+        if (data.success) {
+
+          this.navCtrl.push('AuditPage');//跳转到申请结果页面
+          localStorage.removeItem('ChooseCoupons');//清除优惠卷的浏览器缓存
+
+        } else {
+          this.showAlert(data.msg);
+        }
+      },
+      erro => {
+        console.log(erro);
+        this.utils.showBlock('服务器连接错误,请稍候重试');
+
+      }
+      )
+
+  }
+
+
+  /**
+   * 点击申请还款的提交按钮
+   */
+  go_repay() {
+    let Verification = this.number;
+    // console.log(Verification)
+
+    // let reg = /^\d{4}$/;
+
+    if (Verification == null || Verification == undefined) {
+      this.showAlert('请输入短信验证码');
+    }
+    //  else if (!reg.test(Verification)) {
+    //   this.showAlert('请输入4位数字的手机验证码')
+    // }
+    else {
+      //最后成功提交
+      this.toAudit_repay();
+    }
+
+  }
+
+  /**
+   * 提交手机验证码访问接口的方法
+   * 返回验证是否成功,验证成功则提交数据
+   */
+  toAudit_repay() {
+
+    let params = {
+      loginName: this.phone,
+      params: 'RYDCF09072107',
+      mobileCode: this.number,
+
+    }
+    this.http.get(SERVER_URL + '/cf_main/cf/checkMobieCode', params)
+      .map(data => data.json())
+      .subscribe(
+      data => {
+        console.log(data);
+        if (data.success) {
+
+          this.present_repay();//调用提交数据接口的方法
+        } else {
+          this.showAlert(data.msg);
+
+        }
+      },
+      e => {
+        this.utils.showBlock('服务器连接错误,请稍候重试');
+        console.log(e);
+      }
+      )
+  }
+
+
+  /**
+  * 点击确定还款提交数据连接后台接口的方法
+  */
+  present_repay() {
+    let p = {
+      user_id: this.userid,
+      orderCode: this.navParams.get('orderCode'),
+      money_order: this.navParams.get('repaymentAmount'),
+      card_no: this.navParams.get('bankNum')
+    }
+    console.log(p);
+
+    this.httpservice.post(SERVER_URL + '/cf_main/order/applyRepayment', p)
+      .map(data => data.json())
+      .subscribe(
+      data => {
+        this.repayActive = false;
+
+        // console.log(data);
+        console.log(data.data.actionUrl);
+        this.native.themeable(SERVER_URL + data.data.actionUrl)//打开第三方页面
+          .on('closeevent')
+          .subscribe(
+          data => {
+            this.repayActive = true;
+
+            this.navCtrl.popToRoot();
+          }
+          );
+
+        // console.log(data.data.builder);
+
+        // window.document.write(data.data.builder);
+        // console.log(data.data.actionUrl);
+
+        // let profileModal = this.modalCtrl.create('HomeFootPage', { url: data.data.builder });
+        // profileModal.present();
+        // window.open(data.data.actionUrl);
+        // location.href = data.data.actionUrl;
+        // this.native.themeable(data.data.actionUrl);
+        // let j = JSON.parse(data.headers);
+        // if (data.success) {
+
+        //   let param = {
+        //     result: 'yes',
+        //     residue: this.navParams.get('residue'),
+        //     repayment: this.navParams.get('repaymentAmount')
+        //   }
+        //   console.log(param);
+        //   this.navCtrl.push('PaymentResultPage', param);
+
+        // } else {
+        //   this.showAlert(data.msg);
+
+        // }
+      },
+      erro => {
+        this.utils.showBlock('服务器连接错误,请稍候重试');
+        console.log(erro);
+      },
+    )
+  }
+
+  /**
+   *   短信验证码倒计时的方法
+   */
+  SMS_validation() {
+
+    // this.getSMS();
+    this.amount++;
+    this.codeText = 60 + '秒后重发';
+    if (this.amount >= 60) {
+      let alert = this.alertCtrl.create({
+        title: '获取验证码太频繁请稍后再试',
+        buttons: ['确定']
+      });
+      alert.present();
+      return;
+    }
+
+    this.core = 60;
+    this.isGetCode = true;
+    this.coreTitle = '秒后重发';
+    let timer = setInterval(() => {
+      if (this.core == 1) {
+        clearInterval(timer);
+        this.codeText = "重新获取";
+        this.isGetCode = false;
+        return;
+      }
+      this.core--;
+      this.codeText = this.core + this.coreTitle;
+    }, 1000)
+
+  }
+
+
+
+
+  /**
+   * 表单验证弹窗的方法
+   * @param data 
+   */
+  showAlert(text) {
+    let alert = this.alertCtrl.create({
+      title: text,
+      buttons: ['确定']
+    });
+    alert.present();
+  }
+
+
+
+  //判断是否允许获取验证码
+  isGetcode(num) {
+    if (!this.utils.isPhoneMunber(num)) {
+      //false
+      this.isGetCode = true;
+    } else {
+      //true
+      this.isGetCode = false;
+    }
+  }
+
+  /**
+* 显示图片验证码弹框
+*/
+  showTuCode() {
+
+    this.isRegister();
+
+  }
+
+  /**
+ * 测试手机是否已经注册
+ */
+  //j.setSuccess(false);
+  // j.setErrorCode("0");
+  // j.setMsg("已经被注册");
+  isRegister() {
+    this.getPicCode();
+  }
+
+  /**
+   * 获取图片验证码
+   */
+  getPicCode() {
+
+    this.httpservice.get(SERVER_URL + '/cf_main/cf/VerifyCode', { uid: this.phone })
+      // .map(res=>res.json())
+      .subscribe(
+      data => {
+
+        console.log(data);
+
+        let alert = this.alertCtrl.create({
+          title: this.tuWinTitle,
+          message: "<img src='" + data.url + "'>",
+          cssClass: 'registerWin',
+          inputs: [
+            {
+              name: 'tucode',
+              placeholder: '请输入图片验证码',
+              type: 'text',
+            }
+          ],
+          buttons: [
+            {
+              text: '确定',
+              handler: data => {
+                console.log(data);
+
+                //提交验证码
+                let pamers = {
+                  loginName: this.phone,
+                  verCode: data.tucode
+                }
+                console.log(pamers);
+                this.httpservice.postFormData(SERVER_URL + '/cf_main/cf/VerifyCodeAndSendMobileCode', pamers)
+                  .map(res => res.json())
+                  .subscribe(
+                  data => {
+                    console.log(data);
+                    if (data.success) {
+
+                      this.number = '';
+                      this.SMS_validation();//倒计时
+                      this.utils.showBlock(data.msg);//黑色闪窗
+
+                    } else {
+
+                      this.utils.showBlock(data.msg);//黑色闪窗
+                    }
+
+                  },
+                  erro => {
+                    this.utils.showBlock('服务器连接错误,请稍候重试');
+                    console.log(erro.statusText);
+                  },
+                )
+              }
+            }
+          ]
+        });
+        alert.present();
+
+      },
+      erro => {
+        this.utils.showBlock('服务器连接错误,请稍候重试');
+        console.log(erro.json());
+      },
+    )
+  }
+
+}

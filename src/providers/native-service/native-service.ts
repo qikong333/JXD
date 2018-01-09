@@ -1,0 +1,843 @@
+import { Network } from '@ionic-native/network';
+import { APP_ID, IOS_ID } from './../constants/constants';
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+import { ToastController, LoadingController, Platform, Loading, AlertController, ModalController } from 'ionic-angular';
+import { FileOpener } from '@ionic-native/file-opener';
+import { AppVersion } from '@ionic-native/app-version';
+import { ImagePicker } from '@ionic-native/image-picker';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { AndroidPermissions } from '@ionic-native/android-permissions'
+import { ThemeableBrowser, ThemeableBrowserOptions, ThemeableBrowserObject } from '@ionic-native/themeable-browser';
+import { File } from '@ionic-native/file';
+
+import { Autostart } from '@ionic-native/autostart';
+import { ADNROID_APK, VERSION_NUM, IOS_APK } from "../constants/constants";
+import { AppUpdate } from '@ionic-native/app-update';
+import { FileTransfer, FileTransferObject, FileUploadOptions } from '@ionic-native/file-transfer';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { UtilsProvider } from '../utils/utils';
+
+declare var LocationPlugin;
+declare var AMapNavigation;
+declare var cordova: any;
+declare var SMS: any;
+declare var installedApps: any;
+
+@Injectable()
+export class NativeServiceProvider {
+
+  private loading: Loading;
+  private loadRunning: boolean = false;
+
+  public Num = 0;//进度
+
+  private fileTransfer: FileTransferObject;   //升级
+
+  constructor(
+    private platform: Platform,
+    private toastCtrl: ToastController,
+    private alertCtrl: AlertController,
+    private loadingCtrl: LoadingController,
+    private camera: Camera,
+    private fileOpener: FileOpener,
+    private appVersion: AppVersion,
+    private imagePicker: ImagePicker,
+    private permissions: AndroidPermissions,
+    private themeableBrowser: ThemeableBrowser,
+    private file: File,
+    private appUpdate: AppUpdate,
+    private transfer: FileTransfer,
+    private inAppBrowser: InAppBrowser,
+    private utils: UtilsProvider,
+    private autostart: Autostart,
+    public network: Network
+
+  ) {
+  }
+
+  /**
+   * 获取app信息
+   */
+  getInstalledApps() {
+    installedApps.getNames(
+      (data) => {
+        alert(JSON.stringify(data));
+        return JSON.stringify(data);
+      }, (err) => {
+        alert(err);
+      }
+    )
+  }
+
+  /**
+   * 获取全部短信
+   * @param num 返回条数
+   */
+  getAllSMS(num) {
+    let a = this.getSMS(1, num);
+    let b = this.getSMS(0, num);
+
+
+  }
+
+  /**
+   * 获取短信权限
+   */
+  getSMSprower() {
+    this.permissions.checkPermission(this.permissions.PERMISSION.READ_SMS).then(
+      success => console.log('Permission granted'),
+      err => this.permissions.requestPermission(this.permissions.PERMISSION.READ_SMS)
+    );
+
+    this.permissions.requestPermissions([this.permissions.PERMISSION.READ_SMS]);
+  }
+
+  /**
+   * 获取短信内容
+   */
+  getSMS(read, maxCount) {
+    this.getSMSprower();
+    let file = {
+      box: 'inbox',
+      read: read,   //0 or 1
+      indexFrom: 0,
+      maxCount: maxCount,//最大条数
+    }
+    SMS.listSMS(file, function (data) {
+      alert(JSON.stringify(data));
+      return JSON.stringify(data);
+    }, function (err) {
+      alert(err);
+    });
+  }
+
+
+
+  /**
+   * 判断是否要升级
+   */
+  isUpdata(num, type, mgs, dowmUrl, setup?) {
+    console.log(num, type, mgs, dowmUrl)
+    if (type == 1) {
+      if (VERSION_NUM == num) {
+        if (setup == 1) {
+          this.utils.showAlert('当前版本为最新版本');
+        }
+      } else {
+        let alert = this.alertCtrl.create({
+          title: '版本升级',
+          message: mgs,
+          buttons: [
+            {
+              text: '取消',
+              role: 'cancel',
+            },
+            {
+              text: '升级',
+              handler: () => {
+                if (this.isAndroid()) {
+                  this.appDownLoad(dowmUrl);
+                }
+                if (this.isIos()) {
+                  this.iosDownLoad();
+                }
+
+              }
+            }
+          ]
+        });
+        alert.present();
+      }
+    } else {
+      this.appDownLoad(dowmUrl);
+    }
+
+  }
+
+
+  /**
+   * ios更新
+   */
+  iosUp(newIos, mustIos) {
+    if (IOS_ID < mustIos) {
+      this.showUptateApp('请到AppStore更新到最新版本');
+    } else {
+      if (IOS_ID < newIos) {
+        this.utils.showAlert('您可以到AppStore升级版本');
+      }
+    }
+  }
+
+
+  /**clc
+   * 判断是否要升级
+   */
+  isUpdata2(id, mustUpdataId, num, type, mgs, dowmUrl, setup?) {
+    if (APP_ID < mustUpdataId) {
+      this.showUptateApp('请更新到最新版本');
+      this.appDownLoad(dowmUrl);
+
+    } else {
+      if (APP_ID < id) {
+
+        let alert = this.alertCtrl.create({
+          title: '版本升级',
+          message: mgs,
+          buttons: [
+            {
+              text: '取消',
+              role: 'cancel',
+            },
+            {
+              text: '升级',
+              handler: () => {
+                if (this.isAndroid()) {
+                  this.appDownLoad(dowmUrl);
+                }
+                // if (this.isIos()) {
+                //   this.iosDownLoad();
+                // }
+
+              }
+            }
+          ]
+        });
+        alert.present();
+      }
+    }
+
+  }
+
+  /**
+   * 强制更新app显示弹窗
+   * @param text
+   */
+  showUptateApp(text) {
+    const loading = this.loadingCtrl.create({
+      spinner: 'hide',
+      content: text
+    });
+
+    loading.present();
+  }
+
+
+  /**
+   * 苹果打开下载界面
+   */
+  iosDownLoad() {
+    this.themeable(IOS_APK);
+  }
+
+
+  /**
+   *安卓app下载
+   */
+  appDownLoad(dowmUrl) {
+    //alt下载提示框
+    let alt = this.alertCtrl.create({
+      title: '下载进度：0%',
+      buttons: ['后台下载']
+    })
+    alt.present();
+
+    const fileTransfer: FileTransferObject = this.transfer.create();
+    let directory = this.file.externalDataDirectory;//保存的目录
+    alert(directory)
+    let date = new Date()
+    let apkName = 'jiuxiangdai.apk' + date;//保存的apk名称
+    // const url = 'http://www.rongyudai.cn/app/fileStore/app/rongyudai-2.2.1.apk';
+    const url = dowmUrl;
+    // alert(url)
+    fileTransfer.download(url, directory + apkName).then((entry) => {
+
+
+      //打开app更新包
+      this.fileOpener.open(directory + apkName, 'application/vnd.android.package-archive')
+        .then(
+        data => {
+          //下载成功，关闭进度条
+          this.autostart.enable();
+        },
+        err => this.utils.showAlert(err)
+        )
+        .catch(rc => this.utils.showAlert(rc))
+
+
+    }, (error) => {
+      //  alert(JSON.stringify(error))
+
+      this.alertCtrl.create({
+        title: '失败!',
+        subTitle: '下载安装包失败,请稍后再试!',
+        buttons: ['确定']
+      }).present();
+
+
+    });
+
+
+    fileTransfer.onProgress((event: ProgressEvent) => {
+      let num = Math.floor(event.loaded / event.total * 100);
+      if (num == 100) {
+        alt.dismiss();
+      } else {
+
+        let title = document.getElementsByClassName('alert-title')[0];
+        title && (title.innerHTML = '下载进度：' + num + '%');
+
+
+      }
+    }
+    )
+  }
+
+  /**
+   * 计算手续费
+   * @param money
+   * @param day
+   */
+  getCharge(money, day): any {
+    let platform_cost;             //平台费用
+    let account_cost               //账户费用
+    let risk_cost                  //风控费用
+    let information_cost           //信息费用
+    let allCharge;                 //综合费用
+
+    if (day == 7) {
+      allCharge = (money * 0.09).toFixed(2);
+      platform_cost = (money * 0.02).toFixed(2);
+      information_cost = (money * 0.02).toFixed(2);
+      risk_cost = (money * 0.03).toFixed(2);
+      account_cost = (money * 0.02).toFixed(2);
+    } else if (day == 14) {
+      allCharge = (money * 0.18).toFixed(2);
+      platform_cost = (money * 0.03).toFixed(2);
+      information_cost = (money * 0.04).toFixed(2);
+      risk_cost = (money * 0.07).toFixed(2);
+      account_cost = (money * 0.04).toFixed(2);
+    } else if (day == 0) {
+      allCharge = (money * 0.14).toFixed(2);
+      platform_cost = (money * 0.02).toFixed(2);
+      information_cost = (money * 0.03).toFixed(2);
+      risk_cost = (money * 0.06).toFixed(2);
+      account_cost = (money * 0.03).toFixed(2);
+    } else if (day == 21) {
+      allCharge = (money * 0.19).toFixed(2);
+      platform_cost = (money * 0.02).toFixed(2);
+      information_cost = (money * 0.04).toFixed(2);
+      risk_cost = (money * 0.09).toFixed(2);
+      account_cost = (money * 0.04).toFixed(2);
+    }
+
+    return [platform_cost, account_cost, risk_cost, information_cost, allCharge];
+  }
+
+  /**
+ * 通过浏览器打开url
+ */
+  openUrlByBrowser(url: string): void {
+    this.inAppBrowser.create(url, '_system');
+  }
+
+  /**
+   * 浏览器打开
+   */
+  themeable(url: string) {
+    let options: ThemeableBrowserOptions = {
+      statusbar: {
+        color: '#ffffffff'
+      },
+      toolbar: {
+        height: 44,
+        color: '#f0f0f0ff'
+      },
+      title: {
+        color: '#003264ff',
+        showPageTitle: true
+      },
+      // backButton: {
+      //   wwwImage: 'assets/images/back.png',
+      //   wwwImagePressed: 'assets/images/back.png',
+      //   wwwImageDensity: 2,
+      //   align: 'left',
+      //   event: 'backevent',
+
+      // },
+      // forwardButton: {
+      //   wwwImage: 'assets/images/go.png',
+      //   wwwImagePressed: 'assets/images/go.png',
+      //   wwwImageDensity: 2,
+      //   align: 'left',
+      // },
+      closeButton: {
+        wwwImage: 'assets/images/close.png',
+        wwwImagePressed: 'assets/images/close.png',
+        wwwImageDensity: 2,
+        align: 'right',
+        event: 'closeevent'
+      },
+      // customButtons: [
+      //   {
+      //     wwwImage: 'assets/images/ball4.png',
+      //     wwwImagePressed: 'assets/images/ball4.png',
+      //     wwwImageDensity: 2,
+      //     align: 'right',
+      //   }
+      // ],
+      // menu: {
+      //  wwwImage: 'images/back.png',
+      //   wwwImagePressed: 'assets/images/homeBg.png',
+      //   wwwImageDensity: 2,
+      //   title: 'Test',
+      //   cancel: 'Cancel',
+      //   align: 'right',
+      //   items: [
+      //     {
+      //       event: 'helloPressed',
+      //       label: 'Hello World!'
+      //     },
+      //     {
+      //       event: 'testPressed',
+      //       label: 'Test!'
+      //     }
+      //   ]
+      // },
+      backButtonCanClose: false
+    };
+
+    return this.themeableBrowser.create(url, '_blank', options);
+
+  }
+
+  appBrowser(url): any {
+
+
+    cordova.ThemeableBrowser.open(url, '_blank', {
+      statusbar: {
+        color: '#ffffffff'
+      },
+      toolbar: {
+        height: 44,
+        color: '#f0f0f0ff'
+      },
+      title: {
+        color: '#003264ff',
+        showPageTitle: true
+      },
+      backButton: {
+        wwwImage: 'assets/images/back.png',
+        wwwImagePressed: 'assets/images/back.png',
+        wwwImageDensity: 2,
+        align: 'left',
+        event: 'backPressed'
+      },
+      forwardButton: {
+        wwwImage: 'assets/images/go.png',
+        wwwImagePressed: 'assets/images/go.png',
+        wwwImageDensity: 2,
+        align: 'left',
+        event: 'forwardPressed'
+      },
+      closeButton: {
+        wwwImage: 'assets/images/close.png',
+        wwwImagePressed: 'assets/images/close.png',
+        wwwImageDensity: 2,
+        align: 'right',
+        event: 'closePressed'
+      },
+      // customButtons: [
+      //   {
+      //     wwwImage: 'assets/images/ball4.png',
+      //     wwwImagePressed: 'assets/images/ball4.png',
+      //     wwwImageDensity: 2,
+      //     align: 'right',
+      //     event: 'sharePressed'
+      //   }
+      // ],
+      // menu: {
+      //   image: 'menu',
+      //   imagePressed: 'menu_pressed',
+      //   title: 'Test',
+      //   cancel: 'Cancel',
+      //   align: 'right',
+      //   items: [
+      //     {
+      //       event: 'helloPressed',
+      //       label: 'Hello World!'
+      //     },
+      //     {
+      //       event: 'testPressed',
+      //       label: 'Test!'
+      //     }
+      //   ]
+      // },
+      backButtonCanClose: false
+    }).addEventListener('backPressed', function (e) {
+      alert('back pressed');
+    }).addEventListener('helloPressed', function (e) {
+      alert('hello pressed');
+    }).addEventListener('sharePressed', function (e) {
+      alert(e.url);
+    }).addEventListener(cordova.ThemeableBrowser.EVT_ERR, function (e) {
+      console.error(e.message);
+    }).addEventListener(cordova.ThemeableBrowser.EVT_WRN, function (e) {
+      console.log(e.message);
+    });
+  }
+
+
+  /**
+   * 是否真机环境
+   * @return {boolean}
+   */
+  isMobile() {
+    return this.platform.is('mobile') && !this.platform.is('mobileweb');
+  }
+
+  /**
+   * 是否android真机环境
+   * @return {boolean}
+   */
+  isAndroid() {
+    return this.isMobile() && this.platform.is('android');
+  }
+
+  /**
+   * 是否ios真机环境
+   * @return {boolean}
+   */
+  isIos() {
+    return this.isMobile() && (this.platform.is('ios') || this.platform.is('ipad') || this.platform.is('iphone'));
+  }
+
+  /**
+   * 统一调用此方法显示提示信息
+   * @param message 信息内容
+   * @param duration 显示时长
+   */
+  showToast = (message: string = '操作完成', duration: number = 2000) => {
+    if (this.isMobile()) {
+      this.toastCtrl.create({
+        message: message,
+        duration: duration,
+        position: 'center',
+      }).subscribe();
+    } else {
+      this.toastCtrl.create({
+        message: message,
+        duration: duration,
+        position: 'middle',
+        showCloseButton: false
+      }).present();
+    }
+  };
+
+
+  /**
+   * 统一调用此方法显示loading
+   * @param content 显示的内容
+   */
+  showLoading = (content: string = '') => {
+    if (!this.loadRunning) {
+      this.loadRunning = true;
+      this.loading = this.loadingCtrl.create({
+        content: content
+      });
+      this.loading.present();
+      setTimeout(() => {
+        this.loading.dismiss();
+        this.loadRunning = false;
+      }, 100000);
+    }
+  };
+
+  /**
+   * 关闭loading
+   */
+  hideLoading = () => {
+    if (this.loadRunning) {
+      this.loading.dismiss();
+      this.loadRunning = false;
+    }
+  };
+
+  /**
+   * 使用cordova-plugin-camera获取照片
+   * @param options
+   * @return {Promise<T>}
+   */
+  getPicture = () => {
+    return new Promise((success, fail) => {
+      this.camera.getPicture(Object.assign({
+        sourceType: 1,//图片来源,1:拍照,0:相册
+        destinationType: this.camera.DestinationType.FILE_URI,//默认返回base64字符串,DATA_URL:base64   FILE_URI:图片路径
+        quality: 50,//图像质量，范围为0 - 100
+        allowEdit: false,//选择图片前是否允许编辑
+        encodingType: this.camera.EncodingType.JPEG,
+        targetWidth: 500,//缩放图像的宽度（像素）
+        targetHeight: 500,//缩放图像的高度（像素）
+        saveToPhotoAlbum: false,//是否保存到相册
+        correctOrientation: true//设置摄像机拍摄的图像是否为正确的方向
+      })).then((imgData) => {
+        success(imgData);
+      }, (err) => {
+        console.log(err);
+        err == 20 ? this.showToast('没有权限,请在设置中开启权限') : fail(err);
+      });
+    });
+  };
+
+
+  // /**
+  //  * 上传图片
+  //  */
+  // upload(photo) {
+  //   const fileTransfer: FileTransferObject = this.transfer.create();
+
+  //   let options: FileUploadOptions = {
+  //     fileKey: 'file',
+  //     fileName: 'name.jpg',
+  //     // params: { loginName: this.navParams.get('userPhone'), type: 1 }
+  //   }
+  //   // alert(this.path);
+  //   return fileTransfer.upload(photo, 'http://192.168.3.150:8080/cf_main/test/file', options)
+  //   // .then((data) => {
+  //   //   // success
+  //   //   alert(1);
+  //   // }, (err) => {
+  //   //   alert(2);
+  //   //   // error
+  //   // })
+  // }
+
+
+
+  /**
+   * 通过拍照获取照片
+   * @param options
+   * @return {Promise<T>}
+   */
+  getPictureByCamera = () => {
+    // return new Promise((resolve) => {
+    //   this.getPicture(Object.assign({
+    //     sourceType:  this.camera.PictureSourceType.CAMERA
+    //   }, options)).then(imgData => {
+    //     resolve(imgData);
+    //   }).catch(err => {
+    //     String(err).indexOf('cancel') != -1 ? this.showToast('取消拍照', 1500) : this.showToast('获取照片失败');
+    //   });
+    // });
+    let options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+
+    this.camera.getPicture(options).then((imageData) => {
+
+      let base64Image = 'data:image/jpeg;base64,' + imageData;
+      alert(base64Image)
+      alert(base64Image.toString());
+      alert(imageData)
+      alert(imageData.toString());
+    }, (err) => {
+      alert(err)
+    });
+
+
+  };
+
+
+  // /**
+  //  * 通过图库获取照片
+  //  * @param options
+  //  * @return {Promise<T>}
+  //  */
+  // getPictureByPhotoLibrary = (options = {}) => {
+  //   return new Promise((resolve) => {
+  //     this.getPicture(Object.assign({
+  //       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
+  //     }, options)).then(imgData => {
+  //       resolve(imgData);
+  //     }).catch(err => {
+  //       String(err).indexOf('cancel') != -1 ? this.showToast('取消选择图片', 1500) : this.showToast('获取照片失败');
+  //     });
+  //   });
+  // };
+
+
+  /**
+   * 通过图库多选图片
+   * @param options
+   * @return {Promise<T>}
+   */
+  getMultiplePicture = (options = {}) => {
+    let that = this;
+    let destinationType = options['destinationType'] || 0;//0:base64字符串,1:图片url
+    return new Promise((resolve) => {
+      this.imagePicker.getPictures(Object.assign({
+        maximumImagesCount: 6,
+        width: 800,//缩放图像的宽度（像素）
+        height: 800,//缩放图像的高度（像素）
+        quality: 90//图像质量，范围为0 - 100
+      }, options)).then(files => {
+        if (destinationType === 1) {
+          resolve(files);
+        } else {
+          let imgBase64s = [];//base64字符串数组
+          for (let fileUrl of files) {
+            that.convertImgToBase64(fileUrl, base64 => {
+              imgBase64s.push(base64);
+              if (imgBase64s.length === files.length) {
+                resolve(imgBase64s);
+              }
+            }, null);
+          }
+        }
+      }).catch(err => {
+        console.error(err);
+        this.showToast('获取照片失败');
+      });
+    });
+  };
+
+  // 根据图片绝对路径转化为base64字符串
+  convertImgToBase64(url, callback, outputFormat) {
+    let canvas = <HTMLCanvasElement>document.createElement('CANVAS'), ctx = canvas.getContext('2d'), img = new Image;
+    img.crossOrigin = 'Anonymous';
+    img.onload = function () {
+      canvas.height = img.height;
+      canvas.width = img.width;
+      ctx.drawImage(img, 0, 0);
+      let imgBase64 = canvas.toDataURL(outputFormat || 'image/png');//返回如'data:image/jpeg;base64,abcdsddsdfsdfasdsdfsdf'
+      let base64 = imgBase64.substring(imgBase64.indexOf(';base64,') + 8);//返回如'abcdsddsdfsdfasdsdfsdf'
+      callback.call(this, base64);
+      canvas = null;
+    };
+    img.src = url;
+  }
+
+  /**
+   * 获得用户当前坐标
+   * @return {Promise<T>}
+   */
+  getUserLocation() {
+    return new Promise((resolve, reject) => {
+      if (this.isMobile()) {
+        LocationPlugin.getLocation(data => {
+          resolve({ 'lng': data.longitude, 'lat': data.latitude });
+        }, msg => {
+          console.error('定位错误消息' + msg);
+          alert(msg.indexOf('缺少定位权限') == -1 ? ('错误消息：' + msg) : '缺少定位权限，请在手机设置中开启');
+          reject('定位失败');
+        });
+      } else {
+        console.log('非手机环境,即测试环境返回固定坐标');
+        resolve({ 'lng': 113.350912, 'lat': 23.119495 });
+      }
+    });
+  }
+
+  /**
+   * 地图导航
+   * @param startPoint 开始坐标
+   * @param endPoint 结束坐标
+   * @param type 0实时导航,1模拟导航,默认为模拟导航
+   * @return {Promise<T>}
+   */
+  navigation(startPoint, endPoint, type = 1) {
+    return new Promise((resolve, reject) => {
+      if (this.platform.is('mobile') && !this.platform.is('mobileweb')) {
+        AMapNavigation.navigation({
+          lng: startPoint.lng,
+          lat: startPoint.lat
+        }, {
+            lng: endPoint.lng,
+            lat: endPoint.lat
+          }, type, function (message) {
+            resolve(message);//非手机环境,即测试环境返回固定坐标
+          }, function (message) {
+            alert('导航失败:' + message);
+            reject('导航失败');
+          });
+      } else {
+        this.showToast('非手机环境不能导航');
+      }
+    });
+  }
+
+  /**
+   *  @name 获取app版本信息demo
+   */
+  showAppVersion() {
+    this.appVersion.getAppName().then(value => {
+      console.log(value);//ionic2_tabs
+    });
+    this.appVersion.getPackageName().then(value => {
+      console.log(value);//com.kit.platform
+    });
+    this.appVersion.getVersionCode().then(value => {
+      console.log(value);//1
+    });
+    this.appVersion.getVersionNumber().then(value => {
+      console.log(value);//0.0.1
+    });
+  }
+
+  /**
+   * @name 获取网络类型
+   */
+  getNetworkType() {
+    if (!this.isMobile()) {
+      return true;
+    }
+    return navigator['connection']['type'];// "none","wifi","4g","3g","2g"...
+  }
+
+  isConnecting() {
+    return this.getNetworkType() != 'none';
+  }
+
+  /**
+   * 获取网络连接结果
+   */
+  getNetwork() {
+    if (this.isMobile()) {
+      return this.network.type != 'none' ? true : false;
+    } else { return true; }
+
+  }
+
+  // /**
+  //  * 上传文件
+  //  * @param name 文件名称
+  //  * @param param 上传参数
+  //  * @param fileUrl 文件路径
+  //  * @param url 上传路劲
+  //  */
+
+  // uploadFile(param:any,fileUrl:string,url:string){
+  //   if(!fileUrl){
+  //     const fileTransfer:TransferObject = this.transfer.create();
+  //     let options:FileUploadOptions = {
+  //       fileKey:'file',
+  //       params:{data:param},
+  //       headers:{}
+  //     }
+  //     return new Promise((resolve)=>{
+  //       fileTransfer.upload(fileUrl,url,options)
+  //       .then((data)=>{
+  //         data
+  //       })
+
+  //     })
+  //   }
+  // }
+
+
+
+}

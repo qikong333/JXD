@@ -1,0 +1,176 @@
+@import '../../theme/base.scss';
+page-repayment {
+    body {
+        background-color: #909090;
+    }
+    .xian {
+        height: r(20px);
+        background-color: $huied;
+    }
+    .box {
+        dl {
+            width: 100%;
+            height: r(96px);
+            float: left;
+        }
+        span {
+            color: #323232;
+            font-size: r(26px);
+            float: left;
+            height: r(96px);
+            line-height: r(96px);
+            margin-left: 5%;
+        }
+        select {
+            // float: left;
+            color: #909090;
+            font-size: r(22px);
+            height: r(96px);
+            width: 40%;
+            line-height: r(96px);
+            border: none;
+            background: none;
+            float: right;
+            appearance: none;
+        }
+        i {
+            float: right;
+            color: #909090;
+            font-size: r(22px);
+            height: r(96px);
+            line-height: r(96px);
+            margin-right: 5%;
+        }
+        em {
+            float: left;
+            color: #909090;
+            font-size: r(35px);
+            height: r(96px);
+            line-height: r(103px);
+            margin-left: 5%;
+        }
+        b {
+            float: left;
+            color: $primary;
+            font-size: r(32px);
+            height: r(96px);
+            line-height: r(96px);
+        }
+        p {
+            color: #909090;
+            font-size: r(22px);
+            float: right;
+            margin-right: 10%;
+            height: r(96px);
+            line-height: r(96px);
+        }
+        .red {
+            color: #ee5a50;
+        }
+        h2 {
+            width: 90%;
+            float: left;
+            color: #666666;
+            font-size: r(24px);
+            margin: 0 5%;
+        }
+        input {
+            background: none;
+            border: none;
+            height: r(96px);
+            float: left;
+            width: r(400px);
+            color: #909090;
+            font-size: r(32px);
+            text-indent: r(10px);
+        }
+        input::placeholder {
+            color: #ccc;
+            font-size: r(28px);
+        }
+    }
+    .soild {
+        width: 90%;
+        margin: 0 5%;
+        float: left;
+        background-color: #cccccc;
+        height: 1px;
+    }
+    .right_p {
+        width: 100%;
+        float: left;
+        color: #666666;
+        font-size: r(26px);
+        margin: 3% 0 10% 0;
+        .p {
+            float: right;
+            margin-right: 5%;
+            dd {
+                float: right;
+                color: #ee5a50;
+            }
+        }
+    }
+    .blue {
+        color: $primary !important;
+    }
+    .box2 {
+        width: 100%;
+        float: left;
+        padding-bottom: 30%;
+        background-color: #ededed;
+        .btn {
+            width: 100%;
+            float: left;
+            margin-top: r(60px);
+            a {
+                width: 90%;
+                margin: 0 5%;
+                float: left;
+                background-color: $primary;
+                height: r(89px);
+                line-height: r(89px);
+                text-align: center;
+                color: #fff;
+                font-size: r(34px);
+                border-radius: r(8px);
+                margin-bottom: r(30px);
+            }
+        }
+        .btn2 {
+            width: 100%;
+            float: left;
+            a {
+                width: 90%;
+                margin: 0 5%;
+                float: left;
+                background-color: #fff;
+                height: r(89px);
+                line-height: r(89px);
+                text-align: center;
+                color: #323232;
+                font-size: r(34px);
+                border-radius: r(8px);
+                border: solid 1px #cccccc;
+            }
+        }
+        .btn3 {
+            width: 90%;
+            height: r(50px);
+            float: left;
+            margin: 0 5%;
+            text-align: right;
+            a {
+                color: $primary;
+                font-size: r(26px);
+            }
+        }
+        p {
+            width: 90%;
+            float: left;
+            margin: 0 5%;
+            color: #909090;
+            font-size: r(26px);
+        }
+    }
+}

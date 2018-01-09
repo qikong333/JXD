@@ -1,0 +1,71 @@
+<!--<p>{{inputcontent}}</p>
+
+I am fron {{data}}<br />
+
+<button id="out" (click)="click()" ion-button>click for out</button>
+
+<br>
+
+
+<hr />
+
+<form novalidate>
+    <label>
+ <span>Full name</span>
+ <input
+ type="text"
+ name="name"
+ placeholder="Your full name">
+ </label>
+    <div>
+        <label>
+ <span>Email address</span>
+ <input
+ type="email"
+ name="email"
+ placeholder="Your email address">
+ </label>
+        <label>
+ <span>Confirm address</span>
+ <input
+ type="email"
+ name="confirm"
+ placeholder="Confirm your email address">
+ </label>
+    </div>
+    <button type="submit">Sign up</button>
+</form>-->
+
+<ion-header>
+    <!--隐藏ionic自带的返回标签-->
+    <ion-navbar hideBackButton>
+        <!--从新定义自己的返回标签-->
+        <button navPop><i class="icon iconfont icon-fanhui"></i></button>
+        <ion-title>测试</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <!-- <input type="file" accept="image/*" capture="camera" /><br/>
+
+    <button (click)="Real_face()">face</button><br/>
+
+
+    <button (click)="OpenCamera()">alert</button><br/>
+    <button (click)="a3()">通过拍照获取照片</button><br/>
+    <button (click)="a4()">通过图库获取照片</button><br/>
+
+    <button (click)="openCamar1()">1111111</button><br/>
+
+
+    <button (click)="contast()">联系人</button><br/>
+
+
+    <a [href]="urla">aadfadsfa</a> -->
+    <button (click)="tt()">联系人</button><br/>
+
+    <br/>
+    <button (click)="getall()">登录</button><br/>
+    <button (click)="dd()">注册</button><br/>
+
+</ion-content>

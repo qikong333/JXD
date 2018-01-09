@@ -1,0 +1,50 @@
+<!--
+  Generated template for the AuditPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+<ion-header>
+
+    <ion-navbar hideBackButton>
+        <button navPop><i class="icon iconfont icon-fanhui"></i></button>
+        <ion-title>新手必读</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <div class="list_box">
+        <ul>
+            <li tappable (click)='isshow5=!isshow5'>
+                <span> <i [ngClass]="{true:'icon-xialasanup-copy' ,false:'icon-xialasanjiaoxing'}[isshow5]" class="icon iconfont"></i>如何在马蜂钱包借款？</span>
+                <p [ngClass]="{true:'disnone' ,false:'disblock'}[isshow5]">首先要下载马蜂钱包APP，然后注册马蜂钱包账号，完善个人资料信息获取额度，有额度后随时可申请借款。</p>
+            </li>
+            <li tappable (click)='isshow6=!isshow6'>
+                <span> <i [ngClass]="{true:'icon-xialasanup-copy' ,false:'icon-xialasanjiaoxing'}[isshow6]" class="icon iconfont"></i>个人资料信息安全吗？</span>
+                <p [ngClass]="{true:'disnone' ,false:'disblock'}[isshow6]">马蜂钱包严格保护用户隐私，对按时还款的借款用户相关资料信息做加密处理。</p>
+            </li>
+            <li tappable (click)='isshow1=!isshow1'>
+                <span> <i [ngClass]="{true:'icon-xialasanup-copy' ,false:'icon-xialasanjiaoxing'}[isshow1]" class="icon iconfont"></i>在马蜂钱包借款安全吗？</span>
+                <p [ngClass]="{true:'disnone' ,false:'disblock'}[isshow1]">马蜂钱包属于“金融信息服务”的经营范围，同时是得到政府认可的互联网金融平台。一方面，风险备用金第三方存管，另一方面，我们采取国际标准的安全加密。从机制和技术两方面，确保您的借款安全。</p>
+            </li>
+            <li tappable (click)='isshow2=!isshow2'>
+                <span> <i [ngClass]="{true:'icon-xialasanup-copy' ,false:'icon-xialasanjiaoxing'}[isshow2]" class="icon iconfont"></i>申请马蜂钱包借款需要什么条件？</span>
+                <p [ngClass]="{true:'disnone' ,false:'disblock'}[isshow2]">(1)申请人年龄须在18周岁（含）至45周岁之间；</p>
+                <p [ngClass]="{true:'disnone' ,false:'disblock'}[isshow2]">(2)申请人须收入稳定；</p>
+                <p [ngClass]="{true:'disnone' ,false:'disblock'}[isshow2]">(3)无不良征信记录，在其他贷款平台没有任何逾期记录</p>
+            </li>
+            <li tappable (click)='isshow3=!isshow3'>
+                <span> <i [ngClass]="{true:'icon-xialasanup-copy' ,false:'icon-xialasanjiaoxing'}[isshow3]" class="icon iconfont"></i>申请马蜂钱包借款需要哪些材料？</span>
+                <p [ngClass]="{true:'disnone' ,false:'disblock'}[isshow3]">申请马蜂钱包需要填写以下信息：身份证、人脸识别认证、银行卡、基本信息（家庭住址、单位地址、单位电话、联系人等）、芝麻信用认证，手机认证。</p>
+            </li>
+            <li tappable (click)='isshow4=!isshow4'>
+                <span> <i [ngClass]="{true:'icon-xialasanup-copy' ,false:'icon-xialasanjiaoxing'}[isshow4]" class="icon iconfont"></i>一般审核需要多长时间？</span>
+                <p [ngClass]="{true:'disnone' ,false:'disblock'}[isshow4]">申请借款审核只需3分钟，请您耐心等待，审核通过款项立即到账。</p>
+            </li>
+        </ul>
+    </div>
+</ion-content>

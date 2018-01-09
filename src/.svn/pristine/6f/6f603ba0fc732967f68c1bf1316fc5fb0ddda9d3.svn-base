@@ -1,0 +1,203 @@
+<!--
+  Generated template for the QuotaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar hideBackButton>
+        <button navPop>
+            <i class="icon iconfont icon-fanhui"></i>
+        </button>
+        <ion-title>额度信息</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+    <!--下拉刷新-->
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content>
+        </ion-refresher-content>
+    </ion-refresher>
+
+    <ion-row class="box1">
+        <!--获取额度-->
+        <!--<ion-col col-12>-->
+        <!--<div class="circle">-->
+        <!--<ul>-->
+        <!--<h3>我的额度(元)</h3>-->
+        <!--<span>获取额度></span>-->
+        <!--<p></p>-->
+        <!--</ul>-->
+        <!--</div>-->
+        <!--</ion-col>-->
+
+        <!--提升额度-->
+        <ion-col col-12>
+            <div class="circle">
+                <ul>
+                    <h3>我的额度(元)</h3>
+                    <span class="limit">{{qmoney}}</span>
+                    <p *ngIf='zore' tappable (click)='getQmoney()'>重新生成额度></p>
+                    <p *ngIf='!zore'></p>
+                </ul>
+            </div>
+        </ion-col>
+
+        <!--评定额度-->
+        <!--<ion-col col-12>-->
+        <!--<div class="circle">-->
+        <!--<ul>-->
+        <!--<h3>我的额度(元)</h3>-->
+        <!--<span>评定中</span>-->
+        <!--<p></p>-->
+        <!--</ul>-->
+        <!--</div>-->
+        <!--</ion-col>-->
+        <!--<ion-col col-12>-->
+        <!--<dl><i class="icon iconfont icon-dengdai"></i>额度评定中，预计3分钟，请耐心等待...</dl>-->
+        <!--</ion-col>-->
+    </ion-row>
+
+    <ion-row class="box2">
+        <ion-col col-12>
+            <span>
+                <i class="icon iconfont icon-jichu"></i>基础认证</span>
+            <p>必填，完成以下认证获取额度</p>
+        </ion-col>
+    </ion-row>
+    <ion-row class="box">
+        <dl tappable (click)="list1State(list1)">
+            <span>个人信息</span>
+            <i class="icon iconfont icon-gengduo"></i>
+            <p style="margin: 0;">{{list1}}</p>
+        </dl>
+    </ion-row>
+    <ion-row class="box">
+        <dl tappable (click)="list2State(list2)" *ngIf="isDisabled(list1)">
+            <span>工作信息</span>
+            <i class="icon iconfont icon-gengduo"></i>
+            <p style="margin: 0;">{{list2}}</p>
+        </dl>
+        <dl class="disabled" *ngIf="!isDisabled(list1)">
+            <span>工作信息</span>
+            <i class="icon iconfont icon-gengduo"></i>
+            <p style="margin: 0;">{{list2}}</p>
+        </dl>
+    </ion-row>
+    <ion-row class="box">
+        <dl tappable (click)="list3State(list3)" *ngIf="isDisabled(list2)">
+            <span>身份信息</span>
+            <i class="icon iconfont icon-gengduo"></i>
+            <p style="margin: 0;">{{list3}}</p>
+        </dl>
+        <dl class="disabled" *ngIf="!isDisabled(list2)">
+            <span>身份信息</span>
+            <i class="icon iconfont icon-gengduo"></i>
+            <p style="margin: 0;">{{list3}}</p>
+        </dl>
+    </ion-row>
+    <ion-row class="box">
+        <dl tappable (click)="list4State(list4)" *ngIf="isDisabled(list3)">
+            <span>绑定银行卡</span>
+            <i class="icon iconfont icon-gengduo"></i>
+            <p style="margin: 0;">{{list4}}</p>
+        </dl>
+        <dl class="disabled" *ngIf="!isDisabled(list3)">
+            <span>绑定银行卡</span>
+            <i class="icon iconfont icon-gengduo"></i>
+            <p style="margin: 0;">{{list4}}</p>
+        </dl>
+    </ion-row>
+    <ion-row class="box">
+        <dl tappable (click)="list5State(list5)" *ngIf="isDisabled(list4)">
+            <span>第三方认证</span>
+            <i class="icon iconfont icon-gengduo"></i>
+            <p style="margin: 0;">{{list5}}</p>
+        </dl>
+        <dl class="disabled" *ngIf="!isDisabled(list4)">
+            <span>第三方认证</span>
+            <i class="icon iconfont icon-gengduo"></i>
+            <p style="margin: 0;">{{list5}}</p>
+        </dl>
+    </ion-row>
+    <!--<ion-row class="box3">-->
+    <!--<dl (click)='isshow=!isshow'>-->
+    <!--更多提额认证-->
+    <!--<i class="icon iconfont icon-icon"></i>-->
+    <!--</dl>-->
+    <!--</ion-row>-->
+    <!--<div class="more_box" [ngClass]="{true:'block' ,false:'none'}[isshow]">-->
+    <!--<ion-row class="box2">-->
+    <!--<ion-col col-12>-->
+    <!--<span> <i class="icon iconfont icon-jiafen"></i>高级认证</span>-->
+    <!--<p>选填，增加审核通过率、提升额度</p>-->
+    <!--</ion-col>-->
+    <!--</ion-row>-->
+    <!--<ion-row class="box">-->
+    <!--<dl>-->
+    <!--<span>工资卡认证</span>-->
+    <!--<i class="icon iconfont icon-gengduo"></i>-->
+    <!--<p style="margin: 0;">已填写</p>-->
+    <!--</dl>-->
+    <!--</ion-row>-->
+    <!--<ion-row class="box">-->
+    <!--<dl>-->
+    <!--<span>社保认证</span>-->
+    <!--<i class="icon iconfont icon-gengduo"></i>-->
+    <!--<p style="margin: 0;">已填写</p>-->
+    <!--</dl>-->
+    <!--</ion-row>-->
+    <!--<ion-row class="box">-->
+    <!--<dl>-->
+    <!--<span>公积金认证</span>-->
+    <!--<i class="icon iconfont icon-gengduo"></i>-->
+    <!--<p style="margin: 0;">已填写</p>-->
+    <!--</dl>-->
+    <!--</ion-row>-->
+    <!--<ion-row class="box">-->
+    <!--<dl>-->
+    <!--<span>信用卡账单</span>-->
+    <!--<i class="icon iconfont icon-gengduo"></i>-->
+    <!--<p style="margin: 0;">已填写</p>-->
+    <!--</dl>-->
+    <!--</ion-row>-->
+    <!--<ion-row class="box2">-->
+    <!--<ion-col col-12>-->
+    <!--<span> <i class="icon iconfont icon-jiafen"></i>加分认证</span>-->
+    <!--<p>选填，极大通过率、极大提升额度</p>-->
+    <!--</ion-col>-->
+    <!--</ion-row>-->
+    <!--<ion-row class="box">-->
+    <!--<dl>-->
+    <!--<span>个人房产</span>-->
+    <!--<i class="icon iconfont icon-gengduo"></i>-->
+    <!--<p style="margin: 0;">已填写</p>-->
+    <!--</dl>-->
+    <!--</ion-row>-->
+    <!--<ion-row class="box">-->
+    <!--<dl>-->
+    <!--<span>个人车产</span>-->
+    <!--<i class="icon iconfont icon-gengduo"></i>-->
+    <!--<p style="margin: 0;">已填写</p>-->
+    <!--</dl>-->
+    <!--</ion-row>-->
+    <!--<ion-row class="box">-->
+    <!--<dl>-->
+    <!--<span>支付宝认证</span>-->
+    <!--<i class="icon iconfont icon-gengduo"></i>-->
+    <!--<p style="margin: 0;">已填写</p>-->
+    <!--</dl>-->
+    <!--</ion-row>-->
+    <!--<ion-row class="box3">-->
+    <!--<dl (click)='isshow=!isshow'>-->
+    <!--收起-->
+    <!--<i class="icon iconfont icon-shang"></i>-->
+    <!--</dl>-->
+    <!--</ion-row>-->
+    <!--</div>-->
+</ion-content>

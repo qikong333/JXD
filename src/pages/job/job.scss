@@ -1,0 +1,140 @@
+@import '../../theme/base.scss';
+
+page-job {
+  .job_box {
+    background: #EDEDED;
+
+    ion-item {
+      width: 60%;
+      height: 100%;
+      float: right;
+    }
+
+    .datetime-ios {
+        padding: 0;
+    }
+
+    // #city {
+    //     width: r(300px)!important;
+    // }
+    /*.item-city-picker {
+        margin-top: r(15px)!important;
+    }*/
+
+    .item-ios.item-block .item-inner {
+      padding: 0;
+      height: 100%;
+      border: 0;
+      font-size: r(26px);
+    }
+
+    .showResult {
+        position: absolute;
+        right: r(63px);
+        font-size: r(22px);
+        color: $hui90;
+    }
+
+    .chooseResult {
+        background: transparent;
+        color: transparent;
+    }
+
+    ion-item .input-cover,
+    ion-item .input-wrapper,
+    ion-item .item-inner,
+    ion-item div {
+      height: 100%!important;
+    }
+
+    input {
+      border: none;
+      font-size: r(22px);
+      float: right;
+      text-align: right;
+      margin-top: r(30px);
+      width: r(400px);
+      background-color: #fff;
+      color: $hui90;
+    }
+
+    input::placeholder {
+      font-size: r(22px);
+      color: $hui90;
+    }
+
+    select {
+      border: none;
+      appearance: none;
+      float: right;
+      margin-top: r(30px);
+      width: r(350px);
+      font-size: r(22px);
+      color: $hui90;
+      background-color: transparent;
+    }
+
+    .top {
+      padding: 0 r(30px);
+      background-color: #ededed;
+      height: r(134px);
+      width: 100%;
+      padding-top: r(17px);
+    }
+
+    .top p {
+      text-align: center;
+      font-size: r(26px);
+      color: $hui66;
+      line-height: r(50px);
+    }
+
+    .lis ul li {
+      border-bottom: 1px solid #ededed;
+      overflow: hidden;
+      padding: 0 5%;
+      background: #fff;
+      height: r(100px);
+      line-height: r(100px);
+    }
+
+    .lis ul li i:nth-child(1) {
+      line-height: r(92px);
+      color: #323232;
+      font-size: r(26px);
+    }
+
+    .lis ul li i:nth-child(3) {
+      font-size: r(22px);
+      color: $hui90;
+      line-height: r(96px);
+    }
+
+    .lis ul li i:nth-child(2) ,.rit{
+      width: r(14px);
+      height: r(96px);
+      margin-right: r(16px);
+      line-height: r(96px);
+      font-size: r(35px);
+      color: $hui90;
+    }
+
+    .bottom {
+      height: r(277px);
+      background-color: $huied;
+      padding: 0 r(30px) ;
+    }
+
+    // .bottom .but {
+    //   background-color: $primary;
+    //   color: #fff;
+    //   text-align: center;
+    //   height: r(88px);
+    //   width: 100%;
+    //   font-size: r(34px);
+    //   line-height: r(88px);
+    //   border-radius: r(10px);
+    // }
+
+  }
+}

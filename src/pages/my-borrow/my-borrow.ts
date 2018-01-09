@@ -1,0 +1,111 @@
+import { UtilsProvider } from './../../providers/utils/utils';
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HttpServiceProvider } from '../../providers/http-service/http-service';
+import { SERVER_URL } from '../../providers/constants/constants';
+import { HelpersProvider } from '../../providers/helpers/helpers';
+/**
+ * Generated class for the MyBorrowPage page.
+ *
+ * See http://ionicframework.com/docs/components/#navigation for more info
+ * on Ionic pages and navigation.
+ */
+@IonicPage({
+  name: "MyBorrowPage"
+})
+@Component({
+  selector: 'page-my-borrow',
+  templateUrl: 'my-borrow.html',
+})
+export class MyBorrowPage {
+  shouldEnable: boolean;
+  params: Object;
+  data: any[];
+
+  phoneName;//登录手机号
+  text: string;
+
+  changeDay: any = Date.parse('2017-12-04 11:00');//2017年12月4日 10:00时间戳,用于改变借款期限(月)
+  newTime:any = Date.now();
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public HttpServiceProvider: HttpServiceProvider,
+    public helpers: HelpersProvider,
+    public utils: UtilsProvider
+  ) {
+  }
+
+  // 下拉加载
+  doRefresh(refresher) {
+    this.ionViewWillEnter();
+    setTimeout(() => {
+      refresher.complete();
+    }, 500)
+  }
+
+  // 上拉加载
+  doInfinite(infiniteScroll) {
+    this.ionViewWillEnter();
+    setTimeout(() => {
+      infiniteScroll.complete();
+    }, 500);
+
+  }
+
+  //即将要进入的页面
+  ionViewWillEnter() {
+
+    // 获取登录账号
+    let user = localStorage.getItem("user");
+    // console.log(user);
+    if (user != null) {
+      var json = JSON.parse(user);//将其转换成json对象
+      this.phoneName = json.mobile;
+    }
+
+
+    this.params = {
+      loginName: this.phoneName,//全局变量，获取当前用户手机号码
+      userId: json.userid
+    }
+
+    this.HttpServiceProvider.get(SERVER_URL + '/cf_main/cf/order/myLoan', this.params)
+      .map(data => data.json())
+      .subscribe((data) => {
+        console.log(data);
+
+        if (data.success) {
+          this.data = data.data.cfMyOrders;
+          console.log(this.data);
+
+        } else {
+          this.text = data.msg;
+        }
+      }, err => {
+        this.utils.showBlock('服务器连接错误,请稍候重试');
+      })
+  }
+
+  //跳借款详情
+  goDetails(orderCode) {
+    // console.log(orderCode);
+    this.navCtrl.push('BorrowDetailsPage', { orderCode: orderCode });
+  }
+
+  ionViewDidLoad() {
+    this.helpers.hideTabs1();
+
+  }
+
+  ionViewWillLeave() {
+    this.helpers.hideTabs2();
+  }
+
+
+
+
+
+
+
+
+}

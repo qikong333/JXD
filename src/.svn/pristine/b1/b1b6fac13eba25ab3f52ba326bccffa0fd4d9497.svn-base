@@ -1,0 +1,340 @@
+<ion-header>
+    <ion-navbar hideBackButton>
+        <button navPop><i class="icon-fanhui iconfont"></i></button>
+        <ion-title>帮助中心</ion-title>
+    </ion-navbar>
+    <ion-segment [(ngModel)]="segmentModel" class="tab_nav">
+        <ion-segment-button value="segmentOne" class="nav">
+            借款
+        </ion-segment-button>
+        <ion-segment-button value="segmentTwo" class="nav">
+            还款
+        </ion-segment-button>
+        <ion-segment-button value="segmentThree" class="nav">
+            费用
+        </ion-segment-button>
+    </ion-segment>
+</ion-header>
+
+<ion-content (swipe)="swipeEvent($event)">
+    <div [ngSwitch]="segmentModel" class="content">
+        <ion-list *ngSwitchCase="'segmentOne'">
+            <ion-item>
+                <div class="content_list">
+                    <div class="list_top" tappable (click)='isshow1=!isshow1'>
+                        <!-- <h3>为什么会读取联系人失败？</h3> -->
+                        <h3>如何进行借款？</h3>
+                        <i [ngClass]="{true:'icon-shang blue' ,false:'icon-icon'}[isshow1]" class="icon iconfont"></i>
+                    </div>
+                    <div class="list_cotent" [ngClass]="{true:'disnone' ,false:'disblock'}[isshow1]">
+                        <p>1.注册账号—2.完善信息—3.申请借款—4.审核放款。</p>
+                        <!-- <p>1.新注册客户获得的3000元体验金及1880现金券，分别在会员中心“我的体验金”和“我的现金券”中可以查看。</p>
+                        <p>2.体验金：是平台提供给客户体验真实投资过程的资金，体验金仅限于投资体验标，体验完毕后，收益归客户所有。收益可提现可投资。</p>
+                        <p>3.现金券：1880元现金券，最低5元，最高500元，投资200元起可以使用，可叠加使用，单次投资使用现金券数量无限制。现金券在投标前进行点选使用即可，有效期为发放现金券后2个月内。如投标时使用现金券，则所投标的满标放款后，与现金券对应面值的金额立即到账，可提现可投资。</p> -->
+                    </div>
+                </div>
+                <div class="content_list">
+                    <div class="list_top" tappable (click)='isshow2=!isshow2'>
+                        <!-- <h3>新人体验金及现金券如何使用？</h3> -->
+                        <h3>申请借款需要做哪些认证？</h3>
+                        <i [ngClass]="{true:'icon-shang blue' ,false:'icon-icon'}[isshow2]" class="icon iconfont"></i>
+                    </div>
+                    <div class="list_cotent" [ngClass]="{true:'disnone' ,false:'disblock'}[isshow2]">
+                        <p>身份证认证，银行卡认证，手机运营商认证，芝麻信用认证。</p>
+                        <!-- <p>1.新注册客户获得的3000元体验金及1880现金券，分别在会员中心“我的体验金”和“我的现金券”中可以查看。</p>
+                        <p>2.体验金：是平台提供给客户体验真实投资过程的资金，体验金仅限于投资体验标，体验完毕后，收益归客户所有。收益可提现可投资。</p>
+                        <p>3.现金券：1880元现金券，最低5元，最高500元，投资200元起可以使用，可叠加使用，单次投资使用现金券数量无限制。现金券在投标前进行点选使用即可，有效期为发放现金券后2个月内。如投标时使用现金券，则所投标的满标放款后，与现金券对应面值的金额立即到账，可提现可投资。</p> -->
+                    </div>
+                </div>
+                <div class="content_list">
+                    <div class="list_top" tappable (click)='isshow3=!isshow3'>
+                        <!-- <h3>如何更换收款银行卡？</h3> -->
+                        <h3>身份认证信息认证后能否再次修改？</h3>
+                        <i [ngClass]="{true:'icon-shang blue' ,false:'icon-icon'}[isshow3]" class="icon iconfont"></i>
+                    </div>
+                    <div class="list_cotent" [ngClass]="{true:'disnone' ,false:'disblock'}[isshow3]">
+                        <p>身份认证信息认证后不能修改，如果特殊情况需要修改，请联系客服。</p>
+                        <!-- <p>1.新注册客户获得的3000元体验金及1880现金券，分别在会员中心“我的体验金”和“我的现金券”中可以查看。</p>
+                        <p>2.体验金：是平台提供给客户体验真实投资过程的资金，体验金仅限于投资体验标，体验完毕后，收益归客户所有。收益可提现可投资。</p>
+                        <p>3.现金券：1880元现金券，最低5元，最高500元，投资200元起可以使用，可叠加使用，单次投资使用现金券数量无限制。现金券在投标前进行点选使用即可，有效期为发放现金券后2个月内。如投标时使用现金券，则所投标的满标放款后，与现金券对应面值的金额立即到账，可提现可投资。</p> -->
+                    </div>
+                </div>
+                <div class="content_list">
+                    <div class="list_top" tappable (click)='isshow4=!isshow4'>
+                        <!-- <h3>审核通过后多久打款？</h3> -->
+                        <h3>目前平台支持的银行卡有哪些？</h3>
+                        <i [ngClass]="{true:'icon-shang blue' ,false:'icon-icon'}[isshow4]" class="icon iconfont"></i>
+                    </div>
+                    <div class="list_cotent" [ngClass]="{true:'disnone' ,false:'disblock'}[isshow4]">
+                        <p>平台目前支持以下银行：农业银行、交通银行、工商银行、邮储银行、浦发银行、广发银行、平安银行、招商银行、中国银行、建设银行、光大银行、兴业银行、中信银行、华夏银行。</p>
+                        <!-- <p>1.新注册客户获得的3000元体验金及1880现金券，分别在会员中心“我的体验金”和“我的现金券”中可以查看。</p>
+                        <p>2.体验金：是平台提供给客户体验真实投资过程的资金，体验金仅限于投资体验标，体验完毕后，收益归客户所有。收益可提现可投资。</p>
+                        <p>3.现金券：1880元现金券，最低5元，最高500元，投资200元起可以使用，可叠加使用，单次投资使用现金券数量无限制。现金券在投标前进行点选使用即可，有效期为发放现金券后2个月内。如投标时使用现金券，则所投标的满标放款后，与现金券对应面值的金额立即到账，可提现可投资。</p> -->
+                    </div>
+                </div>
+                <div class="content_list">
+                    <div class="list_top" tappable (click)='isshow5=!isshow5'>
+                        <!-- <h3>审核被拒绝的原因一般有哪些？</h3> -->
+                        <h3>芝麻信用无法授权怎么办？</h3>
+                        <i [ngClass]="{true:'icon-shang blue' ,false:'icon-icon'}[isshow5]" class="icon iconfont"></i>
+                    </div>
+                    <div class="list_cotent" [ngClass]="{true:'disnone' ,false:'disblock'}[isshow5]">
+                        <p>请联系芝麻信用客服或者更换网络环境后再试。</p>
+                        <!-- <p>1.新注册客户获得的3000元体验金及1880现金券，分别在会员中心“我的体验金”和“我的现金券”中可以查看。</p>
+                        <p>2.体验金：是平台提供给客户体验真实投资过程的资金，体验金仅限于投资体验标，体验完毕后，收益归客户所有。收益可提现可投资。</p>
+                        <p>3.现金券：1880元现金券，最低5元，最高500元，投资200元起可以使用，可叠加使用，单次投资使用现金券数量无限制。现金券在投标前进行点选使用即可，有效期为发放现金券后2个月内。如投标时使用现金券，则所投标的满标放款后，与现金券对应面值的金额立即到账，可提现可投资。</p> -->
+                    </div>
+                </div>
+                <div class="content_list">
+                    <div class="list_top" tappable (click)='isshow6=!isshow6'>
+                        <!-- <h3>如何提升信用额度？</h3> -->
+                        <h3>什么是手机运营商服务密码？</h3>
+                        <i [ngClass]="{true:'icon-shang blue' ,false:'icon-icon'}[isshow6]" class="icon iconfont"></i>
+                    </div>
+                    <div class="list_cotent" [ngClass]="{true:'disnone' ,false:'disblock'}[isshow6]">
+                        <p>手机运营商服务密码，是您的手机在运营商获取服务时的认证密码。修改或找回手机服务密码，请联系您的手机运营商。</p>
+                        <!-- <p>1.新注册客户获得的3000元体验金及1880现金券，分别在会员中心“我的体验金”和“我的现金券”中可以查看。</p>
+                        <p>2.体验金：是平台提供给客户体验真实投资过程的资金，体验金仅限于投资体验标，体验完毕后，收益归客户所有。收益可提现可投资。</p>
+                        <p>3.现金券：1880元现金券，最低5元，最高500元，投资200元起可以使用，可叠加使用，单次投资使用现金券数量无限制。现金券在投标前进行点选使用即可，有效期为发放现金券后2个月内。如投标时使用现金券，则所投标的满标放款后，与现金券对应面值的金额立即到账，可提现可投资。</p> -->
+                    </div>
+                </div>
+
+                <div class="content_list">
+                    <div class="list_top" tappable (click)='isshow20=!isshow20'>
+                        <h3>忘记运营商发放密码怎么办？</h3>
+                        <i [ngClass]="{true:'icon-shang blue' ,false:'icon-icon'}[isshow20]" class="icon iconfont"></i>
+                    </div>
+                    <div class="list_cotent" [ngClass]="{true:'disnone' ,false:'disblock'}[isshow20]">
+                        <p>忘记服务密码，可以联系运营商客服或登录运营商官网进行查询或修改。</p>
+                    </div>
+                </div>
+                <div class="content_list">
+                    <div class="list_top" tappable (click)='isshow21=!isshow21'>
+                        <h3>用户信息安全吗？</h3>
+                        <i [ngClass]="{true:'icon-shang blue' ,false:'icon-icon'}[isshow21]" class="icon iconfont"></i>
+                    </div>
+                    <div class="list_cotent" [ngClass]="{true:'disnone' ,false:'disblock'}[isshow21]">
+                        <p>我们会严格遵守监管部门的规定，对您的个人信息严格保密，您的信息安全会得到全面保障。</p>
+                    </div>
+                </div>
+                <div class="content_list">
+                    <div class="list_top" tappable (click)='isshow22=!isshow22'>
+                        <h3>借款额度是多少？</h3>
+                        <i [ngClass]="{true:'icon-shang blue' ,false:'icon-icon'}[isshow22]" class="icon iconfont"></i>
+                    </div>
+                    <div class="list_cotent" [ngClass]="{true:'disnone' ,false:'disblock'}[isshow22]">
+                        <p>用户的借款额度根据系统对用户提交的资料进行信用评估，给予500-20000元之间的借款额度。</p>
+                    </div>
+                </div>
+                <div class="content_list">
+                    <div class="list_top" tappable (click)='isshow23=!isshow23'>
+                        <h3>借款期限是多少？</h3>
+                        <i [ngClass]="{true:'icon-shang blue' ,false:'icon-icon'}[isshow23]" class="icon iconfont"></i>
+                    </div>
+                    <div class="list_cotent" [ngClass]="{true:'disnone' ,false:'disblock'}[isshow23]">
+                        <!-- <p>平台目前产品的借款期限有：1个月，2个月，3个月，6个月，12个月，18个月，21天。</p> -->
+                        <p>平台目前产品的借款期限有：1个月，2个月，3个月，6个月，12个月，18个月。</p>
+                    </div>
+                </div>
+                <div class="content_list">
+                    <div class="list_top" tappable (click)='isshow24=!isshow24'>
+                        <h3>如何查看借款进度？</h3>
+                        <i [ngClass]="{true:'icon-shang blue' ,false:'icon-icon'}[isshow24]" class="icon iconfont"></i>
+                    </div>
+                    <div class="list_cotent" [ngClass]="{true:'disnone' ,false:'disblock'}[isshow24]">
+                        <p>用户可以在【我的】-【我的借款】中查看借款进度。</p>
+                    </div>
+                </div>
+                <div class="content_list">
+                    <div class="list_top" tappable (click)='isshow25=!isshow25'>
+                        <h3>申请借款审核通过后多久打款？</h3>
+                        <i [ngClass]="{true:'icon-shang blue' ,false:'icon-icon'}[isshow25]" class="icon iconfont"></i>
+                    </div>
+                    <div class="list_cotent" [ngClass]="{true:'disnone' ,false:'disblock'}[isshow25]">
+                        <p>借款申请审核通过后，立即放款。</p>
+                    </div>
+                </div>
+                <div class="content_list">
+                    <div class="list_top" tappable (click)='isshow26=!isshow26'>
+                        <h3>借款金额会被发放到哪里？</h3>
+                        <i [ngClass]="{true:'icon-shang blue' ,false:'icon-icon'}[isshow26]" class="icon iconfont"></i>
+                    </div>
+                    <div class="list_cotent" [ngClass]="{true:'disnone' ,false:'disblock'}[isshow26]">
+                        <p>借款申请审核通过后，系统会将借款金额发放到绑定的银行卡账户中。</p>
+                    </div>
+                </div>
+                <div class="content_list">
+                    <div class="list_top" tappable (click)='isshow27=!isshow27'>
+                        <h3>借款审核被拒绝的原有一般有哪些？</h3>
+                        <i [ngClass]="{true:'icon-shang blue' ,false:'icon-icon'}[isshow27]" class="icon iconfont"></i>
+                    </div>
+                    <div class="list_cotent" [ngClass]="{true:'disnone' ,false:'disblock'}[isshow27]">
+                        <p>可能有以下3种原因：</p>
+                        <p>(1) 认证信息不全面，请将认证信息填写完整</p>
+                        <p>(2) 非本人操作，将导致借款失败；</p>
+                        <p>(3) 综合信用评分不足也可能被拒绝。</p>
+                    </div>
+                </div>
+
+            </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'segmentTwo'">
+            <ion-item>
+                <div class="content_list">
+                    <div class="list_top" tappable (click)='isshow7=!isshow7'>
+                        <h3>可以通过哪些方式进行还款？</h3>
+                        <i [ngClass]="{true:'icon-shang blue' ,false:'icon-icon'}[isshow7]" class="icon iconfont"></i>
+                    </div>
+                    <div class="list_cotent" [ngClass]="{true:'disnone' ,false:'disblock'}[isshow7]">
+                        <p>平台目前有两种还款方式：手动还款和自动扣款；用户可以选择手动还款，也可以等到还款日20:00系统自动从绑定的银行卡中划扣。</p>
+                        <!-- <p>1.新注册客户获得的3000元体验金及1880现金券，分别在会员中心“我的体验金”和“我的现金券”中可以查看。</p>
+                        <p>2.体验金：是平台提供给客户体验真实投资过程的资金，体验金仅限于投资体验标，体验完毕后，收益归客户所有。收益可提现可投资。</p>
+                        <p>3.现金券：1880元现金券，最低5元，最高500元，投资200元起可以使用，可叠加使用，单次投资使用现金券数量无限制。现金券在投标前进行点选使用即可，有效期为发放现金券后2个月内。如投标时使用现金券，则所投标的满标放款后，与现金券对应面值的金额立即到账，可提现可投资。</p> -->
+                    </div>
+                </div>
+                <div class="content_list">
+                    <div class="list_top" tappable (click)='isshow8=!isshow8'>
+                        <h3>如何进行手动还款？</h3>
+                        <i [ngClass]="{true:'icon-shang blue' ,false:'icon-icon'}[isshow8]" class="icon iconfont"></i>
+                    </div>
+                    <div class="list_cotent" [ngClass]="{true:'disnone' ,false:'disblock'}[isshow8]">
+                        <p>您可在【我的】-【我的借款】-【借款详情】中，点击【还款】，输入还款金额，进行手机验证码验证，然后系统会从绑定银行卡中扣除所借款项。</p>
+                        <!-- <p>2.体验金：是平台提供给客户体验真实投资过程的资金，体验金仅限于投资体验标，体验完毕后，收益归客户所有。收益可提现可投资。</p>
+                        <p>3.现金券：1880元现金券，最低5元，最高500元，投资200元起可以使用，可叠加使用，单次投资使用现金券数量无限制。现金券在投标前进行点选使用即可，有效期为发放现金券后2个月内。如投标时使用现金券，则所投标的满标放款后，与现金券对应面值的金额立即到账，可提现可投资。</p> -->
+                    </div>
+                </div>
+                <div class="content_list">
+                    <div class="list_top" tappable (click)='isshow9=!isshow9'>
+                        <h3>平台如何进行自动划扣还款？</h3>
+                        <i [ngClass]="{true:'icon-shang blue' ,false:'icon-icon'}[isshow9]" class="icon iconfont"></i>
+                    </div>
+                    <div class="list_cotent" [ngClass]="{true:'disnone' ,false:'disblock'}[isshow9]">
+                        <p>若在借款期限内未主动发起手动还款，平台则会在还款日当天20:00从绑定银行卡中扣除所借款项，扣款成功后会向注册手机号发送短信提醒。</p>
+                    </div>
+                </div>
+                <div class="content_list">
+                    <div class="list_top" tappable (click)='isshow30=!isshow30'>
+                        <h3>银行卡余额不足会影响自动扣款吗？</h3>
+                        <i [ngClass]="{true:'icon-shang blue' ,false:'icon-icon'}[isshow30]" class="icon iconfont"></i>
+                    </div>
+                    <div class="list_cotent" [ngClass]="{true:'disnone' ,false:'disblock'}[isshow30]">
+                        <p>银行卡账户余额不足，会导致平台扣款失败，可能会造成逾期，会产生逾期费用及个人信用降低，请保证在扣款之前银行卡账户资金充足。</p>
+                    </div>
+                </div>
+                <div class="content_list">
+                    <div class="list_top" tappable (click)='isshow31=!isshow31'>
+                        <h3>如何确定已经还款成功？</h3>
+                        <i [ngClass]="{true:'icon-shang blue' ,false:'icon-icon'}[isshow31]" class="icon iconfont"></i>
+                    </div>
+                    <div class="list_cotent" [ngClass]="{true:'disnone' ,false:'disblock'}[isshow31]">
+                        <p>您可以在【我的】-【我的借款】-【借款详情】中，查看借款是否还款成功，同时您还款成功后，系统将会以短信形式通知您。</p>
+                    </div>
+                </div>
+                <div class="content_list">
+                    <div class="list_top" tappable (click)='isshow32=!isshow32'>
+                        <h3>可以提前还款吗？</h3>
+                        <i [ngClass]="{true:'icon-shang blue' ,false:'icon-icon'}[isshow32]" class="icon iconfont"></i>
+                    </div>
+                    <div class="list_cotent" [ngClass]="{true:'disnone' ,false:'disblock'}[isshow32]">
+                        <p>可以提前还款，利息及相关费用不变。您可以在【我的】-【我的借款】-【借款详情】中，点击【还款】，即可操作还款。</p>
+                    </div>
+                </div>
+                <div class="content_list">
+                    <div class="list_top" tappable (click)='isshow33=!isshow33'>
+                        <h3>未按时还款有哪些影响？</h3>
+                        <i [ngClass]="{true:'icon-shang blue' ,false:'icon-icon'}[isshow33]" class="icon iconfont"></i>
+                    </div>
+                    <div class="list_cotent" [ngClass]="{true:'disnone' ,false:'disblock'}[isshow33]">
+                        <p>未按时还款，会产生逾期费用，并会对个人信用产生不良影响，所以请您按时还款，保持良好的信用记录。</p>
+                    </div>
+                </div>
+                <div class="content_list">
+                    <div class="list_top" tappable (click)='isshow34=!isshow34'>
+                        <h3>逾期后还能还款吗？</h3>
+                        <i [ngClass]="{true:'icon-shang blue' ,false:'icon-icon'}[isshow34]" class="icon iconfont"></i>
+                    </div>
+                    <div class="list_cotent" [ngClass]="{true:'disnone' ,false:'disblock'}[isshow34]">
+                        <p>可以还款，但是需要交纳因逾期产生的逾期费用。</p>
+                    </div>
+                </div>
+
+            </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'segmentThree'">
+            <ion-item>
+                <div class="content_list">
+                    <div class="list_top" tappable (click)='isshow10=!isshow10'>
+                        <h3>借款费用如何收取？</h3>
+                        <i [ngClass]="{true:'icon-shang blue' ,false:'icon-icon'}[isshow10]" class="icon iconfont"></i>
+                    </div>
+                    <div class="list_cotent" [ngClass]="{true:'disnone' ,false:'disblock'}[isshow10]">
+                        <p>借款费用包含综合费用及利息，其中综合费用在您借款申请通过放款时提前收取；利息则在您借款期限结束时本息结清。</p>
+                    </div>
+                </div>
+                <div class="content_list">
+                    <div class="list_top" tappable (click)='isshow11=!isshow11'>
+                        <h3>逾期费用如何收取？</h3>
+                        <i [ngClass]="{true:'icon-shang blue' ,false:'icon-icon'}[isshow11]" class="icon iconfont"></i>
+                    </div>
+                    <div class="list_cotent" [ngClass]="{true:'disnone' ,false:'disblock'}[isshow11]">
+                        <p>每日逾期费率是待还本金的0.3%，例如：1000元借款如逾期2天，则对应逾期费用是40元（1000元*0.3%*2天）。</p>
+                    </div>
+                </div>
+
+
+                <!-- <div class="content_list">
+                    <div class="list_top" (click)='isshow12=!isshow12'>
+                        <h3>延期费用如何收取？</h3>
+                        <i [ngClass]="{true:'icon-shang blue' ,false:'icon-icon'}[isshow12]" class="icon iconfont"></i>
+                    </div>
+                    <div class="list_cotent" [ngClass]="{true:'disnone' ,false:'disblock'}[isshow12]">
+                        <p>1.新注册客户获得的3000元体验金及1880现金券，分别在会员中心“我的体验金”和“我的现金券”中可以查看。</p>
+                        <p>2.体验金：是平台提供给客户体验真实投资过程的资金，体验金仅限于投资体验标，体验完毕后，收益归客户所有。收益可提现可投资。</p>
+                        <p>3.现金券：1880元现金券，最低5元，最高500元，投资200元起可以使用，可叠加使用，单次投资使用现金券数量无限制。现金券在投标前进行点选使用即可，有效期为发放现金券后2个月内。如投标时使用现金券，则所投标的满标放款后，与现金券对应面值的金额立即到账，可提现可投资。</p>
+                    </div>
+                </div>
+                <div class="content_list">
+                    <div class="list_top" (click)='isshow13=!isshow13'>
+                        <h3>收不到验证码怎么办？</h3>
+                        <i [ngClass]="{true:'icon-shang blue' ,false:'icon-icon'}[isshow13]" class="icon iconfont"></i>
+                    </div>
+                    <div class="list_cotent" [ngClass]="{true:'disnone' ,false:'disblock'}[isshow13]">
+                        <p>1.新注册客户获得的3000元体验金及1880现金券，分别在会员中心“我的体验金”和“我的现金券”中可以查看。</p>
+                        <p>2.体验金：是平台提供给客户体验真实投资过程的资金，体验金仅限于投资体验标，体验完毕后，收益归客户所有。收益可提现可投资。</p>
+                        <p>3.现金券：1880元现金券，最低5元，最高500元，投资200元起可以使用，可叠加使用，单次投资使用现金券数量无限制。现金券在投标前进行点选使用即可，有效期为发放现金券后2个月内。如投标时使用现金券，则所投标的满标放款后，与现金券对应面值的金额立即到账，可提现可投资。</p>
+                    </div>
+                </div>
+                <div class="content_list">
+                    <div class="list_top" (click)='isshow14=!isshow14'>
+                        <h3>如何更改手机号？</h3>
+                        <i [ngClass]="{true:'icon-shang blue' ,false:'icon-icon'}[isshow14]" class="icon iconfont"></i>
+                    </div>
+                    <div class="list_cotent" [ngClass]="{true:'disnone' ,false:'disblock'}[isshow14]">
+                        <p>1.新注册客户获得的3000元体验金及1880现金券，分别在会员中心“我的体验金”和“我的现金券”中可以查看。</p>
+                        <p>2.体验金：是平台提供给客户体验真实投资过程的资金，体验金仅限于投资体验标，体验完毕后，收益归客户所有。收益可提现可投资。</p>
+                        <p>3.现金券：1880元现金券，最低5元，最高500元，投资200元起可以使用，可叠加使用，单次投资使用现金券数量无限制。现金券在投标前进行点选使用即可，有效期为发放现金券后2个月内。如投标时使用现金券，则所投标的满标放款后，与现金券对应面值的金额立即到账，可提现可投资。</p>
+                    </div>
+                </div>
+                <div class="content_list">
+                    <div class="list_top" (click)='isshow15=!isshow15'>
+                        <h3>是否可以注销账户？</h3>
+                        <i [ngClass]="{true:'icon-shang blue' ,false:'icon-icon'}[isshow15]" class="icon iconfont"></i>
+                    </div>
+                    <div class="list_cotent" [ngClass]="{true:'disnone' ,false:'disblock'}[isshow15]">
+                        <p>1.新注册客户获得的3000元体验金及1880现金券，分别在会员中心“我的体验金”和“我的现金券”中可以查看。</p>
+                        <p>2.体验金：是平台提供给客户体验真实投资过程的资金，体验金仅限于投资体验标，体验完毕后，收益归客户所有。收益可提现可投资。</p>
+                        <p>3.现金券：1880元现金券，最低5元，最高500元，投资200元起可以使用，可叠加使用，单次投资使用现金券数量无限制。现金券在投标前进行点选使用即可，有效期为发放现金券后2个月内。如投标时使用现金券，则所投标的满标放款后，与现金券对应面值的金额立即到账，可提现可投资。</p>
+                    </div>
+                </div> -->
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content>
+
+<ion-footer>
+    <div class="btn">
+        <a href="tel:400-898-8121"> <i class="icon iconfont icon-kefu1"></i>联系客服</a>
+    </div>
+</ion-footer>

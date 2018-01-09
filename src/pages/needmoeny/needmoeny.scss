@@ -1,0 +1,68 @@
+page-needmoeny {
+    .needmoeny {
+        background: #ededed;
+    }
+    .needmoeny ul {
+        width: 100%;
+        padding: 0 4.5% 0 4.5%;
+        margin-top: r(20px);
+        background: #ffffff;
+        padding-top: r(30px);
+        padding-bottom: r(30px);
+    }
+    .needmoeny ul li {
+        margin-top: r(30px);
+    }
+    .needmoeny ul li:nth-child(1) {
+        margin-top: 0;
+    }
+    .needmoeny ul li .needmoeny_title {
+        float: left;
+        font-size: r(24px);
+        color: #666666;
+    }
+    .needmoeny ul li .needmoeny_cout {
+        float: right;
+        font-size: r(26px);
+        color: #323232;
+    }
+    .needmoeny ul li .needmoeny_cout2 {
+        float: right;
+        font-size: r(26px);
+        color: #ee5a50;
+    }
+    .needmoeny ul li a {
+        float: right;
+        display: inline-block;
+    }
+    .needmoeny ul li .needmoeny_wenhao {
+        font-size: r(30px);
+        color: $lan;
+        padding-left: r(5px);
+    }
+    .needmoeny ul li .needmoeny_gengduo {
+        float: right;
+        font-size: r(26px);
+        color: #909090;
+        padding-left: r(5px);
+        text-align: right;
+    }
+    .needmoeny_all {
+        width: 100%;
+        height: r(96px);
+        line-height: r(96px);
+        padding: 0 4.5% 0 4.5%;
+        background: #ffffff;
+        border-top: 1px solid #ededed;
+    }
+    .needmoeny_all span:nth-child(1) {
+        font-size: r(26px);
+        color: #323232;
+        float: left;
+    }
+    .needmoeny_all span:nth-child(2) {
+        font-size: r(26px);
+        color: #323232;
+        float: right;
+    }
+}

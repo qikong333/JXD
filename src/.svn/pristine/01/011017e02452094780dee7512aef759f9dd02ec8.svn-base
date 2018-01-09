@@ -1,0 +1,41 @@
+@import '../../theme/base.scss';
+page-aboutme {
+ img{
+   width: 100%;
+   height: auto;
+ }
+  .about_news{
+    width: 90%;
+    margin: 0 5%;
+    float: left;
+    p{
+      margin-bottom: r(10px);
+      width: 100%;
+      float: left;
+      text-align: justify;
+      text-indent: 2em;
+      color: #909090;
+      font-size: r(26px);
+    }
+  }
+  .about_foot{
+    background-size: 100% 100%;
+    width: 100%;
+    float: left;
+    margin-top: r(100px);
+    height: r(600px);
+    background-color: #ffb811;
+
+    img {
+      margin-top: r(-10px);
+    }
+  }
+  // .botton{
+  //   width: 100%;
+    
+  //   height: r(100px);
+  //   float: left;
+  //   background-color: #ffb811;
+    
+  // }
+}

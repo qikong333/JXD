@@ -1,0 +1,48 @@
+page-progress {
+    .progress_box {
+        position: relative;
+        width: r(580px);
+        margin: 0 auto;
+        height: r(194px);
+        background: #ffffff;
+    }
+    .progress_circle {
+        position: absolute;
+        width: 100%;
+        z-index: 10;
+        top: 30%;
+    }
+    .progress_circle li {
+        width: 25%;
+        height: r(110px);
+        line-height: r(131px);
+        float: left;
+        font-size: r(26px);
+        text-align: center;
+        color: #666666;
+    }
+    .progress_bar {
+        position: absolute;
+        height: r(6px);
+        width: 70%;
+        overflow: hidden;
+        top: 38%;
+        z-index: 9;
+        left: 15%
+    }
+    .progress_bar p {
+        width: 100%;
+        height: r(50px);
+        background: #e8e8e8;
+    }
+    .progress_bar p span {
+        background: $lan;
+        float: left;
+        height: r(50px);
+        width: 0;
+        transition: width ease 1s;
+    }
+    .clear {
+        clear: both;
+    }
+}

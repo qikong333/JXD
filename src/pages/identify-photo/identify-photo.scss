@@ -1,0 +1,88 @@
+page-identify-photo {
+    .photo_box{
+
+        .title1{
+            font-size:r(26px);
+            color:#666666;
+            background:#ededed;
+            /*padding-top:r(32px);*/
+            padding:r(32px) 0 0 0 ;
+         }
+          .title2{
+            font-size:r(26px);
+            color:#666666;
+            background:#ededed;
+            padding:r(23px) 0 r(29px) 0;
+         }
+         .content_box{
+             width:90%;
+             margin:0 auto;
+             background:#fff;
+             padding:r(60px) 0 r(338px) 0;
+             .img1{
+                 width:20%;
+                 float:left;
+                 /*margin-top:r(14px);*/
+                 /*img{
+                     display:block;
+                 }*/
+             }
+            .img2 {
+                margin-left: 32.8%;
+                width: r(220px);
+                height: r(140px);
+            }
+             ul{
+                 width:75%;
+                 list-style-type:none;
+                 padding:0;
+                 float:left;
+                 margin-left:5%;
+             }
+             ul li{
+                 height:r(60px);
+                 line-height:r(60px);
+                 border-bottom:r(1px) solid #cccccc;
+                 font-size:r(22px);
+
+                 span:first-of-type {
+                     color: #909090;
+                 }
+             }
+             p{
+                 font-size:r(24px);
+                 color:#666666;
+                 margin-top:r(30px);
+                 span{
+                     color:#ffb710;
+                 }
+             }
+            .top{
+                text-align: center;
+                font-size: r(30px);
+                color: #ffb710;
+                margin: 0;
+                margin-bottom: r(30px);
+                font-weight: 500;
+            }
+
+
+                // button{
+                //     width:90%;
+                //     margin:0 auto;
+                //     display:block;
+                //     height:r(88px);
+                //     line-height:r(88px);
+                //     background:#cccccc;
+                //     border-radius:r(8px);
+                //     margin-top:r(60px);
+                //     span{
+                //         display:block;
+                //         font-size:r(34px);
+                //         color:#fff;
+                //     }
+                // }
+         }
+    }
+   
+}

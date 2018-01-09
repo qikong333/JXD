@@ -1,0 +1,314 @@
+<!--
+  Generated template for the BorrowDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar hideBackButton>
+        <button navPop><i class="icon iconfont icon-fanhui"></i></button>
+        <ion-title>借款详情</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content class="borrow-details-box">
+
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content>
+        </ion-refresher-content>
+    </ion-refresher>
+
+    <!--借款表单进度条-->
+    <div class="borrow-details">
+        <ul class="details_circle" id="progree">
+            <li *ngFor = 'let key of showData'>
+                <div class="progree-left" float-left>
+                    <div><i class="icon icon-font icon-jindu_yiwancheng"></i></div>
+                    <p class="line"></p>
+                </div>
+
+                <div class="progree-right">
+                    <div>{{key.statusName}} {{key.createDate | mfqbDate: 'yyyy-MM-dd HH:mm'}}</div>
+                    <!-- <p>申请借款{{prin | number:'1.2-2'}}元，期限{{time}}天，手续费{{poundage | number:'1.2-2'}}元</p> -->
+                </div>
+
+            </li>
+            <!-- <li *ngIf='showArr[1]'>
+                <div class="progree-left" float-left>
+                    <div><i class="icon icon-font icon-jindu_yiwancheng"></i></div>
+                    <p class="line"></p>
+
+                </div>
+
+                <div class="progree-right">
+                    <div>审核通过</div>
+                     <p>恭喜通过风控审核</p> 
+                </div>
+            </li>
+            <li *ngIf='showArr[2]'>
+                <div class="progree-left" float-left>
+                    <div><i class="icon icon-font icon-jindu_yiwancheng"></i></div>
+                    <p class="line"></p>
+
+                </div>
+
+                <div class="progree-right">
+                    <div>审核不通过</div>
+                </div>
+            </li>
+            <li *ngIf='showArr[3]'>
+                <div class="progree-left" float-left>
+                    <div><i class="icon icon-font icon-jindu_yiwancheng"></i></div>
+                    <p class="line"></p>
+                </div>
+
+                <div class="progree-right">
+                    <div>3拒绝放款 2017-06-21 15:52</div>
+                </div>
+            </li>
+            <li *ngIf='showArr[3]'>
+                <div class="progree-left" float-left>
+                    <div><i class="icon icon-font icon-jindu_yiwancheng"></i></div>
+                    <p class="line"></p>
+                </div>
+
+                <div class="progree-right">
+                    <div>4放款中</div>
+                     <p>请于2017-07-21日之前将还款金额存入绑定银行卡中</p> 
+                </div>
+            </li>
+            <li *ngIf='showArr[4]'>
+                <div class="progree-left" float-left>
+                    <div><i class="icon icon-font icon-jindu_yiwancheng"></i></div>
+                    <p class="line"></p>
+                </div>
+
+                <div class="progree-right">
+                    <div>5放款失败（操作放款后、第三方返回失败标识）</div>
+                    <p>请于2017-07-21日之前将还款金额存入绑定银行卡中</p>
+                </div>
+            </li>
+            <li *ngIf='showArr[5]'>
+                <div class="progree-left" float-left>
+                    <div><i class="icon icon-font icon-jindu_yiwancheng"></i></div>
+                    <p class="line"></p>
+                </div>
+
+                <div class="progree-right">
+                    <div>6还款中</div>
+                </div>
+            </li> -->
+
+            <!-- <li *ngIf='showArr[6]'>
+                <div class="progree-left" float-left>
+                    <div><i class="icon icon-font icon-jindu_yiwancheng"></i></div>
+                    <p class="line"></p>
+                </div>
+
+                <div class="progree-right">
+                    <div>7逾期中（订单过了到期日未还清状态）</div>
+                     <p>放款至工商银行(1234)</p> 
+                </div>
+            </li>
+            <li *ngIf='showArr[7]'>
+                <div class="progree-left" float-left>
+                    <div><i class="icon icon-font icon-jindu_yiwancheng"></i></div>
+                    <p class="line"></p>
+                </div>
+
+                <div class="progree-right">
+                    <div>8坏账中（标记为坏账的订单）</div>
+                     <p>放款至工商银行(1234)</p> 
+                </div>
+
+            </li>
+            <li *ngIf='showArr[8]'>
+                <div class="progree-left" float-left>
+                    <div><i class="icon icon-font icon-jindu_yiwancheng"></i></div>
+                    <p class="line"></p>
+                </div>
+
+                <div class="progree-right">
+                    <div>9延期中（用户延期后状态）</div>
+                     <p>放款至工商银行(1234)</p> 
+                </div>
+
+            </li>
+            <li *ngIf='showArr[9]'>
+                <div class="progree-left" float-left>
+                    <div><i class="icon icon-font icon-jindu_yiwancheng"></i></div>
+                    <p class="line"></p>
+                </div>
+
+                <div class="progree-right">
+                    <div>10提前结清</div>
+                     <p>放款至工商银行(1234)</p> 
+                </div>
+
+            </li>
+            <li *ngIf='showArr[10]'>
+                <div class="progree-left" float-left>
+                    <div><i class="icon icon-font icon-jindu_yiwancheng"></i></div>
+                    <p class="line"></p>
+                </div>
+
+                <div class="progree-right">
+                    <div>11延期结清</div>
+                     <p>放款至工商银行(1234)</p> 
+                </div>
+
+            </li> -->
+            <!-- <li *ngIf='showArr[11]'>
+                <div class="progree-left" float-left>
+                    <div><i class="icon icon-font icon-jindu_yiwancheng"></i></div>
+                    <p class="line"></p>
+                </div>
+
+                <div class="progree-right">
+                    <div>12正常结清</div>
+                     <p>放款至工商银行(1234)</p> 
+                </div>
+
+            </li>
+            <li *ngIf='showArr[12]'>
+                <div class="progree-left" float-left>
+                    <div><i class="icon icon-font icon-jindu_yiwancheng"></i></div>
+                    <p class="line"></p>
+                </div>
+
+                <div class="progree-right">
+                    <div>13逾期结清</div>
+                     <p>放款至工商银行(1234)</p> 
+                </div>
+
+            </li> -->
+
+
+        </ul>
+
+        <!-- <div class="details_bar">
+             <p>
+                <span [ngStyle]="{'height':measure}"></span> -->
+        <!-- <span [ngStyle]="{'height'<:mea></:mea>sure2}"></span> -->
+        <!-- <span [ngStyle]="{'height':measure3}"></span> -->
+        <!-- </p>  -->
+        <!-- </div> -->
+        
+    </div>
+
+    <!--借款明细-->
+    <div class="borrow-clear">
+        <div class="clear_title">借款明细</div>
+        <ul class="clear_box">
+            <li>
+                <div class="clear_box_left">收款账户</div>
+                  <div class="clear_box_right">{{mainData.bankName}}({{bank | slice:-4}})</div>  
+                  <!-- <div class="clear_box_right">{{bankName}} &nbsp;&nbsp;尾号:{{bank | slice:-4}}</div>   -->
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="clear_box_left">借款金额</div>
+                <div class="clear_box_right">{{prin | mfqbNum:'2'}} 元</div>
+                <!-- <div class="clear_box_right">{{prin | number:'1.2'}} 元</div> -->
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="clear_box_left">借款期限</div>
+                <div class="clear_box_right">{{time}} 天</div>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="clear_box_left">综合费用<i class="icon iconfont icon-wenhao" tappable (click)="presentAlert()"></i></div>
+                <div class="clear_box_right">{{poundage | mfqbNum:'2'}} 元</div>
+                <!-- <div class="clear_box_right">{{poundage | number:'1.2'}} 元</div> -->
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="clear_box_left">利息<i class="icon iconfont icon-wenhao" tappable (click)="showInterest()"></i></div>
+                <div class="clear_box_right">{{interest | mfqbNum:'2'}} 元</div>
+                <!-- <div class="clear_box_right">{{interest | number:'1.2'}} 元</div> -->
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="clear_box_left">实际到账金额</div>
+                <div class="clear_box_right">{{truePrin | mfqbNum:'2'}} 元</div>
+                <!-- <div class="clear_box_right">{{truePrin | number:'1.2'}} 元</div> -->
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="clear_box_left">合同期限</div>
+                <div class="clear_box_right" *ngIf="state != 1">{{loanDate | mfqbDate: 'yyyy-MM-dd'}} 至 {{repayDate | mfqbDate: 'yyyy-MM-dd'}}</div>
+                <div class="clear_box_right" *ngIf="state == 1">放款后公布</div>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="clear_box_left">还款方式</div>
+                <div class="clear_box_right">到期一次付清</div>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="clear_box_left">借款合同</div>
+                <div class="clear_box_right"><a tappable (click)="presentActionSheet()">查看</a></div>
+                <div class="clear"></div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="borrow-also" *ngIf="state != 1">
+        <div class="also_title">还款明细</div>
+        <ul class="also_box">
+            <li tappable (click)="go_needmoney(code)">
+                <div class="also_box_left">需还款金额</div>
+                <div class="also_box_center">{{allAmounts | mfqbNum:'2'}} 元</div>
+                <!-- <div class="also_box_center">{{allAmounts | number:'1.2'}} 元</div> -->
+                <div class="also_box_right icon iconfont icon-gengduo"></div>
+                <div class="clear"></div>
+            </li>
+            <li tappable (click)="go_completemoney(code)">
+                <div class="also_box_left">已还金额</div>
+                <div class="also_box_center">{{doneAmounts | mfqbNum:'2'}} 元</div>
+                <!-- <div class="also_box_center">{{doneAmounts | number:'1.2'}} 元</div> -->
+                <div class="also_box_right icon iconfont icon-gengduo"></div>
+                <div class="clear"></div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="borrow-also">
+        <ul class="also_box" *ngFor="let key of redata;let i = index">
+            <li tappable (click)="go_delaymoney(key.extensionId,key.delayNumber)">
+                <div class="also_box_left">延期还款（第{{i+1}}次）</div>
+                <div class="also_box_center">{{key.delayDays}} 天</div>
+                <div class="also_box_right icon iconfont icon-gengduo"></div>
+                <div class="clear"></div>
+            </li>
+            <!-- <li tappable (click)="go_delaymoney2()">
+                <div class="also_box_left">延期还款（第2次）</div>
+                <div class="also_box_center">{{day2}}天</div>
+                <div class="also_box_right icon iconfont icon-gengduo"></div>
+                <div class="clear"></div>
+            </li> -->
+        </ul>
+    </div>
+
+    <div class="back"></div>
+
+
+</ion-content>
+
+<ion-footer>
+      <div class="borrow-footer2" *ngIf="state == 1">{{newState}}</div> 
+    <!-- <div class="borrow-footer2" *ngIf="state == 2">审核不通过</div>
+    <div class="borrow-footer2" *ngIf="state == 3">放款中</div>  -->
+
+     <ul class="borrow-footer1" *ngIf="state == 4"> 
+    <!-- <ul class="borrow-footer1"> -->
+        <li>待还款<span>¥{{stayAmounts | mfqbNum:'2'}}</span></li>
+        <!-- <li>待还款<span>¥{{stayAmounts | number:'1.2'}}</span></li> -->
+        <li tappable (click)="toRepayment(stayAmounts)">还款</li>
+        <div class="clear"></div>
+    </ul>
+
+     <div class="borrow-footer2" *ngIf="state == 5">已结清</div> 
+</ion-footer>

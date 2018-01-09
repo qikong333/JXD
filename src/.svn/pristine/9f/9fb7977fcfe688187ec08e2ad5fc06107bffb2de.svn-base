@@ -1,0 +1,82 @@
+<ion-header>
+    <ion-navbar hideBackButton>
+        <button navPop>
+            <i class="icon-fanhui iconfont"></i>
+        </button>
+        <ion-title>申请借款</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content style="background:#EDEDED">
+    <ion-row class="box">
+        <dl>
+            <span>收款账户</span>
+            <i class="icon iconfont icon-gengduo"></i>
+            <!-- <select dir="rtl" class="smalltitle" [(ngModel)]="bank" name="bank">
+                <option *ngFor="let bankCard of bankCards ;" [value]="bankCard.bankId">{{bankCard.bankName}}  {{bankCard.bankCard | slice:-4}}</option>
+            </select> -->
+            <p float-right style="margin-right:1%;">{{bankName}} {{bankNum | slice:-4}}</p>
+        </dl>
+
+        <dl>
+            <span>借款金额</span>
+            <p>{{money | mfqbNum:'2'}} 元</p>
+            <!-- <p>{{money | number:'1.2'}} 元</p> -->
+        </dl>
+
+        <dl>
+            <span>借款期限</span>
+            <p>{{day}}个月</p>
+        </dl>
+
+        <dl>
+            <span>还款方式 </span>
+            <p>等额本息</p>
+        </dl>
+        <dl>
+            <span>利息</span>
+            <!-- <b tappable (click)='showDetail()' class="icon iconfont icon-wenhao"></b> -->
+            <p class="red">{{(money*day*0.36)/12 | mfqbNum:'2'}} 元</p>
+        </dl>
+        <!-- 
+        <dl>
+            <span>实际到账金额</span>
+            <p class="red">{{actual | mfqbNum:'2'}} 元</p>
+        </dl> -->
+        <!-- 
+        <dl>
+            <span>还款金额 </span>
+            <p class="red">{{RepayMoney | mfqbNum:'2'}} 元</p>
+        </dl> -->
+
+    </ion-row>
+    <ion-row>
+        <ion-col col-12 class="xian"> </ion-col>
+    </ion-row>
+    <ion-row class="box" *ngIf="coupon=='无可用券'">
+        <dl>
+            <span>优惠券</span>
+            <i class="icon iconfont icon-gengduo"></i>
+            <p style="margin: 0;">{{coupon}}</p>
+        </dl>
+    </ion-row>
+    <ion-row class="box" tappable (click)="toChooseCoupons()" *ngIf="coupon!='无可用券'">
+        <dl>
+            <span>优惠券</span>
+            <i class="icon iconfont icon-gengduo"></i>
+            <p style="margin: 0;">{{coupon}}</p>
+        </dl>
+    </ion-row>
+    <ion-row class="box2">
+        <p>
+            <i tappable tappable (click)='agree()' class="icon iconfont" [ngClass]="{true:'icon-yixuan' ,false:'icon-weixuan'}[active]"></i> 提交则表示已阅读
+            <a tappable (click)='showAgreement(5)'>《平台服务协议》</a>、
+            <a tappable (click)='showAgreement2(4)'>《授权委托书》</a>、
+            <a tappable (click)='showAgreement(6)'>《借款协议》</a>，同意授权查询/报送贷款相关信息至金融信用信息基础数据库(人行征信系统)。</p>
+        <button class="tj_btn" [disabled]="!active">
+            <a tappable tappable (click)="toVerification(coupon)">确认提交</a>
+        </button>
+    </ion-row>
+    <div class="window_bg" [ngClass]="{true:'block' ,false:''}[isshow]">
+    </div>
+</ion-content>

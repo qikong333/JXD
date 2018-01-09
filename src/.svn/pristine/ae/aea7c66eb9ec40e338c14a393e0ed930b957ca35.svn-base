@@ -1,0 +1,20 @@
+network-fail {
+  .networkFail {
+    height: r(80px);
+    line-height: r(70px);
+    background: #ffe3d3;
+    text-align: center;
+    padding-top: r(10px);
+    .text {
+      color: #ff3737;
+      font-size: r(24px);
+
+      .icon-gengduo {
+        float: right;
+        font-size: r(45px);
+        margin-right: r(20px);
+        color: #666666;
+      }
+    }
+  }
+}

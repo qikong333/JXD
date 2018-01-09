@@ -1,0 +1,104 @@
+@import '../../theme/base.scss';
+
+page-repay-bank {
+ .all {
+        // background: #ccc;
+    }
+    .show-page {
+        background: #fff;
+    }
+    input {
+        border: none;
+        //      color: red;
+        font-size: r(22px);
+        width: 100%;
+    }
+    input::placeholder {
+        color: $hui90;
+        font-size: r(22px);
+    }
+    select {
+        background-color:transparent;
+        border: none;
+        appearance:none;
+        width: 100%;
+    }
+
+
+
+    .main li {
+        height: r(96px);
+        border-bottom: r(1px) solid $huied;
+        line-height: r(96px);
+        padding: 0 r(30px);
+        font-size: r(26px);
+        color: $black32;
+    }
+    .main li:nth-child(1) {
+        background-color: $huied;
+        text-align: center;
+        color: $hui66;
+        height: r(20px);
+    }
+    .main li i {
+        font-size: r(22px);
+        color: $hui90;
+        line-height: r(96px);
+    }
+    .bottom {
+        padding: r(30px) r(30px) 0 r(30px);
+        height: 100%;
+        background-color: $huied;
+    }
+    .bottom .but {
+        height: r(88px);
+        background-color: $primary;
+        border-radius: r(10px);
+        line-height: r(88px);
+        text-align: center;
+        color: #fff;
+        font-size: r(34px);
+    }
+    .mian .ion-item {
+        font-size: 26px;
+    }
+    .row {
+        margin-top: -6px;
+    }
+    .but-num {
+        width: r(140px);
+        height: r(60px);
+        color: #fff;
+        background-color: $primary;
+        text-align: center;
+        line-height: r(60px);
+        font-size: r(22px);
+        border-radius: r(10px);
+        margin-top: r(13px);
+    }
+    .agree {
+        margin-bottom: r(60px);
+        text-align: center;
+        font-size: r(24px);
+    }
+    .agree i {
+        font-size: r(30px);
+    }
+    .agree #i1{
+        display: none;
+    }
+    .agree #i2 {
+        color: $primary;
+    }
+    .agree .ifAgree {
+        font-size: r(24px);
+    }
+    .agree .agreement {
+        font-size: r(24px);
+        color: $primary;
+    }
+
+    .blue{
+        color: $primary;
+    }
+}

@@ -1,0 +1,87 @@
+<!--
+  Generated template for the FriendsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <!--隐藏ionic自带的返回标签-->
+    <ion-navbar hideBackButton>
+        <!--从新定义自己的返回标签-->
+        <button (click)="close()"><i class="icon iconfont icon-fanhui"></i></button>
+        <ion-title>紧急联系人</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content style=" background-color: #EDEDED;">
+    <form id=formId>
+        <div class="lis">
+            <ul>
+                <li>添加直系亲属联系人</li>
+                <li>
+                    <i float-left>亲属姓名</i>
+                    <i float-right></i>
+                    <input type="text" name="username1" value="" placeholder='请输入亲属姓名' required [(ngModel)]="username1" float-right>
+                </li>
+                <!--web版-->
+                <li tappable (click)='contast1()'>
+                    <i float-left>亲属电话</i>
+                    <i class="icon iconfont icon-gengduo" float-right></i>
+                    <i float-right>{{phone1}}</i>
+                    <!--<input type="text" [value]='phone1' [(ngModle)]='phone1'>-->
+                </li>
+
+                <li>
+                    <i float-left>关系</i>
+                    <i class="icon iconfont icon-gengduo" float-right></i>
+                    <!--<i float-right></i>-->
+                    <select dir="rtl" name="relation1" required [(ngModel)]="relation1">
+							<!--<option></option>-->
+							<option value="0">父母</option>
+							<option value="1">兄弟姐妹</option>
+							<option value="2">配偶</option>
+							<option value="3">子女</option>
+						</select>
+                </li>
+
+                <li>添加其它联系人(亲属、同学、朋友等)</li>
+                <li>
+                    <i float-left>姓名</i>
+                    <i float-right></i>
+                    <input type="text" name="username2" value="" placeholder='请输入联系人姓名' required [(ngModel)]="username2" float-right>
+
+                </li>
+
+                <!--web版-->
+                <li tappable (click)="contast2()">
+                    <i float-left>电话</i>
+                    <i class="icon iconfont icon-gengduo" float-right></i>
+                    <i float-right>{{phone2}}</i>
+                    <!--<input type="text" [value]='phone2' [(ngModle)]='phone2'>-->
+                </li>
+
+                <li>
+                    <i float-left>关系</i>
+                    <i class="icon iconfont icon-gengduo" float-right></i>
+                    <!--<i float-right></i>-->
+                    <select dir="rtl" name="relation2" required [(ngModel)]="relation2">
+							<option value="0">同事</option>
+							<option value="1">同学</option>
+							<option value="2">朋友</option>
+							<option value="3">亲戚</option>
+						</select>
+                </li>
+            </ul>
+        </div>
+    </form>
+    <div class="bottom">
+
+        <div class="but" tappable (click)='saveFriends()'>确认添加</div>
+
+        <p>
+            <!--<i class="icon iconfont icon-tishi5"></i>-->
+            为确保您的审核可以顺利通过，请正确填写联系人。
+        </p>
+    </div>
+
+</ion-content>

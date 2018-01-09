@@ -1,0 +1,49 @@
+page-manbding {
+  .xian {
+    height: r(20px);
+    background-color: $huied;
+  }
+  .box {
+    width: 100%;
+    float: left;
+    dl {
+      width: 100%;
+      height: r(96px);
+      float: left;
+      border-bottom: solid 1px #ededed;
+    }
+    span {
+      color: #323232;
+      font-size: r(26px);
+      float: left;
+      height: r(96px);
+      line-height: r(96px);
+      margin-left: 5%;
+    }
+    i {
+      float: right;
+      color: #909090;
+      font-size: r(22px);
+      height: r(96px);
+      line-height: r(96px);
+      margin-right: 5%;
+    }
+    b {
+      float: left;
+      color: $lan;
+      font-size: r(28px);
+      height: r(96px);
+      line-height: r(96px);
+      margin-top:r(-2px) ;
+    }
+    p {
+      color: #909090;
+      font-size: r(22px);
+      float: right;
+      margin-right:5%;
+      height: r(96px);
+      line-height: r(96px);
+    }
+  }
+
+}

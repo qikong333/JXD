@@ -1,0 +1,60 @@
+page-penalty {
+    .penalty{
+        background:#ededed;
+    }
+    .penalty ul{
+        width:100%;
+        padding:0 4.5% 0 4.5%;
+        margin-top:r(20px);
+        background:#ffffff;
+    }
+    .penalty ul li{
+        width:100%;
+        border-bottom:1px solid #ededed;
+    }
+    .penalty ul li:last-child{
+        border-bottom:0;
+    }   
+    .penalty ul li .penalty_all{
+        width:33.3%;
+        float:left;
+        text-align:center;
+         height:r(133px);
+    }
+    .penalty_title1{
+        font-size:r(24px);
+        color:#666666;
+        text-align:left;
+        margin-top:r(25px);
+    }
+    .penalty_content1{
+        font-size:r(24px);
+        color:#323232;
+        text-align:left;
+        margin-top:r(20px);
+    }
+     .penalty_title2{
+        font-size:r(24px);
+        color:#666666;
+        text-align:center;
+        margin-top:r(25px);
+    }
+    .penalty_content2{
+        font-size:r(24px);
+        color:#323232;
+        text-align:center;
+        margin-top:r(20px);
+    }
+     .penalty_title3{
+        font-size:r(24px);
+        color:#666666;
+        text-align:right;
+        margin-top:r(25px);
+    }
+    .penalty_content3{
+        font-size:r(24px);
+        color:#323232;
+        text-align:right;
+        margin-top:r(20px);
+    }
+}

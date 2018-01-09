@@ -1,0 +1,42 @@
+page-repayscend {
+    .title1 {
+        width: 100%;
+        text-align: center;
+        color: #323232;
+        font-size: r(26px);
+        margin-top: r(79px);
+    }
+    .money {
+        width: 100%;
+        text-align: center;
+        color: #ee5a50;
+        font-size: r(50px);
+    }
+    .time {
+        width: 90%;
+        float: left;
+        margin: r(86px) 5% r(52px) 5%;
+        span {
+            float: left;
+            color: #666666;
+            font-size: r(24px);
+        }
+        p {
+            float: right;
+            color: #323232;
+            font-size: r(26px);
+        }
+    }
+    // .btn {
+    //     width: 90%;
+    //     float: left;
+    //     margin: 0 5%;
+    //     background-color: #ffb710;
+    //     color: #fff;
+    //     font-size: r(34px);
+    //     height: r(89px);
+    //     line-height: r(89px);
+    //     text-align: center;
+    //     border-radius: r(8px);
+    // }
+}

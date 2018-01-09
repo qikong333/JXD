@@ -1,0 +1,104 @@
+<!--
+  Generated template for the AccountPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <!--隐藏ionic自带的返回标签-->
+    <ion-navbar hideBackButton>
+        <!--从新定义自己的返回标签-->
+        <!-- <ion-title>我的账户</ion-title> -->
+        <button class="top-right"><i class="icon iconfont icon-xiaoxi"></i></button>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <!--下拉刷新-->
+    <ion-refresher (ionRefresh)="doRefresh($event)" style="border:none;">
+        <!-- <ion-refresher-content pullingText="下拉刷新" refreshingText="刷新中..."> -->
+        <ion-refresher-content>
+        </ion-refresher-content>
+    </ion-refresher>
+
+    <div class="main">
+        <!--原设计已登录界面  -->
+        <!-- <div class="money" *ngIf="isLogin">
+            <div class="borrow">
+                <p class="til">我的额度(元)</p>
+                <i float-left>{{myLimit | number:'1.2'}}</i>
+                <div class="but" float-right (click)='goBorrow()'>借 款</div>
+                <div class="getbor" float-right (click)='goLimit()' *ngIf='!myLimit'>获取额度 > </div>
+            </div>
+
+            <div class="repay">
+                <p class="til">待还金额(元) <i float-right class="repayDate" *ngIf='myRepay'>{{repayDate}}</i></p>
+                <i float-left>{{myRepay | number:'1.2'}}</i>
+                <div class="but" float-right (click)='goRepay()'>还 款</div>
+                <div class="getbor2" float-right *ngIf="overdue">逾期中!已影响信用</div>
+            </div>
+        </div> -->
+
+        <!--新版设计已登录页面  -->
+        <div class="phone" *ngIf="isLogin">{{phone}}</div>
+
+        <!--未登录显示的页面-->
+        <div class="money-no" *ngIf="!isLogin">
+            <!-- <p class="p1">马蜂钱包</p>
+            <p class="p2">额度1000-5000想贷就贷</p> -->
+            <div class="buts">
+                <div class="but1" float-left tappable (click)="toLogin()">登录</div>
+                <div class="but2" float-right tappable (click)="toRegister()">注册</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="banner">
+        <ul>
+            <li tappable (click)="toProgress()" *ngIf="ME_QUOTA">
+                <i class="icon iconfont icon-edurenzheng" float-left style="color:#10aeff"></i>
+                <i float-left>额度认证</i>
+                <i class="icon iconfont icon-gengduo" float-right></i>
+                <i float-right>{{limit}}</i>
+            </li>
+            <li tappable (click)="toMyBorrow()" *ngIf="ME_MYIOAN">
+                <i class="icon iconfont icon-wodejiekuan" float-left style="color:#fa5151"></i>
+                <i float-left>我的借款</i>
+                <i class="icon iconfont icon-gengduo" float-right></i>
+                <i float-right>{{myBorrow}}</i>
+            </li>
+            <li tappable (click)="toReceeptBank()" *ngIf="ME_BANKCAR">
+                <i class="icon iconfont icon-wodeyinhangqia" float-left style="color:#ffcc00"></i>
+                <i float-left>我的银行卡</i>
+                <i class="icon iconfont icon-gengduo" float-right></i>
+                <i float-right>{{bank}}</i>
+            </li>
+            <li tappable (click)="toCoupons()" *ngIf="ME_COUPON">
+                <i class="icon iconfont icon-youhuiquan" float-left style="color:#fa5151"></i>
+                <i float-left>优惠券</i>
+                <i class="icon iconfont icon-gengduo" float-right></i>
+                <p float-right class="coupon" *ngIf='coupon > 0'>{{coupon}}</p>
+                <!-- <p float-right class="coupon" *ngIf='coupon'>{{demo.couponNumber}}</p> -->
+            </li>
+            <li tappable *ngIf="ME_INVITE">
+                <i class="icon iconfont icon-yaoqinghaoyou" float-left style="color:#10aeff"></i>
+                <i float-left>邀请好友</i>
+                <i class="icon iconfont icon-gengduo" float-right></i>
+                <!-- <i float-right>赚收益</i> -->
+                <i float-right></i>
+            </li>
+            <li tappable (click)="toHelpcenter()" *ngIf="ME_HELP">
+                <i class="icon iconfont icon-bangzhuzhongxin1" float-left style="color:#8edf11"></i>
+                <i float-left>帮助中心</i>
+                <i class="icon iconfont icon-gengduo" float-right></i>
+                <i float-right></i>
+            </li>
+            <li tappable (click)="toSetup()" *ngIf="ME_SETTING">
+                <i class="icon iconfont icon-shezhi" float-left style="color:#10aeff"></i>
+                <i float-left>设置</i>
+                <i class="icon iconfont icon-gengduo" float-right></i>
+                <i float-right></i>
+            </li>
+        </ul>
+    </div>
+
+</ion-content>

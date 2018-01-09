@@ -1,0 +1,99 @@
+<ion-header>
+
+    <ion-navbar hideBackButton>
+        <button navPop><i class="icon-fanhui iconfont"></i></button>
+        <ion-title>添加还款银行卡</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="all">
+    <div class="main">
+        <!-- <form id=formId (ngSubmit)="onSubmit()" #refForm="ngForm"> -->
+        <ul>
+            <li></li>
+            <li>
+                <ion-row>
+                    <ion-col col-4>
+                        持卡人
+                    </ion-col>
+                    <ion-col col-5>
+                        <i style="color:#323232">{{username}}</i>
+                    </ion-col>
+                    <ion-col col-3>
+                    </ion-col>
+                </ion-row>
+            </li>
+            <li>
+                <ion-row>
+                    <ion-col col-4>
+                        卡号
+                    </ion-col>
+                    <ion-col col-8>
+                        <input type="text" name="bankNum" id="" value="" placeholder="请输入银行卡号" required [(ngModel)]="bankNum" (blur)="getBank()" />
+                        <!--<i>请输入银行卡号</i>-->
+                    </ion-col>
+                </ion-row>
+            </li>
+            <li>
+                <ion-row>
+                    <ion-col col-4>
+                        银行
+                    </ion-col>
+                    <ion-col col-7>
+                        <i style="color:#323232;">{{bank}}</i>
+                        <!-- <select name="bank" required [(ngModel)]="bank">
+							<option>中国建设银行</option>
+							<option>工商银行</option>
+							<option>农业银行</option>
+							<option>中国储蓄银行</option>
+						</select> -->
+                    </ion-col>
+                    <ion-col col-1>
+                        <p class="icon iconfont icon-gengduo" float-right style="font-size:26px;color:#909090"></p>
+                    </ion-col>
+                </ion-row>
+            </li>
+            <li>
+                <ion-row>
+                    <ion-col col-4>
+                        预留手机号
+                    </ion-col>
+                    <ion-col col-8>
+                        <input type="text" name="phone" id="" value="" placeholder="请输入预留手机号" required [(ngModel)]="phone" />
+                        <!--<input type="text" name="" id="" value="" placeholder="请输入预留手机号"/>-->
+                        <!--<i>请输入预留手机号</i>-->
+                    </ion-col>
+                </ion-row>
+            </li>
+            <li>
+                <ion-row>
+                    <ion-col col-4>
+                        手机验证
+                    </ion-col>
+                    <ion-col col-5>
+                        <input type="text" name="verify" id="" value="" placeholder="请输入手机验证码" required [(ngModel)]="verify" />
+                        <!--<i>请输入手机验证</i>-->
+                    </ion-col>
+                    <ion-col col-3>
+                        <!-- <div class="but-num" float-right tappable (click)="getCode()">获取验证码</div> -->
+                        <button ion-button full class="but-num" [disabled]="isGetCode" tappable (click)="getCode()">{{codeText}}</button>
+
+                    </ion-col>
+                </ion-row>
+            </li>
+        </ul>
+        <!-- </form> -->
+    </div>
+
+    <div class="bottom">
+        <!-- <div class="agree">
+            <a tappable class="ifAgree" (click)='agree()'>
+                <i class="icon iconfont" [ngClass]="{true:'icon-yixuan blue' ,false:'icon-weixuan'}[active]" id="dbank"></i>我已阅读并同意</a>
+            <a href="http://www.baidu.com"><i class="agreement">《第三方支付服务协议》</i></a>
+        </div> -->
+        <!--<button class="but" tappable (click)="save()" [disabled]="active">提交</button>-->
+        <button type="submit" ion-button full class="but" tappable (click)="save()" [disabled]="!active">确定绑卡</button>
+    </div>
+</ion-content>

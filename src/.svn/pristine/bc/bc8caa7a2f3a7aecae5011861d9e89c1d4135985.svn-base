@@ -1,0 +1,69 @@
+@import '../../theme/base.scss';
+page-forget-password {
+    .service_all {
+        font-size: r(24px);
+        color: #323232;
+        height: r(76px);
+        line-height: r(76px);
+    }
+    .service_all .service_gg {
+        height: r(76px);
+        line-height: r(76px);
+        font-size: r(24px);
+        color: #323232;
+        border: 0;
+        border-bottom: 1px solid #ededed;
+    }
+    .service_plan {
+        width: 90.625%;
+        margin-top: 30px;
+        padding-top: 30px;
+        margin: r(30px) auto 0;
+        padding-left: 0;
+        list-style-type: none;
+    }
+    .service_plan li {
+        margin-top: r(60px);
+    }
+    .service_plan li .service_plan_title {
+        font-size: r(24px);
+        color: #666666;
+        height: r(60px);
+        line-height: r(60px);
+        float: left;
+    }
+    .service_plan li .service_plan_title span {
+        color: $lan;
+    }
+    .service_plan li .service_plan_way {
+        font-size: r(26px);
+        background: $lan;
+        color: #ffffff;
+        width: 29%;
+        border-radius: r(8px);
+        height: r(60px);
+        line-height: r(60px);
+        float: right;
+        text-align: center;
+        margin-bottom: r(14px);
+    }
+    .service_plan li .service_plan_way a {
+        font-size: r(26px);
+        color: #ffffff;
+    }
+    .service_plan li .service_plan_content {
+        width: 100%;
+        font-size: r(22px);
+        color: #909090;
+        float: left;
+        line-height: r(40px);
+    }
+    .segment-ios .segment-button.segment-activated {
+        background: #ffffff;
+        border-bottom: 1px solid $lan;
+        color: #323232;
+    }
+    .clear {
+        clear: both;
+    }
+}

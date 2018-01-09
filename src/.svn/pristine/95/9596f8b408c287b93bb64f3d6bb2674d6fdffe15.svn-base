@@ -1,0 +1,75 @@
+@import '../../theme/base.scss';
+page-identity-phone {
+    .blue {
+        color: $primary;
+    }
+    .main .up p {
+        font-size: r(26px);
+        color: $hui66;
+        text-align: center;
+    }
+    .banner li {
+        font-size: r(34px);
+        color: $hui90;
+        height: r(100px);
+        line-height: r(100px);
+    }
+    .banner li i {
+        line-height: r(100px);
+        font-size: r(30px);
+        color: r(#323232);
+    }
+    .banner li input {
+        color: #000000;
+        border: none;
+    }
+    .banner li .left {
+        height: 100%;
+        width: r(165px);
+    }
+    .banner li:last-child {
+        border-bottom: r(1px) solid $huied;
+    }
+    input::-webkit-input-placeholder {
+        color: #CCCCCC;
+        font-size: r(30px);
+    }
+    .col,
+    .grid {
+        padding: 0;
+    }
+    .forget a {
+        color: $primary;
+    }
+    .forget {
+        font-size: r(26px);
+        //      float: right;
+        height: r(90px);
+        line-height: r(90px);
+        text-align: right;
+    }
+    .but {
+        height: r(88px);
+        margin-top: r(30px);
+        background-color: $primary;
+        color: #fff;
+        text-align: center;
+        line-height: r(88px);
+        font-size: r(34px);
+        border-radius: r(8px);
+    }
+    .agree {
+        margin-top: r(30px);
+        text-align: center;
+        font-size: r(26px);
+    }
+    .agree i {
+        font-size: r(30px);
+    }
+    .agree #done1 {
+        font-size: r(26px);
+    }
+    .agree .agreement {
+        color: $primary;
+    }
+}

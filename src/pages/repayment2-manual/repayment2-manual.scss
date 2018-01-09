@@ -1,0 +1,45 @@
+page-repayment2-manual {
+    .scroll-content {
+        background: #ededed;
+    }
+    .xian {
+        height: r(20px);
+        background-color: $huied;
+    }
+    .box0 {
+        padding-top: r(30px);
+        height: r(200px);
+        background: #fff;
+        .box0_1 {
+            font-weight: 600;
+            display: block;
+            padding: 0;
+            font-size: r(60px);
+            color: #ee5a50;
+            span {
+                font-size: r(24px);
+            }
+        }
+        .box0_2 {
+            display: block;
+            padding: 0;
+            font-size: r(30px);
+        }
+    }
+    .box1 {
+        ion-col:nth-child(2) {
+            color: #909090;
+        }
+        background: #fff;
+        padding: 0 15px;
+        height: r(96px);
+        line-height: r(96px);
+        border-top: r(1px) solid #ededed;
+        ion-col:nth-child(1) {
+            font-size: r(26px);
+        }
+        ion-col:nth-child(2) {
+            font-size: r(22px);
+        }
+    }
+}

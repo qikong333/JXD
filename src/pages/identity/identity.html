@@ -1,0 +1,67 @@
+<ion-header>
+    <!--隐藏ionic自带的返回标签-->
+    <ion-navbar hideBackButton>
+        <!--从新定义自己的返回标签-->
+        <button navPop><i class="icon iconfont icon-fanhui"></i></button>
+        <ion-title>身份认证</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <!--下拉刷新-->
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content>
+        </ion-refresher-content>
+    </ion-refresher>
+
+    <div class="main">
+
+        <ul>
+            <li tappable (click)='getZhiMa()' *ngIf='show1' id='zm'>
+                <div class="left" float-left>
+                    <p class="p1">芝麻信用授信</p>
+                    <p class="p2">用于评估您的信用额度</p>
+                </div>
+                <div class="right" float-right>
+                    <p class="p3 icon iconfont icon-gengduo" float-right></p>
+                    <p class="p4" float-right>{{nub}}</p>
+                </div>
+            </li>
+            <li *ngIf='!show1'>
+                <div class="left" float-left>
+                    <p class="p1">芝麻信用授信</p>
+                    <p class="p2">用于评估您的信用额度</p>
+                </div>
+                <div class="right" float-right>
+                    <p class="p3 icon iconfont icon-gengduo" float-right></p>
+                    <p class="p4" float-right>{{nub}}</p>
+                </div>
+            </li>
+           
+            <li [ngStyle]="{'background-color':color?'#ccc':'#fff'}" tappable (click)="toApprove()" *ngIf='show2'>
+                <div class="left" float-left>
+                    <p class="p1">手机运营商认证</p>
+                    <p class="p2">用于评估您的信用、手机真实度等</p>
+                </div>
+                <div class="right" float-right>
+                    <p class="p3 icon iconfont icon-gengduo" float-right></p>
+                    <p class="p4" float-right>{{phonezt}}</p>
+                </div>
+            </li>
+
+            <li [ngStyle]="{'background-color':color?'#ccc':'#fff'}" *ngIf='!show2'>
+                <div class="left" float-left>
+                    <p class="p1">手机运营商认证</p>
+                    <p class="p2">用于评估您的信用、手机真实度等</p>
+                </div>
+                <div class="right" float-right>
+                    <p class="p3 icon iconfont icon-gengduo" float-right></p>
+                    <p class="p4" float-right>{{phonezt}}</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="bottom"></div>
+
+</ion-content>

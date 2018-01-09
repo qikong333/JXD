@@ -1,0 +1,80 @@
+page-register {
+  ion-row.box1:first-child {
+    margin-top: r(16px);
+  }
+
+  ion-row.box1 {
+    min-height: r(60px);
+    border-bottom: r(1px) solid $huied;
+    line-height: r(25px);
+    padding: r(60px) r(30px) r(24px);
+  }
+
+  ion-row.box2 {
+    padding: r(30px) r(30px) 0;
+  }
+
+  input {
+    padding: 0 r(20px);
+    height: r(50px);
+    font-size: r(30px);
+    border: none;
+    font-weight: 100;
+    width: 100%;
+  }
+
+  i {
+    font-size: r(38px)!important;
+    color: $hui90;
+  }
+
+  button.yzcode {
+    margin: 0;
+    height: r(60px);
+    font-size: r(26px);
+  }
+
+  ion-row.box3 {
+    padding: 0 r(30px);
+    font-size: r(26px);
+    color: $hui90;
+
+    span {
+      color: $lan;
+    }
+  }
+
+  ion-row.box3:last-child {
+    margin-top: r(80px);
+  }
+
+  ion-alert.registerWin {
+    border-radius: r(8px);
+  }
+
+  .success {
+    i.iconfont {
+      color: $lan;
+      font-size: r(156px)!important;
+      margin-top: r(180px);
+    }
+
+    h1 {
+      font-size: r(44px);
+      color: $black32;
+      font-weight: 600;
+    }
+
+    p {
+      margin-top: r(90px);
+      font-size: r(26px);
+      color: $hui90;
+      margin-bottom: r(30px);
+    }
+
+    .first {
+      color: $lan;
+      margin-top: r(30px);
+    }
+  }
+}

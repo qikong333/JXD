@@ -1,0 +1,62 @@
+page-verification {
+    .validation_header {
+        text-align: center;
+        font-size: r(34px);
+        margin: r(75px) auto r(120px);
+        color: #666666;
+    }
+    .validation_box {
+        width: 90%;
+        margin: 0 auto;
+        height: r(60px);
+        line-height: r(60px);
+    }
+    .validation_box .validation_box_left {
+        width: 7%;
+        float: left;
+        color: #909090;
+        font-size: r(40px);
+    }
+    .validation_box .validation_box_center {
+        width: 64%;
+        float: left;
+    }
+    .validation_box .validation_box_center input {
+        width: 100%;
+        height: r(60px);
+        border: 0;
+        padding-left: 8%;
+        font-size: r(30px);
+        display: block;
+        color: #666666;
+    }
+    .validation_box .validation_box_right {
+        width: 29%;
+        color: #ffffff;
+        float: left;
+        height: r(60px);
+    }
+    .validation_box .validation_box_right button {
+        width: 100%;
+        height: r(60px);
+        background: $lan;
+        border-radius: r(8px);
+        color: #ffffff;
+        font-size: r(26px);
+        display: block;
+    }
+    .validation_box .clear {
+        clear: both;
+    }
+    .validation_footer {
+        width: 90%;
+        margin: r(74px) auto 0;
+        color: #ffffff;
+        height: r(88px);
+        background: $lan;
+        line-height: r(88px);
+        font-size: r(34px);
+        text-align: center;
+        border-radius: r(8px);
+    }
+}

@@ -1,0 +1,68 @@
+page-two-operation {
+        .operation_twobox{
+            background:#fff;
+        .phone{
+            width:100%;
+            font-size:r(26px);
+            color:#ee5a50;
+            margin-top:r(32px);
+        }
+             i{
+            font-size:r(30px);
+            width:8%;
+            text-align:center;
+            height:r(85px);
+            line-height:r(85px);
+        }
+        ul{
+            padding:0 5% 0 5%;
+        }
+        ul li{
+            border-bottom:1px solid #ccc;
+            height:r(85px);
+            line-height:r(85px);
+            margin-top:r(65px);
+        }
+         ul li input{
+            padding-left:2%;
+            width:40%;
+            font-size:r(30px);
+            border:0;
+            float:left;
+            height:100%;
+        }
+        ul li button{
+             width:r(168px);
+             float:right;
+             background:#ffb710;
+             height:r(60px);
+             line-height:r(60px);
+             display:block;
+             border-radius:r(8px);
+             margin-top:r(12.5px);
+        }
+        ul li  button span{
+            color:#fff;
+            font-size:r(26px);
+            display:block;
+        }
+        .bottom{
+            width:90%;
+            margin:0 auto;
+            height:r(88px);
+            text-align:center;
+            line-height:r(88px);
+            margin-top:r(60px);
+        }
+        .but{
+            font-size:r(34px);
+            color:#fff;
+            background:#ffb710;
+            height:100%;
+            width:100%;
+            border-radius:r(8px);
+            display:block;
+        }
+     }
+       
+}

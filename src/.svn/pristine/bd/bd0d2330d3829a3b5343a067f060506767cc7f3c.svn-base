@@ -1,0 +1,76 @@
+<!--
+  Generated template for the IdentityPhonePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <!--隐藏ionic自带的返回标签-->
+    <ion-navbar hideBackButton>
+        <!--从新定义自己的返回标签-->
+        <button navPop><i class="icon iconfont icon-fanhui"></i></button>
+        <ion-title>手机运营商认证</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <div class="main">
+        <div class="up">
+            <p class="p1">请输入手机运营商的服务密码</p>
+            <p class="p2">用于认证您是真实的手机号拥有者</p>
+            <div class="banner">
+                <ul>
+                    <li>
+                        <ion-grid>
+                            <ion-row>
+                                <ion-col col-4>
+                                    手机号
+                                </ion-col>
+                                <ion-col col-8>
+                                    <i>13755465428</i>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </li>
+                    <li>
+                        <ion-grid>
+                            <ion-row>
+                                <ion-col col-4>
+                                    运营商
+                                </ion-col>
+                                <ion-col col-8>
+                                    <i>电信</i>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </li>
+
+                    <li>
+                        <ion-grid>
+                            <ion-row>
+                                <ion-col col-4>
+                                    服务密码
+                                </ion-col>
+                                <ion-col col-8>
+                                    <input type="text" name="password" value="" placeholder='请输入手机服务密码' required [(ngModel)]="password">
+                                    <!--<input type="text" placeholder="请输入手机服务密码" />-->
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </li>
+                </ul>
+            </div>
+            <div class="forget"><a tappable (click)='toForget()'>忘记服务密码了？</a></div>
+            <!--<div class="but" tappable (click)='save()'>提交</div>-->
+            <button type="submit" ion-button full class="but" tappable (click)="save()" [disabled]="!active">提交</button>
+
+
+            <div class="agree">
+                <a tappable class="ifAgree" (click)='agree()'>
+            <i class="icon iconfont" [ngClass]="{true:'icon-yixuan blue' ,false:'icon-weixuan'}[active]" id="dphone"></i>我已阅读并同意</a>
+                <a href="http://www.baidu.com"><i class="agreement">《运营商授权协议》</i></a>
+            </div>
+
+        </div>
+    </div>
+</ion-content>

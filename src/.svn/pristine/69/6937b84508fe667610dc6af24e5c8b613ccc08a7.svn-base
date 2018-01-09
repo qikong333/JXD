@@ -1,0 +1,45 @@
+<!--
+  Generated template for the QuotaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+    <ion-navbar hideBackButton>
+        <ion-title>还款</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <!-- 已登录 -->
+    <ion-row *ngIf="state">
+        <ion-col col-12>
+            <div class="title1">待还金额(元)</div>
+            <div class="money">{{money}}</div>
+            <div class="time">
+                <!-- <div *ngIf='flag'> -->
+                <span>还款日期</span>
+                <p *ngIf='flag'>{{date | mfqbDate: 'yyyy-MM-dd'}}</p>
+                <p *ngIf='!flag'>--年 --月 --日</p>
+                <!-- </div> -->
+            </div>
+            <button ion-button full class="btn" [disabled]='!flag' tappable (click)='toRepay()'>还 款</button>
+        </ion-col>
+    </ion-row>
+
+    <!-- 未登录 -->
+    <ion-row *ngIf="!state">
+        <ion-col col-12>
+            <div class="title1">待还金额(元)</div>
+            <div class="money"> --</div>
+            <div class="time">
+                <span>还款日期</span>
+                <p>--年 --月 --日</p>
+            </div>
+            <button ion-button full class="btn" tappable (click)='toLogin()'>登 录</button>
+        </ion-col>
+    </ion-row>
+</ion-content>

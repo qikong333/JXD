@@ -1,0 +1,153 @@
+@import '../../theme/base.scss';
+
+page-helpcenter {
+  .tab_nav {
+    width: 100%;
+    float: left;
+    height: r(95px);
+    background-color: #fff;
+    margin: 0;
+
+    .nav {
+      width: 33%;
+      float: left;
+      height: r(95px);
+      line-height: r(95px);
+      color: #666666;
+      font-size: r(24px);
+      text-align: center;
+      border: none;
+      border-bottom: solid 1px #ededed;
+    }
+  }
+
+  .segment-ios .segment-button.segment-activated {
+    background: none;
+    color: $lan;
+    border-bottom: solid 2px $lan;
+  }
+
+  .segment-ios .segment-button:hover:not(.segment-activated) {
+    background: none;
+  }
+
+  .div.fixed-content,
+  div.scroll-content {
+    margin-top: r(185px) !important;
+  }
+
+  .content {
+    width: 100%;
+    float: left;
+    margin-bottom: r(-50px);
+  }
+
+  .content_list {
+    width: 100%;
+    float: left;
+    background-color: #fff;
+    line-height: r(96px);
+    border-bottom: solid 1px #ededed;
+    margin: 0;
+
+    .list_top {
+      width: 90%;
+      float: left;
+      margin: 0 5%;
+      height: r(96px) !important;
+      line-height: r(96px);
+    }
+
+    h3 {
+      float: left;
+      width: r(480px);
+      color: #323232;
+      font-size: r(26px);
+      height: r(96px);
+      line-height: r(96px);
+    }
+
+    i {
+      font-size: r(26px);
+      float: right;
+      margin-top: r(25px);
+    }
+  }
+
+  ion-item .input-cover,
+  ion-item .input-wrapper,
+  ion-item .item-inner,
+  ion-item div {
+    height: auto !important;
+  }
+
+  .blue {
+    color: #6682f1;
+    font-size: r(26px);
+  }
+
+  .list_cotent {
+    width: 100%;
+    float: left;
+    background-color: #ededed;
+    padding-bottom: r(20px);
+
+    p {
+      width: 90%;
+      margin: 0 5%;
+      float: left;
+      color: #666666;
+      font-size: r(24px);
+      text-align: justify;
+      word-break: break-all;
+      line-height: r(40px);
+      white-space: normal;
+      margin-top: r(20px);
+      text-indent: 2em;
+
+    }
+  }
+
+  .disblock {
+    display: block;
+  }
+
+  .disblock {
+    display: none;
+  }
+
+  .btn {
+    width: 100%;
+    float: left;
+    height: 30%;
+    background-color: #ededed;
+
+    a {
+      width: 100%;
+      float: left;
+      background-color: $lan;
+      height: r(97px);
+      line-height: r(97px);
+      color: #fff;
+      text-align: center;
+      font-size: r(34px);
+    }
+
+    i {
+      font-size: r(34px);
+      color: #fff;
+    }
+  }
+
+  .scroll-content {
+    background-color: #ededed;
+  }
+
+  .item-ios.item-block .item-inner {
+    padding: 0;
+  }
+
+  .label-ios {
+    margin: 0;
+  }
+}

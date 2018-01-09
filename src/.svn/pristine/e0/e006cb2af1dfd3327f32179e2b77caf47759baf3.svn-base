@@ -1,0 +1,168 @@
+
+ .ion-ios-home_check:before {
+     text-align: center;
+     content: " ";
+    //  background: url("../assets/images/me.svg") no-repeat;
+     background: url("../assets/images/mine.svg") no-repeat;
+     background-size: 100%;
+     display: list-item;
+     width: 100%;
+     height: r(70px);
+ }
+ 
+ .ion-md-home_check:before {
+     text-align: center;
+     content: " ";
+    //  background: url("../assets/images/me.svg") no-repeat;
+     background: url("../assets/images/mine.svg") no-repeat;
+     background-size: 100%;
+     display: list-item;
+     width: 100%;
+     height: r(70px);
+ }
+ 
+ .ion-ios-home_check-outline:before {
+     text-align: center;
+     content: " ";
+     background: url("../assets/images/unmine.svg") no-repeat;
+     background-size: 100%;
+     display: list-item;
+     width: 100%;
+     height: r(70px);
+ }
+ 
+ .ion-md-home_check-outline:before {
+     text-align: center;
+     content: " ";
+     background: url("../assets/images/unmine.svg") no-repeat;
+     background-size: 100%;
+     display: list-item;
+     width: 100%;
+     height: r(70px);
+ }
+ 
+ .ion-ios-tab1:before {
+     text-align: center;
+     content: " ";
+    //  background: url("../assets/images/tab1.svg") no-repeat;
+     background: url("../assets/images/borrow.svg") no-repeat;
+     background-size: 100%;
+     display: list-item;
+     width: 100%;
+     height: r(70px);
+ }
+ 
+ .ion-md-tab1:before {
+     text-align: center;
+     content: " ";
+    //  background: url("../assets/images/tab1.svg") no-repeat;
+     background: url("../assets/images/borrow.svg") no-repeat;
+     background-size: 100%;
+     display: list-item;
+     width: 100%;
+     height: r(70px);
+ }
+ 
+ .ion-ios-tab1-outline:before {
+     text-align: center;
+     content: " ";
+     background: url("../assets/images/unborrow.svg") no-repeat;
+     background-size: 100%;
+     display: list-item;
+     width: 100%;
+     height: r(70px);
+ }
+ 
+ .ion-md-tab1-outline:before {
+     text-align: center;
+     content: " ";
+     background: url("../assets/images/unborrow.svg") no-repeat;
+     background-size: 100%;
+     display: list-item;
+     width: 100%;
+     height: r(70px);
+ }
+ 
+ .ion-ios-tab2:before {
+     text-align: center;
+     content: " ";
+    //  background: url("../assets/images/tab2.svg") no-repeat;
+     background: url("../assets/images/repay.svg") no-repeat;
+     background-size: 100%;
+     display: list-item;
+     width: 100%;
+     height: r(70px);
+ }
+ 
+ .ion-md-tab2:before {
+     text-align: center;
+     content: " ";
+    //  background: url("../assets/images/tab2.svg") no-repeat;
+     background: url("../assets/images/repay.svg") no-repeat;
+     background-size: 100%;
+     display: list-item;
+     width: 100%;
+     height: r(70px);
+ }
+ 
+ .ion-ios-tab2-outline:before {
+     text-align: center;
+     content: " ";
+     background: url("../assets/images/unrepay.svg") no-repeat;
+     background-size: 100%;
+     display: list-item;
+     width: 100%;
+     height: r(70px);
+ }
+ 
+ .ion-md-tab2-outline:before {
+     text-align: center;
+     content: " ";
+     background: url("../assets/images/unrepay.svg") no-repeat;
+     background-size: 100%;
+     display: list-item;
+     width: 100%;
+     height: r(70px);
+ }
+ 
+ ion-tabs {
+     ion-icon.tab-button-icon {
+         height: auto!important;
+     }
+ }
+ 
+ .tabLoning {
+     position: absolute;
+     left: 34%;
+     top: r(450px);
+     font-size: r(180px);
+     color: $lan;
+     display: inline-flex;
+     -webkit-animation-name: rotateClockWise2;
+     animation-name: rotateClockWise2;
+     -webkit-animation-duration: 2s;
+     animation-duration: 2s;
+     -webkit-animation-timing-function: linear;
+     animation-timing-function: linear;
+     -webkit-animation-iteration-count: infinite;
+     animation-iteration-count: infinite;
+     -webkit-animation-fill-mode: both;
+     animation-fill-mode: both;
+ }
+
+ .tabs-ios-tab-text-color-active{
+     
+ }
+ 
+ @-webkit-keyframes rotateClockWise2 {
+     0% {
+         -webkit-transform: rotate(0deg);
+         -ms-transform: rotate(0deg);
+         transform: rotate(0deg);
+     }
+     100% {
+         -webkit-transform: rotate(360deg);
+         -ms-transform: rotate(360deg);
+         transform: rotate(360deg);
+     }
+ }

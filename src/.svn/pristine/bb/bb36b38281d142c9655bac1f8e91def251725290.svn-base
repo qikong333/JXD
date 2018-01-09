@@ -1,0 +1,205 @@
+@import '../../theme/base.scss';
+page-informations {
+    .label-ios {
+        margin: 0;
+    }
+    input {
+        border: none;
+        font-size: r(22px);
+        float: right;
+        text-align: right;
+        margin-top: r(30px);
+        //      height: r(92px);
+        //      line-height: r(92px);
+        width: 55%;
+        background-color: #fff;
+        color: $hui90;
+    }
+    input::placeholder {
+        font-size: r(22px);
+        color: $hui90;
+    }
+    select {
+        border: none;
+        appearance: none;
+        float: right;
+        margin-top: r(30px);
+        width: 50%;
+        font-size: r(22px);
+        color: $hui90;
+        background-color: transparent;
+    }
+
+
+    .progress {
+        padding: r(60px) r(30px);
+    }
+    .progress .line {
+        margin-bottom: r(20px);
+        margin-left: r(25px);
+    }
+    .progress .line,
+    .progress .text {
+        overflow: hidden;
+    }
+    .progress .line div {
+        float: left;
+        width: r(35px);
+        height: r(35px);
+        border-radius: 50%;
+        background: #dbdbdb;
+        color: #666666;
+        font-size: r(26px);
+        text-align: center;
+        line-height: r(35px);
+    }
+    .progress .line p {
+        background: #dbdbdb;
+        float: left;
+        width: r(125px);
+        height: r(6px);
+        margin-top: r(15px);
+    }
+    .progress .text p {
+        float: left;
+        width: r(160px);
+        font-size: r(22px);
+        color: #909090;
+        // text-align: center;
+    }
+    .progress .text .t3 {
+        width: r(130px);
+    }
+    .progress .text .t4 {
+        width: r(130px);
+        float: right;
+        text-align: right;
+    }
+    .progress .line .o1 {
+        background: $lan;
+        color: #fff;
+    }
+    .progress .text .t1 {
+        color: $lan;
+    }
+
+    
+    .top-right {
+        position: relative;
+        left: r(560px);
+        top: r(-98px);
+    }
+    .top-right p {
+        font-size: r(26px);
+        color: #323232;
+    }
+    .main {
+        font-family: simsun;
+    }
+    .top {
+        padding: 0 r(30px);
+        background-color: #ededed;
+        height: r(134px);
+        width: 100%;
+        padding-top: r(17px);
+    }
+    .top p {
+        text-align: center;
+        font-size: r(26px);
+        color: $hui66;
+        line-height: r(50px);
+    }
+    .lis ul li {
+        border-bottom: 1px solid #ededed;
+        overflow: hidden;
+        padding: (1px) r(30px);
+        background:#fff;
+    }
+    .lis ul li i:nth-child(1) {
+        line-height: r(92px);
+        color: #323232;
+        font-size: r(26px);
+    }
+    .lis ul li i:nth-child(3) {
+        font-size: r(22px);
+        color: $hui90;
+        line-height: r(96px);
+    }
+    .lis ul li i:nth-child(2) {
+        width: r(14px);
+        height: r(96px);
+        margin-right: r(16px);
+        line-height: r(96px);
+        font-size: r(35px);
+        color: $hui90;
+    }
+    .friends li {
+        background: #fff;
+        border-bottom: 1px solid #ededed;
+        overflow: hidden;
+        padding: 0 r(30px);
+    }
+    .friends li i:nth-child(1) {
+        color: #323232;
+        font-size: r(26px);
+        line-height: r(96px);
+    }
+    .friends li i:nth-child(2) {
+        font-size: r(22px);
+        color: $hui90;
+        line-height: r(96px);
+    }
+    .re-but {
+        // position: relative;
+        font-size: r(26px);
+        color: $primary;
+        background: transparent;
+        line-height: r(96px);
+        padding-right: r(30px);
+        // margin-left: 80%;
+        // margin-top: r(20px);
+        // right: 0;
+        // top:r(- 10px);
+    }
+    .main .add-til {
+        // position: absolute;
+        // width: 100%;
+        height: r(96px);
+        background-color: $huied;
+        line-height: r(96px);
+        color: $hui90;
+        font-size: r(30px);
+        padding-left: r(30px);
+    }
+    .main .add-up {
+        text-align: center;
+        height: r(192px);
+        line-height: r(192px);
+        font-size: r(26px);
+    }
+    .main .add-up a {
+        color: $primary;
+    }
+    .main .add-up i {
+        font-size: r(35px);
+    }
+    .main .bottom {
+        height: r(277px);
+        background-color: $huied;
+        padding: 0 r(30px);
+        padding-top: r(60px);
+    }
+    .main .bottom .but {
+        background-color: $primary;
+        color: #fff;
+        text-align: center;
+        height: r(88px);
+        width: 100%;
+        font-size: r(34px);
+        line-height: r(88px);
+        border-radius: r(10px);
+    }
+
+}
+    
+   

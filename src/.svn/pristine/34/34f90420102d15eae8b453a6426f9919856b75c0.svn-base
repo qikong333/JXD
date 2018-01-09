@@ -1,0 +1,280 @@
+import { NativeServiceProvider } from './../../providers/native-service/native-service';
+import { UtilsProvider } from './../../providers/utils/utils';
+import { Component, OnInit } from '@angular/core';
+import { IonicPage, NavController, NavParams, ActionSheetController, AlertController } from 'ionic-angular';
+import { HttpServiceProvider } from '../../providers/http-service/http-service';
+import { SERVER_URL } from '../../providers/constants/constants';
+import { HelpersProvider } from '../../providers/helpers/helpers';
+
+/**
+ * Generated class for the BorrowDetailsPage page.
+ *
+ * See http://ionicframework.com/docs/components/#navigation for more info
+ * on Ionic pages and navigation.
+ */
+@IonicPage({
+  name: "BorrowDetailsPage"
+})
+@Component({
+  selector: 'page-borrow-details',
+  templateUrl: 'borrow-details.html',
+})
+export class BorrowDetailsPage implements OnInit {
+
+  showData: any;
+  state: any = 1;//页面下面按钮显示判断
+  mainData: any = '';//返回数组;
+
+  redata: any = "";//返回数据
+  bankName: string = "";//银行名称
+  bank: string = "";//银行卡号
+  prin: number = 0;//借款金额
+  time: number = 0;//借款期限
+  truePrin: number = 0;//实际到帐金额
+  poundage: number = 0;//手续费
+  interest: number = 0;//利息
+  loanDate: any = "";//申请时间
+  repayDate: any = "";//还款时间
+  repayWay: string = "";//还款方式
+  allAmounts: number = 0;//需还金额
+  doneAmounts: number = 0;//已还金额
+  stayAmounts: number = 0;//待还金额
+  code: number = 0;//订单号
+  delayNum: number = 0;//延迟次数
+
+  changeDate: any = 1508238000000;//费率改变的时间(2017-10-17 19:00)
+  // changeDate: any = 1508234400000;//费率改变的时间(2017-10-17 18:00)
+
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public actionSheetCtrl: ActionSheetController,
+    private alertCtrl: AlertController,
+    public HttpServiceProvider: HttpServiceProvider,
+    public helpers: HelpersProvider,
+    public utils: UtilsProvider,
+    public native: NativeServiceProvider
+  ) {
+  }
+
+  // 初始化
+  ngOnInit() {
+
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad AccountPage');
+    this.helpers.hideTabs1();
+
+  }
+
+
+  ionViewWillLeave() {
+    this.helpers.hideTabs2();
+  }
+
+
+
+  //即将要进入页面
+  ionViewWillEnter() {
+    this.code = this.navParams.get('orderCode');
+    this.getBetails();
+
+  }
+
+
+  /**
+   * 下拉刷新
+   */
+  doRefresh(refresh) {
+    this.ionViewWillEnter();
+    setTimeout(function () {
+      refresh.complete();
+
+    }, 400);
+  }
+
+
+  /**
+   * 获取订单详情
+   */
+  getBetails() {
+    this.HttpServiceProvider.get(SERVER_URL + '/cf_main/cf/order/orderDetail', { orderCode: this.code })
+      .map(data => data.json())
+      .subscribe(
+      data => {
+        console.log(data);
+
+        if (data.success) {
+
+          this.showData = data.data.orderDetail.orderStatus;//审核状态数组
+          this.redata = data.data.orderDetail.delayRepayments;//延迟还款数组
+          this.mainData = data.data.orderDetail;
+
+          // this.code = data.data.orderDetail.orderCode;
+          this.bankName = this.mainData.bankName;
+          this.bank = this.mainData.bankCard;
+          this.prin = this.mainData.loanAmounts;
+          this.time = this.mainData.loanDays;
+          this.interest = this.mainData.interest;
+          this.poundage = this.mainData.counterFee;
+          this.truePrin = this.mainData.intoAmounts;
+          this.loanDate = this.mainData.loanTime;
+          if (this.mainData.repaymentDate) {
+            this.repayDate = this.mainData.repaymentDate;
+          } else {
+            this.repayDate = "";
+          }
+          this.allAmounts = this.mainData.repaymentAmount;
+          this.doneAmounts = this.mainData.alreadyAmounts;
+          this.stayAmounts = this.mainData.stayAmounts;
+
+
+          if (this.showData) {
+            this.getState(this.showData);//调用判断按钮方法
+          }
+
+          // this.repayWay = data.data.orderDetail.repaymentMode;
+          if (data.data.orderDetail.repaymentMode == 1) {
+            this.repayWay = "到期一次付清";
+          } else {
+            this.repayWay = "分期付款";
+          }
+        }
+      },
+      erro => { console.log(erro) },
+    )
+
+  }
+
+  /**
+   * 判断页面下边按钮显示情况
+   */
+  newState: any;
+  getState(showDate) {
+    let state = showDate[showDate.length - 1].orderStatus;//获取最后一个状态码
+    this.newState = showDate[showDate.length - 1].statusName;//最后一个状态名字
+
+    if (state == 41 || state == 42 || state == 43 || state == 44) {//还款中
+      this.state = 4;
+
+    } else if (state == 51 || state == 52 || state == 53 || state == 54) {//结清
+      this.state = 5;
+    } else {
+      this.state = 1;
+    }
+
+  }
+
+
+  // 查看功能---模态框
+  presentActionSheet() {
+    let actionSheet = this.actionSheetCtrl.create({
+      buttons: [
+        {
+          text: '借款协议',
+          handler: () => {
+            this.showAgreement(6);
+          }
+        }, {
+          text: '平台服务协议',
+          handler: () => {
+            this.showAgreement(5);
+          }
+        }, {
+          text: '授权扣款委托书',
+          handler: () => {
+            this.showAgreement(4);
+          }
+        }, {
+          text: '取消',
+          role: 'cancel',
+          handler: () => {
+            console.log('取消');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+
+
+  /**
+   * 展示协议
+   */
+  showAgreement(type) {
+    let phone = localStorage.getItem('userPhone');
+    let url = SERVER_URL + `/cf_main/cf/agreement?loginName=${phone}&orderCode=${this.code}&type=${type}&periods=1&beginDay=${this.loanDate}&repaymentDay=${this.repayDate}&repaymentMoney=${this.allAmounts}&principal=${this.prin}&interests=${this.interest}&platformMoney=${this.native.getCharge(this.prin, this.time)[0]}&accountMoney=${this.native.getCharge(this.prin, this.time)[3]}&riskMoney=${this.native.getCharge(this.prin, this.time)[2]}&informationMoney=${this.native.getCharge(this.prin, this.time)[1]}`
+    this.native.themeable(url);
+    // this.native.themeable(SERVER_URL + `/cf_main/cf/agreement?loginName=${phone}&type=${type}`)
+  }
+
+
+  //问号弹窗功能
+  presentAlert() {
+
+    if (this.loanDate <= this.changeDate && this.time == 14) {
+
+      let alert = this.alertCtrl.create({
+        title: '综合费用',
+        subTitle: `<div class="alert-left">平台服务费</div><div class="alert-right">${this.native.getCharge(this.prin, 0)[0]}元</div>
+               <div class="alert-left">信息认证费</div><div class="alert-right">${this.native.getCharge(this.prin, 0)[1]}元</div>
+               <div class="alert-left">风控服务费</div><div class="alert-right">${this.native.getCharge(this.prin, 0)[2]}元</div>
+               <div class="alert-left">账户管理费</div><div class="alert-right">${this.native.getCharge(this.prin, 0)[3]}元</div>
+               <div class="alert-count">总计</div><div class="alert-money">${this.native.getCharge(this.prin, 0)[4]}元</div> `,
+        buttons: ['确定']
+      });
+      alert.present();
+
+      return;
+    }
+
+    let alert = this.alertCtrl.create({
+      title: '综合费用',
+      subTitle: `<div class="alert-left">平台服务费</div><div class="alert-right">${this.native.getCharge(this.prin, this.time)[0]}元</div>
+               <div class="alert-left">信息认证费</div><div class="alert-right">${this.native.getCharge(this.prin, this.time)[1]}元</div>
+               <div class="alert-left">风控服务费</div><div class="alert-right">${this.native.getCharge(this.prin, this.time)[2]}元</div>
+               <div class="alert-left">账户管理费</div><div class="alert-right">${this.native.getCharge(this.prin, this.time)[3]}元</div>
+               <div class="alert-count">总计</div><div class="alert-money">${this.native.getCharge(this.prin, this.time)[4]}元</div> `,
+      buttons: ['确定']
+    });
+    alert.present();
+  }
+
+  /**
+   * 展示利息
+   * @param code 
+   */
+  showInterest() {
+    this.utils.showAlert('日利率0.0417%');
+  }
+
+  // 进入需还款金额页面
+  go_needmoney(code) {
+    this.navCtrl.push('NeedmoenyPage', { key1: code }, { duration: 300 });
+  }
+
+  //进入已还金额的页面
+  go_completemoney(code) {
+    this.navCtrl.push('CompletemoneyPage', { key1: code }, { duration: 300 });
+  }
+
+  //进入延期还款
+  go_delaymoney(delay, num) {
+    this.navCtrl.push('DelaymoneyPage', { key1: delay, key2: num }, { duration: 300 });
+  }
+
+
+  // 进入还款页面(传递的参数有1.待还金额;2.订单号;3.延迟次数)
+  toRepayment(stayAmounts) {
+    console.log(this.redata);
+
+    if (this.redata) {
+      this.delayNum = this.redata.length;
+    }
+    this.navCtrl.push('RepaymentPage', { key1: stayAmounts, orderCode: this.code, delayNum: this.delayNum }, { duration: 300 });
+  }
+
+}
+

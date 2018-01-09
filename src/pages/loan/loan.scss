@@ -1,0 +1,210 @@
+@import '../../theme/base.scss';
+page-loan {
+    .xian {
+        height: r(20px);
+        background-color: $huied;
+    }
+    .box {
+        /*margin-top:r(20px);*/
+        background:#fff;
+        dl {
+            width: 100%;
+            height: r(96px);
+            float: left;
+            border-bottom: solid 1px #ededed;
+        }
+        span {
+            color: #323232;
+            font-size: r(26px);
+            float: left;
+            height: r(96px);
+            line-height: r(96px);
+            margin-left: 5%;
+        }
+        select {
+            float: left;
+            color: #909090;
+            font-size: r(22px);
+            height: r(96px);
+            line-height: r(96px);
+            border: none;
+            appearance:none;
+            background: none;
+            float: right;
+        }
+        i {
+            float: right;
+            color: #909090;
+            font-size: r(22px);
+            height: r(96px);
+            line-height: r(96px);
+            margin-right: 5%;
+        }
+        b {
+            float: left;
+            color: $lan;
+            font-size: r(30px);
+            height: r(96px);
+            line-height: r(96px);
+            margin-top:r(-2px) ;
+            margin-left: r(4px);
+        }
+        p {
+            color: #909090;
+            font-size: r(22px);
+            float: right;
+            margin-right: 10%;
+            height: r(96px);
+            line-height: r(96px);
+        }
+        .red {
+            color: #ee5a50;
+        }
+    }
+    .box:nth-child(1){
+      margin-top:r(20px)
+    }
+    .box2 {
+        background-color: #ededed;
+        width: 100%;
+        float: left;
+        padding: 5% 0;
+        p {
+            width: 90%;
+            margin: 0 5%;
+            float: left;
+            color: #323232;
+            font-size: r(24px);
+            text-align: justify;
+            a {
+                color: $lan;
+            }
+        }
+        i {
+            font-size: r(24px);
+            color: $lan;
+            float: left;
+        }
+        .tj_btn {
+            width: 100%;
+            float: left;
+            text-align: center;
+            background:#EDEDED;
+            a {
+                width: 90%;
+                margin: 5% 5%;
+                float: left;
+                background-color: $lan;
+                height: r(88px);
+                line-height: r(88px);
+                text-align: center;
+                color: #fff;
+                font-size: r(34px);
+                border-radius: r(8px);
+            }
+        }
+    }
+  .window_bg{
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.5;
+    position: fixed;
+    top: 0;
+    display: none;
+  }
+  .window_box{
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    .window{
+      width: r(541px);
+      height:r(441px);
+      background-color: #fff;
+      border-radius:r(15px);
+     position: absolute;
+      top:50%;
+      margin-top:r(-220px);
+      left: 50%;
+      margin-left: r(-270px);
+      h3{
+        width: 100%;
+        float: left;
+        text-align: center;
+        font-size: r(36px);
+        margin:r(30px) 0 ;
+      }
+      ul{
+        width: 90%;
+        margin: 0 5%;
+        float: left;
+        li{
+          width: 100%;
+          float: left;
+          span{
+            float: left;
+            font-size: r(26px);
+          }
+          p{
+            float: right;
+            font-size: r(26px);
+          }
+        }
+      }
+      .window_btn{
+        a{
+          width: 100%;
+          float: left;
+          text-align: center;
+          color: #007aff;
+          font-size: r(36px);
+          border-top: solid 1px #d9d9d9;
+          margin-top:r(44px);
+          line-height:r(100px);
+        }
+      }
+    }
+  }
+  .window_box2{
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    .window{
+      width: r(462px);
+      height:r(181px);
+      background-color: #fff;
+      border-radius:r(15px);
+      position: absolute;
+      top:50%;
+      margin-top:r(-90px);
+      left: 50%;
+      margin-left: r(-231px);
+      h3{
+        width: 100%;
+        float: left;
+        text-align: center;
+        font-size: r(36px);
+        margin:r(30px) 0 ;
+      }
+      .window_btn{
+        width: 100%;
+        float: left;
+        border-top: solid 1px #e6e6e6;
+        a{
+           width:r(230px);
+          float: left;
+          text-align: center;
+          color:#0069fe;
+          font-size:r(30px);
+          height: r(77px);
+          line-height: r(77px);
+        }
+      }
+    }
+  }
+  .block{display: block;}
+}

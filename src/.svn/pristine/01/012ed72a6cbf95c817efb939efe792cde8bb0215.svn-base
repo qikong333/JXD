@@ -1,0 +1,46 @@
+<ion-header>
+    <ion-navbar hideBackButton>
+        <button navPop><i class="icon-fanhui iconfont"></i></button>
+        <ion-title>设置</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-row class="box">
+        <dl tappable (click)="go_about()">
+            <span>关于我们 </span>
+            <i class="icon iconfont icon-gengduo"></i>
+        </dl>
+        <dl>
+            <a href="tel:400-898-8121" style="display:block;width:100%;float:left;">
+                <span>在线客服 </span>
+                <i class="icon iconfont icon-gengduo"></i>
+                <p><a href='tel: 400-898-8121'> 400-898-8121</a> </p>
+            </a>
+            <div class="clear"></div>
+        </dl>
+        <dl tappable (click)="go_version()">
+            <span>当前版本 </span>
+            <i class="icon iconfont icon-gengduo"></i>
+            <p>V{{version}}</p>
+        </dl>
+    </ion-row>
+    <ion-row>
+        <ion-col col-12 class="xian"> </ion-col>
+    </ion-row>
+
+
+    <ion-row class="box" *ngIf="isshow">
+        <dl tappable (click)='change()'>
+            <span>修改登录密码 </span>
+            <i class="icon iconfont icon-gengduo"></i>
+        </dl>
+    </ion-row>
+
+    <ion-row class="box2" *ngIf="isshow">
+        <div class="btn"><a tappable (click)='out()'>退出登录</a> </div>
+    </ion-row>
+
+
+
+</ion-content>

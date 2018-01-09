@@ -1,0 +1,152 @@
+@import '../../theme/base.scss';
+page-papers {
+    input {
+        border: none;
+        font-size: r(22px);
+        float: right;
+        text-align: right;
+        margin-top: r(30px);
+        //      height: r(92px);
+        //      line-height: r(92px);
+        width: r(400px);
+        background-color: #fff;
+    }
+    input::placeholder {
+        font-size: r(22px);
+        color: $hui90;
+    }
+    .progress {
+        padding: r(60px) r(30px);
+    }
+    .progress .line {
+        margin-bottom: r(20px);
+        margin-left: r(25px);
+    }
+    .progress .line,
+    .progress .text {
+        overflow: hidden;
+    }
+    .progress .line div {
+        float: left;
+        width: r(35px);
+        height: r(35px);
+        border-radius: 50%;
+        background: #dbdbdb;
+        color: #666666;
+        font-size: r(26px);
+        text-align: center;
+        line-height: r(35px);
+    }
+    .progress .line p {
+        background: #dbdbdb;
+        float: left;
+        width: r(125px);
+        height: r(6px);
+        margin-top: r(15px);
+    }
+    .progress .text p {
+        float: left;
+        width: r(160px);
+        font-size: r(22px);
+        color: #909090;
+        // text-align: center;
+    }
+      .progress .text .t3 {
+        width: r(130px);
+    }
+    .progress .text .t4 {
+        width: r(130px);
+        float: right;
+        text-align: right;
+    }
+    .progress .line .o1,
+    .progress .line .o2 {
+        background: $primary;
+        color: #fff;
+    }
+    .progress .line .l1 {
+        background: $primary;
+    }
+    .progress .text .t1,
+    .progress .text .t2 {
+        color: $primary;
+    }
+    .main {
+        padding: r(30px);
+        border-bottom: (1px) solid $huied;
+        border-top: r(20px) solid $huied;
+    }
+    .main .p1 {
+        font-size: r(26px);
+        color: $hui66;
+        text-align: center;
+    }
+    .main .p2 {
+        font-size: r(26px);
+        color: #323232;
+        padding: r(20px) 0;
+    }
+    .main .boxs {
+        overflow: hidden;
+    }
+    .main .boxs div {
+        overflow: hidden;
+        width: r(285px);
+        height: r(215px);
+        background-color: $huied;
+        border-radius: r(10px);
+        border: r(2px) solid #CCCCCC;
+        text-align: center;
+    }
+    .main .boxs .box3 {
+        margin-top: r(10px);
+    }
+    .main .boxs div .pi {
+        font-size: r(53px);
+        color: #CCCCCC;
+        margin-top: r(40px);
+    }
+    .main2 .box .pi {
+        font-size: r(53px);
+        color: #CCCCCC;
+        // margin-top: r(70px);
+    }
+    .main .boxs div .pt {
+        font-size: r(26px);
+        color: #323232;
+    }
+    .main2 {
+        padding: r(30px);
+        overflow: hidden;
+    }
+    .main2>p {
+        font-size: r(26px);
+        color: #323232;
+        padding: r(20px) 0;
+    }
+    .main2 .box {
+        float: left;
+        overflow: hidden;
+        width: r(285px);
+        height: r(215px);
+        background-color: $huied;
+        border-radius: r(10px);
+        border: r(2px) solid #CCCCCC;
+        text-align: center;
+        line-height: r(215px);
+    }
+    .main3 {
+        background-color: $huied;
+        padding: r(60px) r(30px) r(30px) r(30px);
+    }
+    .main3 .but {
+        background-color: $primary;
+        border-radius: r(10px);
+        text-align: center;
+        width: r(580px);
+        height: r(88px);
+        line-height: r(88px);
+        font-size: r(34px);
+        color: #fff;
+    }
+}

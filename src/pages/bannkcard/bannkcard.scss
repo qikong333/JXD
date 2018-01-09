@@ -1,0 +1,99 @@
+@import '../../theme/base.scss';
+page-bannkcard {
+    .xian {
+        height: r(20px);
+        background-color: $huied;
+    }
+    .box {
+        dl {
+            width: 100%;
+            height: r(96px);
+            float: left;
+            border-bottom: solid 1px #ededed;
+        }
+        span {
+            color: #323232;
+            font-size: r(26px);
+            float: left;
+            height: r(96px);
+            line-height: r(96px);
+            margin-left: 5%;
+            width: r(145px);
+        }
+        h3 {
+            float: left;
+            color: #323232;
+            font-size: r(22px);
+            height: r(96px);
+            line-height: r(96px);
+            margin-left: r(5px);
+        }
+        input {
+            background: none;
+            border: none;
+            height: r(96px);
+            float: left;
+            width: r(400px);
+            color: #cccccc;
+            font-size: r(22px);
+            text-indent: r(10px);
+        }
+        .small {
+            width: r(200px);
+        }
+        select {
+            float: left;
+            color: #909090;
+            font-size: r(22px);
+            height: r(96px);
+            line-height: r(96px);
+            border: none;
+            background: none;
+            float: left;
+        }
+        i {
+            float: right;
+            color: #909090;
+            font-size: r(22px);
+            height: r(96px);
+            line-height: r(96px);
+            margin-right: 5%;
+        }
+        button {
+            float: right;
+            width: r(169px);
+            height: r(60px);
+            background-color: $lan;
+            color: #fff;
+            font-size: r(26px);
+            text-align: center;
+            line-height: r(60px);
+            border-radius: r(8px);
+            margin: r(18px) 5% r(18px) 0;
+        }
+    }
+    .box2 {
+        width: 100%;
+        height: 50%;
+        float: left;
+        background-color: #ededed;
+        .btn {
+            width: 100%;
+            float: left;
+            margin-top: r(60px);
+            a {
+                width: 90%;
+                margin: 0 5%;
+                float: left;
+                background-color: $lan;
+                height: r(89px);
+                line-height: r(89px);
+                text-align: center;
+                color: #fff;
+                font-size: r(34px);
+                border-radius: r(8px);
+                margin-bottom: r(30px);
+            }
+        }
+    }
+}

@@ -1,0 +1,132 @@
+page-repayment2 {
+    .box0 {
+        padding: r(30px);
+        .box0_1 {
+            font-size: r(30px);
+            padding-bottom: 0;
+        }
+        .box0_2 {
+            font-weight: 600;
+            padding-top: 0;
+            font-size: r(60px);
+            color: #ee5a50;
+        }
+    }
+    body {
+        background-color: #909090;
+    }
+    .xian {
+        height: r(20px);
+        background-color: $huied;
+    }
+    .box1 {
+        border-top: r(1px) solid #ededed;
+        padding: 15px r(20px);
+        .box_item {
+            padding: 0;
+            font-size: r(26px);
+            span {
+                font-size: r(22px);
+                color: #909090;
+                margin: 0;
+            }
+        }
+        .right {
+            // line-height: 31px;
+            padding: r(20px) 0;
+        }
+    }
+    .soild {
+        width: 90%;
+        margin: 0 5%;
+        float: left;
+        background-color: #cccccc;
+        height: 1px;
+    }
+    .right_p {
+        width: 100%;
+        float: left;
+        color: #666666;
+        font-size: r(26px);
+        margin: 3% 0 10% 0;
+        .p {
+            float: right;
+            margin-right: 5%;
+            dd {
+                float: right;
+                color: #ee5a50;
+            }
+        }
+    }
+    .blue {
+        color: $primary !important;
+    }
+    .box2 {
+        width: 100%;
+        float: left;
+        padding-bottom: 30%;
+        background-color: #ededed;
+        .btn {
+            width: 100%;
+            float: left;
+            margin-top: r(60px);
+            a {
+                width: 90%;
+                margin: 0 5%;
+                float: left;
+                background-color: $primary;
+                height: r(89px);
+                line-height: r(89px);
+                text-align: center;
+                color: #fff;
+                font-size: r(34px);
+                border-radius: r(8px);
+                margin-bottom: r(30px);
+            }
+        }
+        .btn2 {
+            width: 100%;
+            float: left;
+            a {
+                width: 90%;
+                margin: 0 5%;
+                float: left;
+                background-color: #fff;
+                height: r(89px);
+                line-height: r(89px);
+                text-align: center;
+                color: #323232;
+                font-size: r(34px);
+                border-radius: r(8px);
+                border: solid 1px #cccccc;
+            }
+        }
+        .btn3 {
+            width: 90%;
+            height: r(50px);
+            float: left;
+            margin: 0 5%;
+            text-align: right;
+            a {
+                color: $primary;
+                font-size: r(26px);
+            }
+        }
+        p {
+            width: 90%;
+            float: left;
+            margin: 0 5%;
+            color: #909090;
+            font-size: r(26px);
+        }
+    }
+    .box4 {
+        background: #ededed;
+        p {
+            background: none;
+            margin: 0 auto;
+            font-size: r(26px);
+            color: #ee5a50;
+        }
+    }
+}

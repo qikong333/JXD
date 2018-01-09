@@ -1,0 +1,11 @@
+<!-- Generated template for the NetworkShowComponent component -->
+<div>
+  <div class="false_box">
+    <i class="icon iconfont icon-xitong_duankailianjie"></i>
+    <span>连接失败</span>
+    <p>请检查您的手机是否联网</p>
+    <div class="false_btn">
+      <a (click)='reload()'>重新加载</a>
+    </div>
+  </div>
+</div>

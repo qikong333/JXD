@@ -1,0 +1,100 @@
+@import '../../theme/base.scss';
+page-identity {
+    .progress {
+        padding: r(60px) r(30px);
+    }
+    .progress .line {
+        margin-bottom: r(20px);
+        margin-left: r(25px);
+    }
+    .progress .line,
+    .progress .text {
+        overflow: hidden;
+    }
+    .progress .line div {
+        float: left;
+        width: r(35px);
+        height: r(35px);
+        border-radius: 50%;
+        background: #dbdbdb;
+        color: #666666;
+        font-size: r(26px);
+        text-align: center;
+        line-height: r(35px);
+    }
+    .progress .line p {
+        background: #dbdbdb;
+        float: left;
+        width: r(125px);
+        height: r(6px);
+        margin-top: r(15px);
+    }
+    .progress .text p {
+        float: left;
+        width: r(160px);
+        font-size: r(22px);
+        color: #909090;
+        // text-align: center;
+    }
+    .progress .text .t3 {
+        width: r(130px);
+    }
+    .progress .text .t4 {
+        width: r(130px);
+        float: right;
+        text-align: right;
+    }
+    .progress .line .o1,
+    .progress .line .o2,
+    .progress .line .o3,
+    .progress .line .o4 {
+        background: $lan;
+        color: #fff;
+    }
+    .progress .line .l1,
+    .progress .line .l2,
+    .progress .line .l3 {
+        background: $lan;
+    }
+    .progress .text .t1,
+    .progress .text .t2,
+    .progress .text .t3,
+    .progress .text .t4 {
+        color: $lan;
+    }
+    .main {
+        border-top: r(20px) solid $huied;
+    }
+    .main li {
+        padding: 0 r(30px);
+        border: r(1px) solid $huied;
+        height: r(96px);
+    }
+    .main li .left {
+        padding-top: r(12px);
+    }
+    .main li .left .p1 {
+        color: #323232;
+        font-size: r(26px);
+    }
+    .main li .left .p2 {
+        color: $hui90;
+        font-size: r(22px);
+    }
+    .main li .right .p3 {
+        font-size: r(26px);
+        color: $hui90;
+    }
+    .main li .right .p4 {
+        font-size: r(22px);
+        color: $hui90;
+    }
+    .main li .right p {
+        height: 100%;
+        line-height: r(96px);
+    }
+    .bottom {
+        background-color: $huied;
+        height: 100%;
+    }
+}

@@ -1,0 +1,29 @@
+page-papers2 {
+    .box2 {
+        .box2_1 {
+            background: $lan;
+            padding: r(80px);
+        }
+        .box2_2 {
+            padding: 30px 15px 15px 15px;
+        }
+        .box2_3 {
+            padding: r(30px);
+            font-size: r(24px);
+        }
+        a {
+            font-size: r(34px);
+            border-radius: r(8px);
+            color: #fff;
+        }
+    }
+    .box3 {
+        padding: 15px;
+        p {
+            font-size: r(26px)
+        }
+        img {
+            padding: 20px
+        }
+    }
+}

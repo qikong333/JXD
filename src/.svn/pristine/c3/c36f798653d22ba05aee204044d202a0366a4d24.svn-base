@@ -1,0 +1,93 @@
+page-reload-bank {
+    .reload-bank {
+        background: #ededed;
+    }
+    .reload-all {
+        width: 100%;
+        background: #ffffff;
+        margin-top: r(20px);
+    }
+    .reload-all li {
+        width: 100%;
+        border-bottom: 1px solid #ededed;
+        padding: 0 4.5% 0 4.5%;
+        height: r(96px);
+        line-height: r(96px);
+        color: #323232;
+    }
+    .reload-left {
+        float: left;
+        width: 30%;
+        font-size: r(26px);
+    }
+    .reload-right {
+        float: left;
+        width: 65%;
+        font-size: r(22px);
+    }
+    .reload-arrow {
+        width: 5%;
+        float: left;
+        font-size: r(36px);
+        text-align: right;
+    }
+    .reload-left1 {
+        float: left;
+        width: 30%;
+        font-size: r(26px);
+    }
+    .reload-right1 {
+        float: left;
+        width: 40%;
+        font-size: r(22px);
+    }
+    .reload-button1 {
+        float: left;
+        width: 30%;
+        height: r(60px);
+        line-height: r(60px);
+        font-size: r(26px);
+        border-radius: r(12px);
+        margin-top: r(18px);
+        text-align: center;
+    }
+    .reload-button1 button {
+        background: $lan;
+        color: #ffffff;
+        width: 100%;
+        height: 100%;
+        border-radius: r(12px);
+    }
+    select {
+        width: 100%;
+        outline: none;
+        border: 0;
+        appearance: none;
+        background-color: transparent;
+        color: #909090;
+    }
+    select:active {
+        color: #323232;
+    }
+    input {
+        outline: none;
+        border: 0;
+        font-size: r(22px);
+        color: #323232;
+        width: 100%;
+    }
+    .reload-footer {
+        width: 90.625%;
+        margin: r(60px) auto 0;
+        height: r(88px);
+        line-height: r(88px);
+        background: $lan;
+        text-align: center;
+        font-size: r(34px);
+        color: #ffffff;
+        border-radius: r(8px);
+    }
+    .but{
+        padding: 0 r(30px);
+    }
+}

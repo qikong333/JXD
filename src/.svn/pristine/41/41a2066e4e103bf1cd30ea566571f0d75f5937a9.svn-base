@@ -1,0 +1,118 @@
+@import '../../theme/base.scss';
+page-choose-coupons {
+     .coupons_volume{
+         width:90.625%;
+         margin:0 auto;
+     }
+     .coupons_volume li{
+         margin-top:r(30px);
+     }
+     .coupons_volume .coupons_volume_free{
+         width:100%;
+         height:r(200px);
+         background:url("../assets/images/coupons_blue.png") no-repeat;
+         background-size:100% 100%;
+     }
+     .coupons_volume .coupons_volume_mortgage{
+          width:100%;
+         height:r(200px);
+         background:url("../assets/images/coupons_pink.png") no-repeat;
+         background-size:100% 100%;
+     }
+     .coupons_volume_left{
+         float:left;
+         width:40%;
+     }
+     .coupons_volume_center{
+         width:50%;
+         float:left;
+         font-size:r(24px);
+         color:#ffffff;
+     }
+      .coupons_volume_right{
+         width:10%;
+         float:left;
+     }
+     .coupons_volume_left .coupons_volume_header{
+         font-size:r(24px);
+         color:#ffffff;
+         margin:r(20px) 0 r(0px) r(20px);
+     }
+     .coupons_volume_left .coupons_volume_header::first-letter{
+         font-size:r(24px);
+         color:#ffffff;
+         margin:r(20px) 0 r(0px) r(20px);
+     }
+     .coupons_volume_left .coupons_volume_title{
+         text-align:center;
+         font-size:r(30px);
+         color:#ffffff;
+         height:r(80px);
+         line-height:r(80px);
+     }
+     .coupons_volume_left .coupons_volume_title span{
+         font-size:r(60px);
+         color:#ffffff;
+         font-family: "SourceHanSansCN-Bold"
+     }
+     
+     .coupons_volume_left .coupons_volume_time{
+         text-align:center;
+         color:#ffffff;
+         margin-top:r(20px);
+         font-size:r(20px);
+     }
+     
+     .coupons_volume_center .coupons_volume_use{
+         margin-left:r(20px);
+         margin-top:r(70px);
+     }
+     .coupons_volume_center .coupons_volume_liability{
+        margin-left:r(20px);
+     }
+
+     .coupons_volume_right{
+         height:r(200px);
+         line-height:r(210px);
+         text-align:center;
+         font-size:r(34px);
+         color:#ffffff;
+         position:relative;
+     }
+     .no_data{
+         width:100%;
+         background:#cccccc;
+         font-size:r(26px);
+         text-align:center;
+         color:#909090;
+         margin-top:r(100px);
+     }
+      /*.coupons_volume_free input{
+        position:absolute;
+        top:50%;
+        left:50%;
+        width:r(0px);
+     }*/
+
+      /*@media screen and (max-width: 400px) {
+           .coupons_volume_left{
+               width:45%;
+           }
+           .coupons_volume_center{
+                width:33%;
+            }
+            .coupons_volume_right{
+                width:22%;
+            }
+          .coupons_volume_left .coupons_volume_title{
+                font-size:r(25px);
+                 height:r(80px);
+                line-height:r(80px);
+            }
+          .coupons_volume_left .coupons_volume_time{
+              font-size:r(12px);
+              margin-top:r(5px);
+          }
+      }*/
+     
+}

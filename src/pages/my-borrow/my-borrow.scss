@@ -1,0 +1,90 @@
+page-my-borrow {
+    .my_borrow {
+        width: 100%;
+        background: #ededed;
+        height: 100%;
+    }
+    .my_borrow ul {
+        width: 100%;
+        margin: 0 auto;
+    }
+    .my_borrow ul li {
+        width: 100%;
+        height: r(230px);
+        background: #ffffff;
+        padding: r(5px) r(25px) 0 r(25px);
+        margin-top: r(20px);
+        position: relative;
+    }
+    .my_borrow ul li .my_borrow_money {
+        font-size: r(20px);
+        color: #666666;
+        margin-top: r(30px);
+        float: left;
+    }
+    .my_borrow ul li .my_borrow_money:nth-child(2n+1) {
+        width: 50%;
+    }
+    .my_borrow ul li .my_borrow_money:nth-child(2n) {
+        width: 50%;
+    }
+    .my_borrow ul li .my_borrow_money span {
+        font-size: r(20px);
+        color: #323232;
+        margin-left: r(8px);
+        font-family: "华文细黑";
+    }
+    .my_borrow ul li .my_borrow_button1 {
+        float: left;
+        font-size: r(24px);
+        width: r(150px);
+        height: r(40px);
+        background: #ffb710;
+        line-height: r(40px);
+        text-align: center;
+        border-radius: r(30px);
+        margin-top: r(30px);
+        color: #ffffff;
+    }
+    .my_borrow ul li .my_borrow_button2 {
+        float: right;
+        font-size: r(24px);
+        width: r(150px);
+        height: r(40px);
+        background: #cccccc;
+        line-height: r(40px);
+        text-align: center;
+        border-radius: r(30px);
+        margin-top: r(30px);
+        color: #ffffff;
+    }
+    .my_borrow ul li .my_borrow_icon {
+        color: #ee5a50;
+        position: absolute;
+        top: r(-10px);
+        right: r(-4px);
+        font-size: r(50px);
+    }
+    @media screen and (max-width: 353px) {
+        .my_borrow ul li .my_borrow_money:nth-child(2n+1) {
+            width: 50%;
+        }
+        .my_borrow ul li .my_borrow_money:nth-child(2n) {
+            width: 50%;
+        }
+        .my_borrow ul li .my_borrow_money {
+            font-size: r(12px);
+        }
+        .my_borrow ul li .my_borrow_money span {
+            font-size: r(12px);
+            // margin-left:r(4px);
+        }
+    }
+    #borrow {
+        font-size: r(26px);
+        text-align: center;
+        margin-top: r(300px);
+        color: #909090;
+
+    }
+}

@@ -1,0 +1,70 @@
+<!--
+  Generated template for the ManbdingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar hideBackButton>
+    <button navPop><i class="icon iconfont icon-fanhui"></i></button>
+    <ion-title>个人信息</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-row class="box">
+    <dl>
+      <span>姓名</span>
+      <p>{{name}}</p>
+    </dl>
+  </ion-row>
+  <ion-row class="box">
+    <dl>
+      <span>身份证</span>
+      <p>{{cardNo}}</p>
+    </dl>
+  </ion-row>
+  <!--<ion-row class="box">-->
+    <!--<dl>-->
+      <!--<span>最高学历</span>-->
+      <!--<p>{{education}}</p>-->
+    <!--</dl>-->
+  <!--</ion-row>-->
+  <!--<ion-row class="box">-->
+    <!--<dl>-->
+      <!--<span>现居住地</span>-->
+      <!--<p>{{residence}}</p>-->
+    <!--</dl>-->
+  <!--</ion-row>-->
+  <!--<ion-row class="box">-->
+    <!--<dl>-->
+      <!--<span>详细地址</span>-->
+      <!--<p>{{resAddress}}</p>-->
+    <!--</dl>-->
+  <!--</ion-row>-->
+  <!--<ion-row class="box">-->
+    <!--<ion-col col-12 class="xian"> </ion-col>-->
+  <!--</ion-row>-->
+  <!--<ion-row class="box">-->
+    <!--<dl>-->
+      <!--<span>{{oneName}} - {{oneMobile}}</span>-->
+      <!--<p>{{oneType}}</p>-->
+    <!--</dl>-->
+  <!--</ion-row>-->
+  <!--<ion-row class="box">-->
+    <!--<dl>-->
+      <!--<span>{{twoName}} - {{twoMobile}}</span>-->
+      <!--<p>{{twoType}}</p>-->
+    <!--</dl>-->
+  <!--</ion-row>-->
+  <!--<ion-row class="box">-->
+    <!--<dl>-->
+      <!--<span>{{threeName}} - {{threeMobile}}</span>-->
+      <!--<p>{{threeType}}</p>-->
+    <!--</dl>-->
+  <!--</ion-row>-->
+
+</ion-content>

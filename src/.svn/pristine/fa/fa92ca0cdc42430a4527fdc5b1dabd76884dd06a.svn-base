@@ -1,0 +1,102 @@
+<!--
+  Generated template for the RealnamePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar hideBackButton>
+    <button navPop><i class="icon iconfont icon-fanhui"></i></button>
+    <ion-title>绑定银行卡</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div *ngIf='show'>
+    <ion-row class="box_head">
+      <ion-col col-12>
+        <p>以下信息请勿乱填，保存后无法修改<br/> 大数据系统将根据您的真实度给予额度
+        </p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="box">
+      <dl>
+        <span>姓名</span>
+        <h3>{{name}}</h3>
+      </dl>
+    </ion-row>
+    <ion-row class="box">
+      <dl>
+        <span>身份证号</span>
+        <h3>{{certNo}}</h3>
+      </dl>
+    </ion-row>
+    <ion-row class="box">
+      <dl>
+        <span>卡号</span>
+        <input type="text" name="username" value="" placeholder='输入银行卡号' required [(ngModel)]="bankCard">
+      </dl>
+    </ion-row>
+    <ion-row class="box">
+      <dl>
+        <span>银行</span>
+        <select required [(ngModel)]="bankName">
+        <option value="请选择银行">请选择银行</option>
+        <option value="中国工商银行">中国工商银行</option>
+        <option value="中国建设银行">中国建设银行</option>
+        <option value="中国银行">中国银行</option>
+        <option value="中国农业银行">中国农业银行</option>
+        <option value="中国交通银行">中国交通银行</option>
+        <option value="中国邮政储蓄银行">中国邮政储蓄银行</option>
+        <option value="招商银行">招商银行</option>
+        <option value="民生银行">民生银行</option>
+        <option value="兴业银行">兴业银行</option>
+        <option value="平安银行">平安银行</option>
+        <option value="中国光大银行">中国光大银行</option>
+        <option value="浦东发展银行">浦东发展银行</option>
+        <option value="中信银行">中信银行</option>
+      </select>
+        <i class="icon iconfont icon-gengduo" float-right></i>
+      
+      </dl>
+    </ion-row>
+    <ion-row class="box">
+      <dl>
+        <span>预留手机号</span>
+        <input type="text" name="username" value="" placeholder='输入银行预留手机号' required [(ngModel)]="mobile">
+      </dl>
+    </ion-row>
+    <ion-row class="box">
+      <dl>
+        <span>手机验证码</span>
+        <input style="width:40%" type="text" name="username" value="" placeholder='输入验证码' maxlength="6" required [(ngModel)]="yzm">
+        <button ion-button full class="but-num" [disabled]="isGetCode" tappable (click)="getCode()">{{codeText}}</button>
+      </dl>
+    </ion-row>
+    <ion-row class="box_bottom">
+      <!-- <a (click)="save()">保存</a> -->
+      <button ion-button full [disabled]="!butActive" tappable (click)="save()">保存</button>
+
+    </ion-row>
+  </div>
+
+  <div *ngIf='!show'>
+    <ion-row class="box">
+      <dl>
+        <span>银行</span>
+        <h3 style='float:right;margin-right:5%;'>{{bankName}}</h3>
+      </dl>
+    </ion-row>
+    <ion-row class="box">
+      <dl>
+        <span>银行卡号</span>
+        <h3 style='float:right;margin-right:5%;'>{{bankCard}}</h3>
+      </dl>
+    </ion-row>
+  </div>
+
+
+</ion-content>

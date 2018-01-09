@@ -1,0 +1,23 @@
+<!--
+  Generated template for the CheckPhoneResultPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar  hideBackButton>
+    <p class="icon icon-font icon-fanhui" style="width:20%;font-size:30px" tappable (click)="closePage()"></p>
+    <ion-title>运营商认证</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+
+<ion-content padding>
+
+  <div class="phone">您的手机号码: {{mobile}}</div>
+  <div class="photo"></div>
+  <div class="text">认证成功</div>
+</ion-content>

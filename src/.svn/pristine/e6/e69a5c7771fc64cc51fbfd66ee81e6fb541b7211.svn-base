@@ -1,0 +1,66 @@
+<ion-header>
+    <ion-navbar hideBackButton>
+        <button navPop>
+            <i class="icon-fanhui iconfont"></i>
+        </button>
+        <ion-title>还款</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-row class="box0">
+        <ion-col col-12 text-center class="box0_1">
+            待还金额(元)
+        </ion-col>
+        <ion-col col-12 text-center class="box0_2">
+            {{borrow}}
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col col-12 class="xian"> </ion-col>
+    </ion-row>
+    <ion-row class="box1">
+        <ion-col class="box_item left" col-5>
+            按期还款<br><span>还款日将自动还款</span>
+        </ion-col>
+        <ion-col class="box_item right" col-7 text-right>
+            <span>12月22日 123.45元</span> <i class="icon iconfont icon-gengduo"></i>
+        </ion-col>
+
+    </ion-row>
+    <ion-row class="box1">
+        <ion-col class="box_item left" col-5>
+            提前结清<br><span>可提前结清借款</span>
+        </ion-col>
+        <ion-col class="box_item right" col-7 text-right>
+            <i class="icon iconfont icon-gengduo"></i>
+        </ion-col>
+
+    </ion-row>
+    <ion-row>
+        <ion-col col-12 class="xian"> </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col col-12 class="xian"> </ion-col>
+    </ion-row>
+    <ion-row class="box4">
+        <p text-center>还款日到啦，您可等系统自动还款，或手动还款</p>
+    </ion-row>
+
+    <ion-row class="box2">
+        <!--   a标签里面不能有 href="#"，否则会跳回首页  -->
+        <div class="btn" tappable>
+            <a>手动还款</a>
+        </div>
+        <!-- <div class="btn2" tappable (click)="todelay()"><a>延期还款</a> </div>  -->
+        <!-- <div class="btn3"><a>还款遇到问题?</a></div> -->
+        <!-- <p class="btn3">
+            <a tappable>还款遇到问题?</a>
+        </p> -->
+        <p>温馨提示:</p>
+        <p>1、还款日20:00会自动从绑定银行卡划扣，请保持余额充足。</p>
+        <!-- <p>2、若无法按期还款，可提前申请延期还款；</p> -->
+        <!-- <p>3、若已逾期，则无法申请延期还款；</p> -->
+        <p>2、还款日当天除了自动还款，还可以进行手动还款。</p>
+    </ion-row>
+</ion-content>

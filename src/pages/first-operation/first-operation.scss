@@ -1,0 +1,130 @@
+page-first-operation {
+    .operation_box{
+        background:#fff;
+        .phone{
+            width:100%;
+            font-size:r(26px);
+            color:#ee5a50;
+            margin-top:r(32px);
+        }
+        i{
+            font-size:r(30px);
+            width:8%;
+            text-align:center;
+            height:r(85px);
+            line-height:r(85px);
+        }
+        ul{
+            padding:0 5% 0 5%;
+        }
+        ul li{
+            border-bottom:1px solid #ccc;
+            height:r(85px);
+            line-height:r(85px);
+        }
+        ul li:nth-child(1){
+            margin-top:r(65px);
+        }
+        ul li:nth-child(1) .icon_box{
+            height:100%;
+            float:right;
+            width:15%;
+        }
+        ul li:nth-child(1) .icon_box .icon_1{
+            font-size:r(20px);
+            height:100%;
+            float:left;
+        }
+        ul li:nth-child(1) .icon_box .icon_2{
+        font-size:r(20px);
+        height:100%;
+        float:right;
+        }
+        ul li:nth-child(1) input{
+            padding-left:2%;
+            width:75%;
+            font-size:r(30px);
+            border:0;
+            float:left;
+            height:100%;
+        }
+        ul li:nth-child(2){
+            margin-top:r(10px);
+        }
+         ul li:nth-child(2) input{
+            padding-left:2%;
+            width:40%;
+            font-size:r(30px);
+            border:0;
+            float:left;
+            height:100%;
+        }
+        ul li:nth-child(2)  button{
+             width:r(168px);
+             float:right;
+             background:#ffb710;
+             height:r(60px);
+             line-height:r(60px);
+             display:block;
+             border-radius:r(8px);
+             margin-top:r(12.5px);
+        }
+        ul li:nth-child(2)  button span{
+            color:#fff;
+            font-size:r(26px);
+            display:block;
+        }
+        .bottom{
+            width:90%;
+            margin:0 auto;
+            height:r(88px);
+            text-align:center;
+            line-height:r(88px);
+            margin-top:r(60px);
+        }
+        .but{
+            font-size:r(34px);
+            color:#fff;
+            background:#ffb710;
+            height:100%;
+            width:100%;
+            border-radius:r(8px);
+            display:block;
+        }
+
+        .no_mobile{
+            font-size:r(26px);
+            color:black;
+            font-weight:bold;
+            width:100%;
+            text-align:center;
+            margin-top:r(60px);
+        }
+
+        .tip{
+            width:90%;
+            margin:0 auto;
+            padding:0;
+        }
+        .tip li{
+            font-size:r(26px);
+            color:#909090;
+            border:0;
+            height:auto;
+            line-height:r(36px);
+            margin-top:r(10px);
+        }
+        .tip li:nth-child(1){
+            margin-top:r(60px);
+            font-weight: 600;
+            margin-bottom:r(10px);
+        }
+         .tip li span{
+             color:#ffb710;
+         }
+
+        .clear{
+            clear:both;
+        }
+    }
+}

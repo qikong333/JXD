@@ -1,0 +1,54 @@
+page-change-password {
+    ion-row.box1:first-child {
+        // margin-top: r(16px);
+    }
+    ion-row.box1 {
+        min-height: r(60px);
+        border-bottom: r(1px) solid $huied;
+        line-height: r(25px);
+        // padding-bottom: r(20px);
+        // padding-top: r(20px);
+        padding: r(20px) r(5px);
+        ion-col {
+            span {
+                font-size: r(32px)
+            }
+        }
+        input{
+            font-size: r(28px);
+        }
+    }
+    /*ion-row.box1 input.ng-untouched {
+        border-left: r(5px) solid #fff;
+    }*/
+    /*ion-row.box1 .ng-valid[required] {
+        border-left: r(5px) solid $secondary;
+        // border-left: r(5px) solid #fff;
+    }*/
+    /*ion-row.box1 .ng-invalid {
+        border-left: r(5px) solid $danger;
+    }*/
+    ion-row.box2 {
+        padding-top: r(30px)
+    }
+    input {
+        padding: 0 r(20px);
+        height: r(34px);
+        font-size: r(30px);
+        border: none;
+        font-weight: 100;
+        width: 100%;
+    }
+    i {
+        // font-size: r(38px)!important;
+        // color: $hui90;
+    }
+    ion-row.box3 {
+        font-size: r(26px);
+        color: $lan
+    }
+    p{
+        display:inline;
+        color:#ffb710;
+    }
+}

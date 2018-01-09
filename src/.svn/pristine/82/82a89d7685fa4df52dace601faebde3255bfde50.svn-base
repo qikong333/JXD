@@ -1,0 +1,41 @@
+@import '../../theme/base.scss';
+
+page-receept-bank {
+
+    ul {
+        margin-top: r(20px);
+    }
+    li {
+        height: r(96px);
+        padding: 0 r(30px);
+        background-color: #fff;
+        border-bottom: 1px solid $huied;
+
+        i {
+        height: 100%;
+        line-height: r(96px);
+        }
+        i:first-of-type {
+            font-size: r(26px);
+            color: #323232;
+        }
+        i:last-of-type {
+            font-size: r(22px);
+            color: #909090;
+        }
+    }
+
+    .d {
+        padding: r(30px);
+    }
+
+    .box3 {
+        padding: 0 r(30px);
+        font-size: r(26px);
+        color: $hui90;
+    }
+
+
+
+    // ion-row.box1:first-child {
+}

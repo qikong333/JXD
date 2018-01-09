@@ -1,0 +1,364 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams, ActionSheetController, ModalController, AlertController } from 'ionic-angular';
+import { ServiceInterfaceProvider } from '../../providers/service-interface/service-interface';
+import { SERVER_URL } from '../../providers/constants/constants';
+import { NativeServiceProvider } from '../../providers/native-service/native-service';
+
+/**
+ * Generated class for the DataLoanPage page.
+ *
+ * See http://ionicframework.com/docs/components/#navigation for more info
+ * on Ionic pages and navigation.
+ */
+
+@IonicPage({
+  name:'DataLoanPage'
+})
+@Component({
+  selector: 'page-data-loan',
+  templateUrl: 'data-loan.html',
+})
+export class DataLoanPage {
+  public loan:boolean;                            //小额贷，蓝白贷的显示   true是小额贷，false是蓝白贷
+  public max_money: number;                       //最大金额
+  public min_money: number;                       //最小金额
+
+  
+  public saturation:number;                       //借款金额
+  public use_limit:any;                           //用途数组
+  public use_data:any='';                         //用途单个
+  public time_limit:any;                          //期限数组
+  public time_data:any;                           //期限单个
+  public timecode_data:any='';                    //期限单个+yue
+  public huankuan_data:any='请选择';              //还款方式
+  public huankuan_code:number;                   //还款方式要变为1，2，3
+  public bank:any;                                //银行卡
+  public all_code:any;                            //总利息
+  public active: boolean=true;                    //勾选条款
+  public phone:any;                               //用户电话号码
+  public RepayMoney:any;                          //还款金额
+  public interest:any;                            //利息
+  public user_id:any;                             //用户Id
+
+
+   //服务费用
+  public allCharge;                 //综合费用
+  public platform_cost;             //平台费用
+  public information_cost           //信息费用
+  public risk_cost                  //风控费用
+  public account_cost               //账户费用
+  
+
+  public realMoney: number;                       //到帐金额
+  public rate: number = 0.36;                     // 费率(初始化以14天)
+  public coupon: string;                          //优惠券数据
+  public isAgree: boolean;                        //此银行卡是否已签协议(已签则有值,没签则为空)
+
+  private couponID: any = "";                      //优惠券id
+  private isCoupon: number = 2;                    //是否使用优惠卷,1为使用,2为不使用
+  private couponMoney: number = 0;                 //优惠卷抵用金额
+  private isshow;
+
+
+
+  constructor(
+     public navCtrl: NavController,
+     public navParams: NavParams,
+     public actionSheetCtrl:ActionSheetController,
+     public alertCtrl:AlertController,
+     public serve:ServiceInterfaceProvider,
+     public nav:NativeServiceProvider,
+     public modal:ModalController,
+     ) {
+       this.interest = parseFloat((this.saturation * this.time_data * 0.36 / 12).toFixed(2));                  //利息
+       this.RepayMoney = parseFloat((this.saturation + this.interest).toFixed(2));                   //还款金额
+  }
+
+  ionViewWillEnter() {
+      if(this.navParams.get('type')=='XED'){
+          this.loan=true;
+          this.max_money=5000;
+          this.min_money=500;
+          this.saturation=5000;
+      }else{
+          this.loan=false;
+          this.max_money=20000;
+          this.min_money=5000;
+          this.saturation=20000;
+      }
+
+      this.phone=this.navParams.get('phone');                                         //手机号码
+      this.user_id=JSON.parse(localStorage.getItem('user')).userid;                   //用户Id
+      this.all_data();
+  }
+
+  //请求接口
+  all_data(){
+    this.serve.blue_small(localStorage.getItem("userPhone")).map(data => data.json()).subscribe(data => {
+      console.log(data);
+      this.time_limit=data.data.dateChooser.split('-');             //日期
+      this.time_data=this.time_limit[0];
+
+      this.use_limit=data.data.useOfProceeds.split('-');            //个人消费
+      // this.use_data=this.use_limit[0];
+      
+      this.bank= data.data.userBankCard;                 //银行卡
+
+    })
+
+    this.certification();     //资料认证
+  }
+
+  //弹窗
+  showAlert(title) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      buttons: ['确定']
+    });
+    alert.present();
+  }
+
+
+  //监听日期-还款方式
+  changeMoney(id) {
+    this.serve.small_blue(id,this.saturation,this.time_data).map(data => data.json()).subscribe(data => {
+        console.log(data);
+        this.all_code=data.data.averageCapitalPlusInterestInfo.totalInterest;
+    })
+  }
+
+  //监听金额
+  change(){
+    this.type_data();
+  }
+
+    /**
+   * 选择用途
+   */
+  use_dataSelect() {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: '资金用途',
+      buttons: [
+        {
+          text: this.use_limit[0],
+          handler: () => {
+            this.use_data = this.use_limit[0];    //时间
+          }
+        },
+        {
+          text: this.use_limit[1],
+          handler: () => {
+            this.use_data = this.use_limit[1];    //时间
+          }
+        },
+        {
+          text: this.use_limit[2],
+          handler: () => {
+            this.use_data = this.use_limit[2];    //时间
+          }
+        },
+        {
+          text: this.use_limit[3],
+          handler: () => {
+           this.use_data = this.use_limit[3];    //时间
+          }
+        },
+        {
+          text: this.use_limit[4],
+          handler: () => {
+           this.use_data = this.use_limit[4];    //时间
+          }
+        },
+        {
+          text: '取消',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+
+    actionSheet.present();
+  }
+
+   /**
+   * 选择天数
+   */
+  date_dataSelect(){
+    let actionSheet = this.actionSheetCtrl.create({
+      title: '借款期限',
+      buttons: [
+        {
+          text: this.time_limit[0]+'个月',
+          handler: () => {
+            this.time_data = this.time_limit[0];    //时间
+            this.timecode_data=this.time_limit[0]+'个月';
+            this.type_data();
+          }
+        },
+        {
+          text: this.time_limit[1]+'个月',
+          handler: () => {
+            this.time_data = this.time_limit[1];    //时间
+            this.timecode_data=this.time_limit[1]+'个月';
+            this.type_data();
+          }
+        },
+        {
+          text: this.time_limit[2]+'个月',
+          handler: () => {
+            this.time_data = this.time_limit[2];    //时间
+            this.timecode_data=this.time_limit[2]+'个月';
+            this.type_data();
+          }
+        },
+        {
+          text: this.time_limit[3]+'个月',
+          handler: () => {
+           this.time_data = this.time_limit[3];    //时间
+           this.timecode_data=this.time_limit[3]+'个月';
+           this.type_data();
+          }
+        },
+        {
+          text: this.time_limit[4]+'个月',
+          handler: () => {
+           this.time_data = this.time_limit[4];    //时间
+           this.timecode_data=this.time_limit[4]+'个月';
+           this.type_data();
+          }
+        },
+        {
+          text: this.time_limit[5]+'个月',
+          handler: () => {
+            this.time_data = this.time_limit[5];    //时间
+            this.timecode_data=this.time_limit[5]+'个月';
+            this.type_data();
+          }
+        },
+        {
+          text: '取消',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+
+    actionSheet.present();
+  }
+
+  //判断什么type类型 先息后本，还是等额本息
+  type_data(){
+    if(this.huankuan_data=='请选择'){
+      this.all_code='';
+    }else if(this.huankuan_data=='先息后本'){
+       this.changeMoney(1);
+    }else if(this.huankuan_data=='等额本息'){
+       this.changeMoney(2);
+    }else if(this.huankuan_data=='等额本金'){
+       this.changeMoney(3);
+    }
+  }
+
+
+   /**
+   * 还款方式
+   */
+  repay_dataSelect(){
+      if(this.timecode_data==''){
+        this.showAlert('请填写借款期限');
+        return;
+      }
+      let profileModal =this.modal.create('LoanMeansPage',{ money:this.saturation,date:this.time_data,huankuan_data:this.huankuan_data});
+      profileModal.present();
+      profileModal.onDidDismiss(data => {
+        console.log(data.type1);
+        console.log(data.type2);
+        console.log(data.type3);
+        if(data.type1){
+          this.huankuan_data='先息后本';
+          this.huankuan_code=1;
+        }else if(data.type2){
+          this.huankuan_data='等额本息';
+          this.huankuan_code=2;
+        }else if(data.type3){
+          this.huankuan_data='等额本金';
+          this.huankuan_code=3;
+        }else{
+          this.huankuan_data='请选择';
+        }
+
+        this.type_data();
+      });
+  }
+
+
+  //是否同意选项
+  agree() {
+    this.active = !this.active;
+  }
+
+    /**
+   * 平台服务协议
+   */
+  showAgreement(type) {
+    let date = new Date();
+    let t = date.getTime();
+    // let repayDay = t + (this.time_data - 1) * 24 * 60 * 60 * 1000;
+    let repayDay = t + (this.time_data * 30 - 1) * 24 * 60 * 60 * 1000;
+    let url = SERVER_URL + `/cf_main/cf/agreement?loginName=${this.phone}&type=${type}&periods=1&beginDay=${t}&repaymentDay=${repayDay}&repaymentMoney=${this.RepayMoney}&principal=${this.saturation}&interests=${this.interest}&platformMoney=${this.platform_cost}&accountMoney=${this.account_cost}&riskMoney=${this.risk_cost}&informationMoney=${this.information_cost}`
+    this.nav.themeable(url);
+  }
+
+    /**
+   * 展示协议
+   */
+  showAgreement2(type) {
+    this.nav.themeable(SERVER_URL + `/cf_main/cf/agreement?loginName=${this.phone}&type=${type}`);
+  }
+
+    /**
+   * 申请借款
+   */
+  toVerification(obj) {
+    if(this.use_data==''){
+      this.showAlert('请填写资金用途');
+    }else if(this.timecode_data==''){
+      this.showAlert('请填写借款期限');
+    }else if(this.huankuan_data=='请选择'){
+       this.showAlert('请填写还款方式');
+    }else{
+      this.navCtrl.push('VerificationPage',{page:'loan',val_1:this.user_id,val_2:this.use_data,val_3:this.saturation,val_4:this.time_data,val_5:this.huankuan_code,val_6:this.all_code});
+      // this.serve.loan_SB(this.user_id,this.use_data,this.saturation,this.time_data,this.huankuan_code,this.all_code).map(data => data.json()).subscribe(data => {
+      //     console.log(data);
+      //     if(data.errorCode=="00000"){
+      //       this.showAlert(data.msg);
+      //         let alert = this.alertCtrl.create({
+      //           title: data.msg,
+      //           buttons: [
+      //             {
+      //               text: '确定',
+      //               handler: () => {
+      //                 this.navCtrl.push('AuditPage');
+      //               }
+      //             }
+      //           ]
+      //         });
+      //         alert.present();
+      //     }else{
+      //       this.showAlert(data.msg);
+      //     }
+      // })
+    }
+  }
+
+  certification(){
+    this.serve.loan_certification(localStorage.getItem("userPhone")).map(data => data.json()).subscribe(data => {
+        console.log(data);
+    })
+  }
+
+}

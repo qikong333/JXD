@@ -1,0 +1,88 @@
+<ion-header>
+
+    <ion-navbar hideBackButton>
+        <button tappable (click)="closePage()" style="font-weight:100">取消</button>
+        <ion-title>上传证件</ion-title>
+
+    </ion-navbar>
+
+</ion-header>
+<ion-content>
+
+    <div class="progress">
+        <div class="line">
+            <div class="o1">1</div>
+            <p class="l1"></p>
+            <div class="o2">2</div>
+            <p class="l2"></p>
+            <div class="o3">3</div>
+            <p class="l3"></p>
+            <div class="o4">4</div>
+        </div>
+        <div class="text">
+            <p class="t1">个人信息</p>
+            <p class="t2">上传证件</p>
+            <p class="t3">绑银行卡</p>
+            <p class="t4">身份验证</p>
+        </div>
+    </div>
+
+    <div class="main">
+        <p class="p1">请上传以下资料，信息仅用于马蜂借款身份认证</p>
+        <p class="p2">身份证</p>
+        <div class="boxs">
+            <label for="d1">
+            <div class="box1" float-left>
+                <input type="file" id="d1" style="display:none;"  name="file1" #ngfile1 tappable (click)="aa()" (change)="uploadAPI($event,1)" accept="image/*" capture="camera"/>
+                <p class="icon iconfont icon-jia pi" *ngIf="ngfile1.files.length==0" ></p>
+                <p class="pt"  *ngIf="ngfile1.files.length==0" >身份证头像面</p>
+                <img [src]="fileSrc1" alt=""  *ngIf="ngfile1.files.length!=0" >
+            </div>
+            </label>
+
+            <label for="d2">
+            <div class="box2" float-right>
+               <input type="file" id="d2" style="display:none;"  name="file2" #ngfile2 (change)="uploadAPI($event,2)" accept="image/*" capture="camera"/>
+                 <p class="icon iconfont icon-jia pi"  *ngIf="ngfile2.files.length==0" ></p>
+                 <p class="pt" *ngIf="ngfile2.files.length==0" >身份证国徽面</p>
+                 <img [src]="fileSrc2" alt="" *ngIf="ngfile2.files.length!=0" >
+            </div>
+            </label>
+
+            <label for="d3"> 
+            <div class="box3" float-left>
+                <input type="file" id="d3" style="display:none;"  name="file3" #ngfile3 (change)="uploadAPI($event,3)" accept="image/*" capture="camera"/>
+                <p class="icon iconfont icon-jia pi" *ngIf="ngfile3.files.length==0" ></p>
+                <p class="pt" *ngIf="ngfile3.files.length==0" >手持身份证</p>
+                <img [src]="fileSrc3" alt="" *ngIf="ngfile3.files.length!=0" >
+             </div>
+            </label>
+
+        </div>
+    </div>
+
+    <div class="main2">
+        <p>实时头像</p>
+        <label for="d4"> 
+        <div class="box">
+            <input type="file" id="d4" style="display:none;"  name="file4" #ngfile4 (change)="uploadAPI($event,4)" accept="image/*" capture="camera"/>
+            <p class="icon iconfont icon-jia pi" *ngIf="ngfile4.files.length==0" ></p>
+            <img [src]="fileSrc4" alt="" *ngIf="ngfile4.files.length!=0" >
+        </div>
+        </label>
+    </div>
+
+
+
+    <!-- <input id="fileId1" type="file" accept="image/png,image/gif" name="file" /> 
+        <input type="file" >1
+        <input type="file" >2
+        <input type="file" >3
+        <input type="file" >4
+        <input type="submit" value="Submit" />5  -->
+    <div class="main3">
+        <button class="but" ion-button full tappable (click)='submitData(ngfile1.files,ngfile2.files,ngfile3.files,ngfile4.files)'>上传证件</button>
+    </div>
+    <!-- </form> -->
+
+</ion-content>

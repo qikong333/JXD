@@ -1,0 +1,46 @@
+page-audit {
+    .audit_box {
+        width: 100%;
+        height: 100%;
+        background: #ededed;
+    }
+    .audit_box .audit_box_icon {
+        font-size: r(128px);
+        color: #cccccc;
+        margin-top: r(60px);
+        margin-bottom: r(25px);
+        height: r(136px);
+        line-height: r(136px);
+    }
+    .audit_box .audit_box_title {
+        font-size: r(34px);
+        color: #323232;
+    }
+    .audit_box .audit_box_content {
+        font-size: r(26px);
+        color: #666666;
+        line-height: r(50px);
+    }
+    .audit_box .audit_box_button {
+        width: 90%;
+        margin: 0 auto;
+        border-radius: r(8px);
+        font-size: r(34px);
+        color: #ffffff;
+        background: $lan;
+        margin-top: r(65px);
+        margin-bottom: r(40px);
+        height: r(88px);
+        line-height: r(88px);
+    }
+    .loan{
+        color: $lan;
+        font-size: r(30px);
+    }
+    .audit_box .audit_box_footer {
+        width: 30%;
+        margin: 0 auto;
+        font-size: r(34px);
+        color: $lan;
+    }
+}

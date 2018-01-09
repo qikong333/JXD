@@ -1,0 +1,64 @@
+@import '../../theme/base.scss';
+page-delay-result {
+    .all {
+        background: #ededed;
+    }
+    .main {
+        // background-color: #ededed;
+        padding: r(60px) r(30px);
+    }
+    .lo {
+        text-align: center;
+        // margin-bottom: r(30px)
+    }
+    .lo i {
+        font-size: r(140px);
+        color: $lan;
+    }
+    .main li {
+        margin-top: r(30px);
+        overflow: hidden;
+    }
+    .main .li1 {
+        margin-top: 0;
+        font-size: r(34px);
+        color: #323232;
+        text-align: center;
+    }
+    .li2 {
+        text-align: center;
+        font-size: r(26px);
+        color: #666666;
+    }
+    .main li p:nth-child(1) {
+        font-size: r(24px);
+        color: #666666;
+    }
+    .main li p:nth-child(2) {
+        font-size: r(26px);
+        color: #323232;
+    }
+    .main .bottom {
+        // height: r(277px);
+        background-color: $huied;
+        // padding-top: r(90px);
+        // padding-top: r(60px);
+    }
+    .main .bottom .but {
+        background-color: $primary;
+        color: #fff;
+        text-align: center;
+        height: r(88px);
+        width: 100%;
+        font-size: r(34px);
+        line-height: r(88px);
+        border-radius: r(10px);
+        margin-bottom: r(60px);
+    }
+    .success {
+        padding-bottom: r(90px);
+    }
+    .fail {
+        padding-bottom: r(140px);
+    }
+}

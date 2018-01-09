@@ -1,0 +1,56 @@
+<!--
+  Generated template for the IdentifyPhotoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <!--隐藏ionic自带的返回标签-->
+    <ion-navbar hideBackButton>
+        <!--从新定义自己的返回标签-->
+        <button navPop><i class="icon iconfont icon-fanhui"></i></button>
+        <ion-title>身份信息</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content class="photo_box">
+    <div class="title1" text-center>仅用于全国公民身份查询中心核实身份</div>
+    <div class="title2" text-center>请核对自动识别结果，如有误请更正</div>
+
+    <!--正面图  -->
+     <div *ngIf='active == 1 || active == 11'> 
+        <div class="content_box">
+            <p class="top">人像面认证</p>
+            <div class="img1" tappable (click)='toPhoto1()'><img src="assets/images/video_4.png" alt=""></div>
+            <ul>
+                <li><span style="width:30%;display:inline-block;">姓名</span><span>{{name}}</span></li>
+                <li><span style="width:30%;display:inline-block;">身份证号</span><span>{{idNumber}}</span></li>
+            </ul>
+            <div class="clear"></div>
+            <!-- <div class="img2" text-center><img src="assets/images/video_2.png" alt="" (click)='downPhoto()'></div> -->
+            <div class="img2" text-center><img src="assets/images/video_2.png" alt="" tappable (click)='goPhoto2()'></div>
+            <p text-center>点击拍摄识别背面<span> 国徽面</span></p>
+            <button ion-button full tappable (click)='goPhoto2()'>下一步</button>
+            <!-- <button ion-button full (click)='goPhoto2()' [disabled]="!button1">下一步</button> -->
+        </div>
+    </div>
+
+    <!--反面图  -->
+    <div *ngIf='active == 2 || active == 22'>
+        <div class="content_box">
+            <p class="top">国徽面认证</p>
+            <div class="img1" tappable (click)='goPhoto2()'><img src="assets/images/video_5.png" alt=""></div>
+            <ul>
+                <li><span style="width:30%;display:inline-block;">签发机关</span><span>{{address}}</span></li>
+                <li><span style="width:30%;display:inline-block;">有效期限</span><span>{{time}}</span></li>
+            </ul>
+            <div class="clear"></div>
+            <div class="img2" text-center><img src="assets/images/video_3.png" alt="" tappable (click)='goVideo()'></div>
+            <p text-center>点击拍摄开始<span> 视频认证</span></p>
+            <button ion-button full tappable (click)='goVideo()'>下一步</button>
+            <!-- <button ion-button full (click)='goVideo()' [disabled]="!button2">下一步</button> -->
+
+        </div>
+    </div>
+</ion-content>

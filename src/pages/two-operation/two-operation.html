@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-navbar hideBackButton>
+        <button navPop><i class="icon-fanhui iconfont"></i></button>
+        <ion-title>运营商二次鉴权</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="operation_twobox">
+    <div text-center class="phone">当前手机号码：{{mobile}}</div>
+    <ul>
+        <li>
+            <i class="icon iconfont icon-duanxin" float-left></i>
+            <input type="number" name="dynamic_code1" [(ngModel)]="dynamic_code1" required placeholder="登录动态码" float-left>
+            <button [disabled]='sms' tappable (click)='core_serve()'><span>{{codeText}}</span></button>
+            <div class="clear"></div>
+        </li>
+    </ul>
+    <div class="bottom">
+        <button [disabled]='login_state' class="but" tappable (click)="save()">确认</button>
+    </div>
+</ion-content>

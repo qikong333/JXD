@@ -1,0 +1,47 @@
+<ion-header>
+
+    <ion-navbar hideBackButton>
+        <button navPop><i class="icon-fanhui iconfont"></i></button>
+        <ion-title>身份信息</ion-title>
+
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <!-- 没有上传信息 -->
+    <ion-row class="box2" *ngIf="!isActive">
+        <ion-col col-12 class="box2_1">
+            <img src="assets/images/papers5.png" alt="">
+        </ion-col>
+        <ion-col col-12 class="box2_2">
+            <a [href]="dataUrl" ion-button full tappable (click)="tis()" target="_blank">开始验证</a>
+        </ion-col>
+        <ion-col text-center class="box2_3">
+            请在 3G/4G/WiFi 环境下使用
+        </ion-col>
+    </ion-row>
+
+    <!-- 已经上传信息 -->
+    <ion-row class="box3" *ngIf="isActive">
+        <ion-col col-12>
+            <p>身份证人像面</p>
+            <img src="assets/images/papers1.png" alt="">
+        </ion-col>
+        <ion-col col-12>
+            <p>身份证国徽面</p>
+            <img src="assets/images/papers2.png" alt="">
+        </ion-col>
+        <ion-col col-12>
+            <p>视频认证</p>
+            <img src="assets/images/papers4.png" alt="">
+        </ion-col>
+
+    </ion-row>
+    <!-- <ion-row class="box3" *ngIf="isActive">
+        <button type="submit" ion-button full navPop>保存</button>
+    </ion-row> -->
+
+
+</ion-content>

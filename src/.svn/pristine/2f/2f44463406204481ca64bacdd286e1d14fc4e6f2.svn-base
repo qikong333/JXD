@@ -1,0 +1,150 @@
+<ion-header>
+    <ion-navbar hideBackButton>
+        <button navPop><i class="icon-fanhui iconfont"></i></button>
+        <ion-title>工作信息</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content class='job_box'>
+
+    <!--未填写数据的工作信息-->
+
+    <div class="top">
+        <p>以下信息请勿乱填，保存后无法修改 </p>
+        <p>大数据系统将根据您的真实度给予额度</p>
+    </div>
+
+    <div class="lis">
+        <ul>
+            <li>
+                <i float-left>公司名称</i>
+                <i float-right></i>
+                <input type="text" name="company_name" value="" placeholder='请输入' required [(ngModel)]="company_name">
+            </li>
+            <li>
+                <i float-left>公司地址</i>
+                <i class="icon iconfont icon-gengduo" float-right></i>
+                <!--<i float-right></i>-->
+                <!-- <ion-label for='city'>
+                    </ion-label>  -->
+                <ion-item id="city">
+                    <city-picker item-content [cancelText]="'取消'" [doneText]="'完成'" [separator]="'-'" [citiesData]="cityData" [(ngModel)]='cityName'
+                        (ionChange)="cityChange($event)">
+                    </city-picker>
+                </ion-item>
+            </li>
+            <li>
+                <i float-left>详细地址</i>
+                <i float-right></i>
+                <input type="text" name="company_address" value="" placeholder='例如：××路××号××小区' required [(ngModel)]="company_address">
+
+            </li>
+
+
+            <li>
+                <i float-left>公司电话</i>
+                <i float-right></i>
+                <input type="text" name="company_phone" value="" placeholder='请输入' required [(ngModel)]="company_phone">
+            </li>
+            <li>
+                <i float-left>入职时间</i>
+                <i class="icon iconfont icon-gengduo" float-right></i>
+                <p class="showResult">{{company_time}}</p>
+                <ion-item class="chooseResult">
+                    <!-- <ion-label>入职时间</ion-label> -->
+                    <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="company_time" max={{today}} required cancelText="取消" doneText="确定"></ion-datetime>
+                </ion-item>
+            </li>
+            <li>
+                <i float-left>月薪收入</i>
+                <i class="icon iconfont icon-gengduo" float-right></i>
+                <select dir="rtl" name="company_income" required [(ngModel)]="company_income">
+                          <option value="" disabled>未填写</option>
+                          <option value="0">2000以内</option>
+                          <option value="1">2000-3000</option>
+                          <option value="2">3000-5000</option>
+                          <option value="3">5000-8000</option>
+                          <option value="4">8000-12000</option>
+                          <option value="5">12000以上</option>
+                      </select>
+            </li>
+            <li>
+                <i float-left>发薪日</i>
+                <i class="icon iconfont icon-gengduo" float-right></i>
+                <p class="showResult">{{showDay}}</p>
+                <ion-item class="chooseResult">
+                    <!-- <ion-label>发薪日</ion-label> -->
+                    <!-- <ion-datetime displayFormat="D" [(ngModel)]="company_payday" (ionChange)="company_payday = $event.day" required cancelText="取消" doneText="确定"></ion-datetime>  -->
+                    <ion-datetime displayFormat="D" pickerFormat="D" (ionChange)="getDay($event)" required cancelText="取消" doneText="确定"></ion-datetime>
+                </ion-item>
+            </li>
+            <li>
+                <i float-left>所在行业</i>
+                <i class="icon iconfont icon-gengduo" float-right></i>
+                <select dir="rtl" name="company_industry" required [(ngModel)]="company_industry">
+                        <option value="" disabled>未填写</option>
+                        <option value="0">金融业</option>
+                        <option value="1">公务员、事业单位相关</option>
+                        <option value="2">农、林、牧、渔、矿业</option>
+                        <option value="3">制造业</option>
+                        <option value="4">建筑业、房地产业</option>
+                        <option value="5">交通运输、仓储和邮政</option>
+                        <option value="6">信息传输、计算机服务和软件业</option>
+                        <option value="7">批发和零售</option>
+                        <option value="8">住宿和餐饮业</option>
+                        <option value="9">教育、文化、体育和娱乐业</option>
+                        <option value="10">其它行业</option>
+                    </select>
+            </li>
+        </ul>
+    </div>
+
+    <div class="bottom">
+        <button ion-button full tappable (click)="save()" [disabled]='!butActive'>保 存</button>
+
+    </div>
+
+
+    <!--已保存好数据的工作信息-->
+    <!--<div *ngIf="no_data">
+          <div class="lis">
+            <ul>
+                <li>
+                    <i float-left>公司名称</i>
+                    <i float-right>{{company_name}}</i>
+                </li>
+                <li>
+                    <i float-left>公司地址</i>
+                   <i float-right>{{company_name}}</i>
+                </li>
+                 <li>
+                    <i float-left>详细地址</i>
+                    <i float-right>{{company_address}}</i>
+                </li>
+                 <li>
+                    <i float-left>公司电话</i>
+                    <i float-right>{{company_phone}}</i>
+                </li>
+                 <li>
+                    <i float-left>入职时间</i>
+                    <i float-right>{{company_time}}</i>
+                </li>
+                 <li>
+                    <i float-left>月薪收入</i>
+                    <i float-right>{{company_income}}</i>
+                </li>
+                <li>
+                    <i float-left>发薪日</i>
+                    <i float-right>{{company_payday}}</i>
+                </li>
+                 <li>
+                    <i float-left>所在行业</i>
+                    <i float-right>{{company_industry}</i>
+                </li>
+            </ul>
+        </div>
+    </div>-->
+
+
+</ion-content>

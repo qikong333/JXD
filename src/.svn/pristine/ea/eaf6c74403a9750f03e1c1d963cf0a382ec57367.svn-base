@@ -1,0 +1,44 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>添加还款银行卡</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-row class="box">
+        <dl>
+            <span>银行卡</span>
+            <h3>马大哈</h3>
+        </dl>
+
+        <dl>
+            <span>卡号</span>
+            <input type="number" name="" value="" placeholder='输入银行卡号'>
+        </dl>
+
+        <dl>
+            <span>银行</span>
+            <i class="icon iconfont icon-gengduo"></i>
+            <select dir="rtl" class="smalltitle">
+        <option>请选择银行</option>
+        <option>工商银行</option>
+        <option>农业银行</option>
+      </select>
+        </dl>
+
+        <dl>
+            <span>预留手机号</span>
+            <input type="number" name="" value="" placeholder='输入银行预留手机号'>
+        </dl>
+
+        <dl>
+            <span>手机验证码</span>
+            <input class="small" type="number" name="" value="" placeholder='输入验证码'>
+            <button class="yzcode" (click)="showTuCode(refForm.value.username)" [disabled]="isGetCode">获取验证码</button>
+        </dl>
+    </ion-row>
+    <ion-row class="box2">
+        <div class="btn"><a href="#">确认绑卡</a> </div>
+    </ion-row>
+
+</ion-content>

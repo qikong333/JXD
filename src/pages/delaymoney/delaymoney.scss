@@ -1,0 +1,25 @@
+page-delaymoney {
+    .delaymoney{
+        background:#ededed;
+    }
+    .delaymoney ul{
+        margin-top:r(20px);
+        background:#ffffff;
+    }
+    .delaymoney ul li{
+        height:r(96px);
+        line-height:r(96px);
+        padding:0 4.5% 0 4.5%;
+        border-bottom:r(1px) solid #ededed; 
+    }
+    .delaymoney ul li span:nth-child(1){
+        float:left;
+        font-size:r(26px);
+        color:#323232;
+    }
+    .delaymoney ul li span:nth-child(2){
+        float:right;
+        font-size:r(22px);
+        color:#909090;
+    }
+}

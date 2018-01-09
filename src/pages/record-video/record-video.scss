@@ -1,0 +1,138 @@
+page-record-video {
+  .video_box {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+
+    .video_bigbox {
+      width: 80%;
+      margin: r(60px) auto 0;
+      background: #f0f8ff;
+      border-radius: r(15px);
+      box-shadow: 0 0 0 #e5e5e5;
+      height: r(480px);
+
+      .img_left {
+        float: left;
+        width: 30%;
+        margin: r(20px) 15% 0 5%;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+
+      ul {
+        width: 50%;
+        float: left;
+        padding-left: 0;
+        margin-top: r(36px);
+      }
+
+      ul li {
+        font-size: r(24px);
+        color: #666666;
+        list-style-type: disc;
+        margin-top: r(20px);
+      }
+    }
+
+    .p_video {
+      font-size: r(26px);
+      color: #6f7070;
+      text-align: center;
+      /*margin-top:r(35px);*/
+    }
+
+    .title_video {
+      padding-left: r(30px);
+      width: 100%;
+      font-size: r(120px);
+      font-weight: 600;
+      color: #ffb710;
+      // font-family:'宋体';
+      text-align: center;
+
+      p {
+        letter-spacing: r(30px);
+      }
+    }
+
+    .view_video {
+      width: 80%;
+      font-size: r(24px);
+      color: #666666;
+      margin: r(40px) auto 0;
+      text-align: right;
+
+      span {
+        color: #ffb710;
+      }
+    }
+
+    .go_video {
+      width: 90%;
+      margin: 0 auto;
+      display: block;
+      height: r(88px);
+      line-height: r(88px);
+      background: #ffb710;
+      border-radius: r(8px);
+      margin-top: r(50px);
+
+      span {
+        display: block;
+        font-size: r(34px);
+        color: #fff;
+      }
+    }
+
+    .out_video {
+      width: 90%;
+      margin: 0 auto;
+      display: block;
+      height: r(88px);
+      line-height: r(88px);
+      background: #ffffff;
+      border-radius: r(8px);
+      border: r(1px) solid #cccccc;
+      margin-top: r(30px);
+      margin-bottom: r(130px);
+
+      span {
+        display: block;
+        font-size: r(34px);
+        color: #323232;
+      }
+    }
+
+    clear {
+      clear: both;
+    }
+
+    .success {
+      .box1 {
+        background: #ffb710;
+        padding: r(170px) 0;
+        // height: r(570px);
+        .box2 {
+          background: #ededed;
+          width: r(190px);
+          height: r(230px);
+          margin: 0 auto;
+        }
+      }
+    p {
+        font-size: r(30px);
+        color: #666666;
+        text-align: center;
+        margin: r(90px) 0 r(60px) 0;
+    }
+    .but {
+        padding: 0 r(30px) r(200px) r(30px);
+    }
+    }
+
+  }
+}

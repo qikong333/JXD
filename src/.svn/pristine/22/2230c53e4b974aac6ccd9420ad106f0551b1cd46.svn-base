@@ -1,0 +1,73 @@
+@import '../../theme/base.scss';
+page-setup {
+    .xian {
+        height: r(20px);
+        background-color: $huied;
+    }
+    .box {
+        dl {
+            width: 100%;
+            height: r(96px);
+            float: left;
+            border-bottom: solid 1px #ededed;
+        }
+        span {
+            color: #323232;
+            font-size: r(26px);
+            float: left;
+            height: r(96px);
+            line-height: r(96px);
+            margin-left: 5%;
+        }
+        i {
+            float: right;
+            color: #909090;
+            font-size: r(22px);
+            height: r(96px);
+            line-height: r(96px);
+            margin-right: 5%;
+        }
+        b {
+            float: left;
+            color: #5977ef;
+            font-size: r(22px);
+            height: r(96px);
+            line-height: r(96px);
+        }
+        p {
+            color: #909090;
+            font-size: r(22px);
+            float: right;
+            margin-right: r(5px);
+            height: r(96px);
+            line-height: r(96px);
+        }
+    }
+    .box2 {
+        width: 100%;
+        float: left;
+        height: 100%;
+        background-color: #ededed;
+        .btn {
+            width: 100%;
+            float: left;
+            margin-top: r(60px);
+            a {
+                width: 90%;
+                margin: 0 5%;
+                float: left;
+                background-color: $lan;
+                height: r(89px);
+                line-height: r(89px);
+                text-align: center;
+                color: #fff;
+                font-size: r(34px);
+                border-radius: r(8px);
+                margin-bottom: r(30px);
+            }
+        }
+    }
+    .clear {
+        clear: both;
+    }
+}

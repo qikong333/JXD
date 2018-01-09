@@ -1,0 +1,73 @@
+page-repayment2-fordata {
+    .scroll-content {
+        background: #ededed;
+    }
+    .xian {
+        height: r(20px);
+        background-color: $huied;
+    }
+    .box0 {
+        padding-top: r(30px);
+        height: r(130px);
+        background: #fff;
+        .box0_1 {
+            font-weight: 600;
+            display: block;
+            padding: 0;
+            font-size: r(30px);
+            color: #ee5a50;
+        }
+        .box0_2 {
+            display: block;
+            padding: 0;
+            font-size: r(24px);
+        }
+    }
+    .box1 {
+        background: #fff;
+        padding: 0 15px;
+        height: r(96px);
+        line-height: r(96px);
+        border-top: r(1px) solid #ededed;
+        ion-col:nth-child(1) {
+            font-size: r(26px);
+        }
+        ion-col:nth-child(2) {
+            font-size: r(22px);
+        }
+    }
+    .box2 {
+        background: #fff;
+        padding: 15px r(20px);
+        border-bottom: r(1px) solid #ededed;
+        .box2_1 {
+            padding: 0;
+            font-size: r(26px);
+            span {
+                background: #ffb710;
+                color: #fff;
+                margin-left: 15px;
+                font-size: r(22px);
+                padding: r(4px) r(8px);
+                border-radius: r(8px);
+            }
+        }
+        .box2_2 {
+            padding: 0;
+            color: #ffb710;
+            font-size: r(34px);
+        }
+        .box2_3 {
+            padding: 0;
+            font-size: r(22px);
+            color: #909090;
+        }
+    }
+}
+
+.Repayment2FordataPageFooter {
+    background: #ededed;
+    button {
+        margin: 0;
+    }
+}

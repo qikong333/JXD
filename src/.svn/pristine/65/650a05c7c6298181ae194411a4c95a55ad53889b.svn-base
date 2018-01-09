@@ -1,0 +1,110 @@
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar hideBackButton>
+        <ion-title>马蜂钱包</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    
+    <!--下拉刷新-->
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content >
+        </ion-refresher-content>
+    </ion-refresher>
+
+    <ion-row class="box1">
+    </ion-row>
+
+    <!--链接失败显示-->
+    <ion-row *ngIf="boxState == 10">
+        <div class="false_box">
+            <i class="icon iconfont icon-xitong_duankailianjie"></i>
+            <span>连接失败</span>
+            <p>请检查您的手机是否联网</p>
+            <div class="false_btn">
+                <a tappable (click)='reload()'>重新加载</a>
+            </div>
+        </div>
+    </ion-row>
+
+    <div *ngIf="boxState != 10">
+
+        <ion-row>
+            <ion-col col-12 style="padding-left:0;padding-right:0;">
+                <div class="money">
+                    <h3>申请借款额度</h3>
+                    <!-- <div class="text">{{saturation | number:'1.0-0'}}<i>元</i></div> -->
+                    <div class="text">{{saturation | mfqbNum:'0'}}<i>元</i>
+                    </div>
+                </div>
+                <div class="boxMoney">
+                    <ion-range [min]="min_money" [max]="max_money" step='100' [(ngModel)]="saturation" color="secondary" (ionChange)="changeMoney()">
+                    </ion-range>
+                </div>
+
+                <div>
+                    <div class="jk_data" tappable (click)="dataSelect()">
+                        <h3>借款期限</h3>
+                        <i class="icon iconfont icon-gengduo"></i>
+                        <h2>{{time_limit}}天</h2>
+                    </div>
+                    <div class="jk_data">
+                        <h3>到帐金额</h3>
+                        <i></i>
+                        <!-- <h2>{{realMoney | number:'1.2-2'}}元</h2> -->
+                        <h2>{{realMoney | mfqbNum:'2'}}元</h2>
+                    </div>
+                    <div class="jk_data">
+                        <h3>综合费用</h3>
+                        <p class="icon iconfont icon-wenhao" tappable (click)='showDetail()'></p>
+                        <i></i>
+                        <!-- <h2>{{serviceMoney | number:'1.2-2'}}元</h2> -->
+                        <h2>{{serviceMoney | mfqbNum:'2'}}元</h2>
+                    </div>
+                    <div class="jk_btn" tappable (click)="toLoan()">
+                        <a>申请借款</a>
+                    </div>
+                </div>
+
+            </ion-col>
+        </ion-row>
+
+
+        <ion-row>
+            <ion-col col-12 class="xian"> </ion-col>
+        </ion-row>
+
+
+        <ion-row>
+            <ion-col col-4 class="help" on-tap="go_one()">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-guanyuwomen1"></use>
+                </svg>
+                <p>关于我们</p>
+            </ion-col>
+            <ion-col col-4 class="help" on-tap="go_two()">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-bangzhuzhongxin2"></use>
+                </svg>
+                <p>帮助中心</p>
+            </ion-col>
+            <ion-col col-4 class="help" on-tap="go_three()">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-xinshoubidu1"></use>
+                </svg>
+                <p>新手必读</p>
+            </ion-col>
+        </ion-row>
+    </div>
+
+
+</ion-content>

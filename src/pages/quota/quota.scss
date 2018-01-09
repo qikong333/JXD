@@ -1,0 +1,184 @@
+page-quota {
+    .disabled {
+        background: #DDDDDD
+    }
+    .box1 {
+        background: url(../assets/images/bg.png) no-repeat #ededed;
+        background-position: top center;
+        height: r(370px);
+        text-align: center;
+        background-size: 100% 100%;
+        dl {
+            width: 100%;
+            position: absolute;
+            bottom: r(0px);
+            background-color: #000;
+            opacity: 0.6;
+            color: #fff;
+            text-align: center;
+            font-size: 18px;
+            left: 0;
+            height: r(60px);
+            line-height: r(60px);
+        }
+    }
+    .circle {
+        width: r(300px);
+        height: r(300px);
+        display: inline-block;
+        background-color: rgba(0, 0, 0, 0.4);
+        border-radius: r(300px);
+        margin-top: r(30px);
+        .small {
+            font-size: r(35px) !important;
+        }
+        ul {
+            color: #fff;
+            width: 94%;
+            margin: r(37px) 3%;
+            display: inline-block;
+            h3 {
+                font-size: r(30px);
+                width: 100%;
+                float: left;
+                margin-top: r(-2px) !important;
+            }
+            span {
+                font-size: r(48px);
+                margin-top: r(20px);
+                padding-bottom: r(20px);
+                width: 100%;
+                float: left;
+            }
+            .limit {
+                font-size: r(90px);
+                padding: 0;
+                margin: 0;
+                height: r(120px);
+            }
+            p {
+                font-size: r(28px);
+                border-top: solid r(2px) #fff;
+                padding-top: r(20px);
+                width: 100%;
+                float: left;
+                color: $lan;
+            }
+        }
+        .repay {
+            height: 100%;
+            margin: 0;
+            line-height: r(230px);
+        }
+        .overdue {
+            span {
+                margin-top: r(70px);
+                height: r(120px);
+            }
+            div {
+                font-size: r(24px);
+            }
+        }
+    }
+    .box2 {
+        width: 100%;
+        float: left;
+        background-color: #ededed;
+        height: r(118px);
+        line-height:r(118px);
+        span {
+            float: left;
+            margin-left: 5%;
+            color: #323232;
+            font-size: r(30px);
+            width:29%;
+            height:100%;
+            /*line-height: r(130px);*/
+        }
+        p {
+            float: left;
+            margin-right: 5%;
+            color: #666666;
+            font-size: r(22px);
+            width:61%;
+            text-align:right;
+            height:100%;
+            /*line-height: r(130px);*/
+        }
+    }
+    .box {
+        width: 100%;
+        float: left;
+        dl {
+            width: 100%;
+            height: r(96px);
+            float: left;
+            border-bottom: solid 1px #ededed;
+        }
+        span {
+            color: #323232;
+            font-size: r(26px);
+            float: left;
+            height: r(96px);
+            line-height: r(96px);
+            margin-left: 5%;
+        }
+        i {
+            float: right;
+            color: #909090;
+            font-size: r(22px);
+            height: r(96px);
+            line-height: r(96px);
+            margin-right: 5%;
+        }
+        b {
+            float: left;
+            color: $lan;
+            font-size: r(28px);
+            height: r(96px);
+            line-height: r(96px);
+            margin-top: r(-2px);
+        }
+        p {
+            color: #909090;
+            font-size: r(22px);
+            float: right;
+            margin-right: 10%;
+            height: r(96px);
+            line-height: r(96px);
+        }
+    }
+    .box3 {
+        width: 100%;
+        float: left;
+        height: r(98px);
+        dl {
+            width: 100%;
+            float: left;
+            height: r(98px);
+            line-height: r(98px);
+            color: #ffb710;
+            font-size: r(26px);
+            text-align: center;
+        }
+    }
+    .block {
+        display: block;
+    }
+    .none {
+        display: none;
+    }
+
+    @media screen and (max-width: 320px) {
+         .box2 {
+            span {
+                margin:0;
+                width:30%;
+            } 
+             p {
+                 margin:0;
+                 width:70%;
+             }
+         }
+    }
+}

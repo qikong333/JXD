@@ -1,0 +1,23 @@
+page-check-phone-result {
+    .phone {
+        font-size: r(26px);
+        color: #ee5a50;
+        text-align: center;
+        margin-top: r(30px);
+    }
+    .photo {
+        margin-left: 29%;
+        margin-top: r(40px);
+        width: r(270px);
+        height: r(400px);
+        background: url('../assets/images/p2.png') no-repeat;
+        background-size: 100% 100%;
+    }
+    .text {
+        margin-top: r(40px);
+        text-align: center;
+        font-size: r(44px);
+        color: #ffb710;
+
+    }
+}

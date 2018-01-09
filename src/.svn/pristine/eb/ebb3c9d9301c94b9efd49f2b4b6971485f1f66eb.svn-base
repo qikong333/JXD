@@ -1,0 +1,123 @@
+@import '../../theme/base.scss';
+page-realname {
+.box_head{
+  width: 100%;
+  height: r(134px);
+  float: left;
+  background-color: #ededed;
+  p{
+    width: 100%;
+    float: left;
+    color: #666666;
+    font-size:r(26px);
+    text-align: center;
+    margin: r(22px) 0;
+  }
+}
+  .box{
+    width: 100%;
+    float: left;
+    height: r(96px);
+    border-bottom: solid 1px #ededed;
+    dl{
+      width: 100%;
+      float: left;
+    }
+    span{
+      float: left;
+      height: r(96px);
+      line-height: r(96px);
+      color: #323232;
+      font-size: r(26px);
+      margin-left: 5%;
+      width: r(160px);
+    }
+    input{
+      width: 60%;
+      float: left;
+      height: r(94px);
+      line-height: r(96px);
+      color: #909090;
+      font-size:r(22px);
+      border: none;
+    }
+    select{
+      width: 50%;
+      float: left;
+      height: r(94px);
+      line-height: r(96px);
+      color: #909090;
+      font-size:r(22px);
+      border: none;
+      appearance:none;
+      background: none;
+    }
+    i{
+      float: right;
+      height: r(94px);
+      line-height: r(96px);
+      color: #323232;
+      font-size: r(26px);
+      margin-right: 5%;
+    }
+    h3{
+      float: left;
+      height: r(94px);
+      line-height: r(96px);
+      color: #323232;
+      font-size: r(26px);
+    }
+    .yzcode{
+      float: right;
+      width: r(169px);
+      height: r(60px);
+      background-color: $lan;
+      color: #fff;
+      font-size: r(26px);
+      text-align: center;
+      line-height: r(60px);
+      border-radius: r(8px);
+      margin: r(18px) 5% r(18px) 0;
+    }
+  }
+  .box_bottom{
+    padding: 0 r(30px);
+    // width: 100%;
+    // text-align: center;
+    // background-color: #ededed;
+    // height:30%;
+    // a{
+    //   width: 90%;
+    //   margin:10% 5%;
+    //   float: left;
+    //   background-color: #ffb710;
+    //   text-align: center;
+    //   color: #fff;
+    //   font-size: r(34px);
+    //   height: r(88px);
+    //   line-height: r(88px);
+    //   border-radius:r(8px);
+    // }
+  }
+  .but-num{
+    float: right;
+    width: 24%;
+    height: r(60px);
+    color: #fff;
+    background-color: $primary;
+    text-align: center;
+    line-height: r(60px);
+    font-size: r(22px);
+    border-radius: r(10px);
+    margin-top: r(13px);
+    margin-right: r(30px);
+    span{
+      width:100%;
+      height: r(60px);
+      color: #fff;
+      text-align: center;
+      line-height: r(60px);
+      font-size: r(22px);
+    }
+  }
+}

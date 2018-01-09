@@ -1,0 +1,65 @@
+<ion-header>
+    <ion-navbar hideBackButton>
+        <button navPop>
+            <i class="icon-fanhui iconfont"></i>
+        </button>
+        <ion-title>还款</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-row class="box">
+        <dl>
+            <span>银行卡</span>
+            <i class="icon iconfont icon-gengduo"></i>
+            <!-- <select name="bank" dir="rtl" required [(ngModel)]="bank" (change)=getValue()> 
+          <option  *ngFor="let bankCard of redata ;" [value]="bankCard.BANK_CARD">&nbsp;{{bankCard.BANK_NAME}}  尾号:{{bankCard.BANK_CARD | slice:-4}}</option>
+         <option selected="selected" value='add'> &nbsp;&nbsp; < &nbsp;&nbsp;添加银行卡&nbsp;&nbsp; <p dir="rtl">+</p></option>  -->
+            <!-- </select> -->
+            <p float-right style="margin-right:1%;">{{bankName}} {{bankNum | slice:-4}}</p>
+
+        </dl>
+    </ion-row>
+    <ion-row>
+        <ion-col col-12 class="xian"> </ion-col>
+    </ion-row>
+    <ion-row class="box">
+        <dl>
+            <span>待还金额(元)&nbsp;</span>
+            <!-- 问号查看待还金额详情,一期注释掉,二期加上 -->
+            <!-- <b class="icon iconfont icon-wenhao" (click)='getDetails()'></b> -->
+            <p>{{money|mfqbNum:'2'}}</p>
+            <!-- <p>{{money|number:'1.2'}}</p> -->
+        </dl>
+        <h2>还款金额</h2>
+        <dl>
+            <em class="icon iconfont icon-qian"></em>
+            <input type="number" name="borrow" value="" placeholder='请输入还款金额' [(ngModel)]='borrow' (keyup)='getResidue()'>
+            <p class="blue" tappable (click)='getAll()'>一次还清</p>
+        </dl>
+        <div class="soild"></div>
+        <div class="right_p">
+            <div class="p">剩余待还
+                <dd>{{residue|mfqbNum:'2'}}元</dd>
+                <!-- <dd>{{residue|number:'1.2'}}元</dd> -->
+            </div>
+        </div>
+    </ion-row>
+    <ion-row class="box2">
+        <!--   a标签里面不能有 href="#"，否则会跳回首页  -->
+        <div class="btn" tappable (click)='toRepay()'>
+            <a>确认还款</a>
+        </div>
+        <!-- <div class="btn2" tappable (click)="todelay()"><a>延期还款</a> </div>  -->
+        <!-- <div class="btn3"><a>还款遇到问题?</a></div> -->
+        <p class="btn3">
+            <a tappable (click)='getHelp()'>还款遇到问题?</a>
+        </p>
+        <p>温馨提示:</p>
+        <p>1、您可现在还款，或等还款日自动从绑定银行卡扣款;</p>
+        <!-- <p>2、若无法按期还款，可提前申请延期还款；</p> -->
+        <!-- <p>3、若已逾期，则无法申请延期还款；</p> -->
+        <p>2、还款将优先偿还利息与罚息，再偿还本金;</p>
+        <p>3、每次最低还款金额为200元。</p>
+    </ion-row>
+</ion-content>

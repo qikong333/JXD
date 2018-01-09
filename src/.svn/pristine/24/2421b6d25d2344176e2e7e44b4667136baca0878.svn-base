@@ -1,0 +1,32 @@
+@import '../../theme/base.scss';
+page-home-foot {
+    background: $huied;
+    .add {
+        background: #fff;
+        margin-top: r(20px);
+        height: r(150px)
+    }
+    .help {
+        background: #fff;
+        text-align: center;
+        -webkit-text-align: center;
+        -moz-text-align: center;
+        svg {
+            width: r(60px);
+            height: r(60px);
+        }
+        p {
+            font-size: r(24px);
+            color: $black32;
+        }
+    }
+    .ng-valid[required],
+    .ng-valid.required {
+        border-left: 5px solid #42A948;
+        /* green */
+    }
+    .ng-invalid:not(form) {
+        border-left: 5px solid #a94442;
+        /* red */
+    }
+}

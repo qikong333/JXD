@@ -1,0 +1,89 @@
+@import '../../theme/base.scss';
+page-delay-payment {
+    input {
+        border: none;
+        font-size: r(22px);
+        float: right;
+        text-align: right;
+        margin-top: r(30px);
+        //      height: r(92px);
+        //      line-height: r(92px);
+        width: r(400px);
+        background-color: #fff;
+    }
+    input::placeholder {
+        font-size: r(22px);
+        color: $hui90;
+    }
+    select {
+        border: none;
+        appearance: none;
+        float: right;
+        width: r(350px);
+        margin-top: r(30px);
+        font-size: r(22px);
+        background-color: transparent;
+        color: #909090;
+    }
+
+    #time{
+        margin-top: r(30px);
+        font-size: r(22px);
+        color: #909090;
+        margin-top: r(30px);
+        
+    }
+    .lis ul li {
+        border-bottom: 1px solid #ededed;
+        //      height: r(96px);
+        overflow: hidden;
+        padding: (1px) r(30px);
+    }
+    .lis ul li i:nth-child(1) {
+        line-height: r(92px);
+        font-size: r(26px);
+    }
+    .lis ul li i:nth-child(2) {
+        color: $lan;
+        font-size: r(32px);
+        margin-top: r(18px);
+        margin-left: r(4px)
+    }
+    .lis ul li i:nth-child(4) {
+        font-size: r(22px);
+        color: $hui90;
+        line-height: r(96px);
+    }
+    .lis ul li i:nth-child(3) {
+        width: r(14px);
+        height: r(96px);
+        margin-right: r(16px);
+        line-height: r(96px);
+        font-size: r(35px);
+        color: $hui90;
+    }
+    .top-border {
+        border-top: r(20px) solid #ededed;
+    }
+    .main .bottom {
+        // height: r(277px);
+        background-color: $huied;
+        padding: r(60px) r(30px);
+        // padding-top: r(60px);
+    }
+    .main .bottom .but {
+        background-color: $primary;
+        color: #fff;
+        text-align: center;
+        height: r(88px);
+        width: 100%;
+        font-size: r(34px);
+        line-height: r(88px);
+        border-radius: r(10px);
+        margin-bottom: r(60px);
+    }
+    .bottom .text p {
+        color: #909090;
+        font-size: r(26px);
+    }
+}

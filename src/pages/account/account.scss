@@ -1,0 +1,198 @@
+@import '../../theme/base.scss';
+page-account {
+    body {}
+    ion-refresher {
+        // color: $primary;
+        // background-color: $primary;
+        border: none;
+        display: none;
+    }
+    .toolbar-background {
+        background-color: $primary;
+    }
+    .toolbar-title-md {
+        color: #fff;
+    }
+    .top-right {
+        position: relative;
+        left: r(560px);
+        top: r(-90px);
+        color: #fff;
+    }
+    .main {
+        // margin-top: -2px;
+        padding-top: r(10px);
+        width: 100%;
+        // width: r(640px);
+        height: r(280px);
+        background: url(../assets/images/mybg_02.png) no-repeat;
+        background-size: 100% 100%;
+    }
+    .phone {
+        text-align: center;
+        font-size: r(44px);
+        color: #fff;
+        margin-top: r(95px);
+    }
+    .top {
+        height: r(90px);
+        background-color: $primary;
+        //      text-align: center;
+        line-height: r(90px);
+        color: #FFF;
+        font-size: r(34px);
+        font-family: simsun;
+    }
+    .top .til {
+        float: left;
+        margin-left: 38%;
+    }
+    .top i {
+        font-size: r(38px);
+        height: r(90px);
+        line-height: (90px);
+    }
+    .main .repay .repayDate {
+        //还款时间样式
+        font-size: r(20px);
+        padding-right: r(3px);
+    }
+    .money {
+        // background-color: $primary;
+        // margin-top: r(20px); 
+        padding: 0 r(30px);
+        color: #fff;
+    }
+    .money .til {
+        font-size: r(24px);
+    }
+    .borrow,
+    .repay {
+        height: r(100px);
+    }
+    .money i {
+        font-size: r(34px);
+    }
+    .money .but {
+        width: r(150px);
+        height: r(60px);
+        background-color: #fff;
+        border-radius: r(7px);
+        color: #323232;
+        font-size: r(30px);
+        line-height: r(60px);
+        text-align: center;
+    }
+    .borrow {
+        margin-bottom: r(55px);
+    }
+    .banner {
+        font-family: simsun;
+    }
+    .banner li {
+        height: r(96px);
+        border-bottom: 1px solid #ededed;
+        padding: 0 r(30px);
+    }
+    .banner li:nth-child(3) {
+        border-bottom: r(20px) solid #ededed;
+        height: r(116px);
+    }
+    .banner li i {
+        font-size: r(26px);
+        line-height: r(96px);
+    }
+    .banner li i:nth-child(4) {
+        color: #909090;
+    }
+    .banner li i:nth-child(1) {
+        font-size: r(31px);
+        margin-right: r(22px);
+        color: #666666;
+    }
+    .banner li i:nth-child(3) {
+        font-size: r(34px);
+        margin-left: r(10px);
+        color: #666666;
+        font-weight: bolder;
+    }
+    .banner li i:nth-child(2) {
+        color: #666666;
+    }
+    .banner li i:nth-child(2),
+    .banner li i:nth-child(4) {
+        margin-top: r(-3px);
+    }
+    .banner .coupon {
+        width: r(47px);
+        height: r(30px);
+        background-color: $primary;
+        color: #fff;
+        border-radius: r(15px);
+        margin-top: r(32px);
+        line-height: r(30px);
+        text-align: center;
+        font-size: r(24px);
+        // font-weight: bold;
+    }
+    //未登录前的页面
+    .money-no {
+        color: #fff;
+        padding: 0 r(75px);
+        padding-top: r(110px);
+    }
+    .money-no .p1 {
+        font-size: r(44px);
+        text-align: center;
+    }
+    .money-no .p2 {
+        font-size: r(30px);
+        text-align: center;
+        height: r(75px);
+        line-height: r(75px);
+    }
+    .buts {
+        padding: r(30px);
+    }
+    .money-no .but1,
+    .money-no .but2 {
+        width: r(165px);
+        height: r(60px);
+        background-color: #fff;
+        color: #323232;
+        text-align: center;
+        line-height: r(60px);
+        border-radius: r(10px);
+        font-size: r(26px);
+    }
+    ion-header {
+        .toolbar-background {
+            border-style: none!important;
+        }
+        .toolbar-title {
+            color: #fff!important;
+        }
+    }
+    .getbor,
+    .getbor2 {
+        width: r(237px);
+        height: r(60px);
+        background-image: url(../assets/images/11_03.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-right: r(15px);
+        padding-left: r(15px);
+        font-size: r(14px);
+        color: #606060;
+        text-align: center;
+        line-height: r(60px);
+    }
+    .getbor2 {
+        background-image: url(../assets/images/04_03.png);
+        color: #fff;
+    }
+}
+
+// .has-refresher > .scroll-content {
+//     border: 0!important;
+// }

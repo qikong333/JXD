@@ -1,0 +1,52 @@
+<ion-header>
+    <ion-navbar hideBackButton>
+        <button navPop><i class="icon-fanhui iconfont"></i></button>
+        <ion-title>运营商授权</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="operation_box">
+    <div text-center class="phone">当前手机号码:{{mobile}}</div>
+    <ul>
+        <li>
+            <i class="icon iconfont icon-mima" float-left></i>
+            <input [type]="psw" #pw name='service_password' [(ngModel)]="service_password" required placeholder="服务密码" (keyup)="textctrl(pw.value)">
+            <div class='icon_box'>
+                <div tappable (click)="CleanButton(service_password)" class='icon_1' *ngIf="isCleanName">
+                    <i class="icon-shanchu iconfont"></i>
+                </div>
+                <div tappable (click)='passwordCtrl()' class='icon_2'>
+                    <i class="iconfont" [ngClass]="{false:'icon-display-copy' ,true:'icon-baomi'}[active]"></i>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </li>
+
+
+        <li *ngIf="dynamics">
+            <i class="icon iconfont icon-duanxin" float-left></i>
+            <input type="number" name="dynamic_code" [(ngModel)]="dynamic_code" required placeholder="登录动码" float-left>
+            <button tappable (click)="core_serve()" [disabled]='sms'><span>{{codeText}}</span></button>
+            <div class="clear"></div>
+        </li>
+    </ul>
+
+    <!-- <div class="no_mobile">暂不支持虚拟运营商手机号，例如177，171号段</div> -->
+
+    <div class="bottom">
+        <button [disabled]='login_state' class="but" tappable (click)="toSave()">确认</button>
+    </div>
+
+    <ul class='tip'>
+        <li>找回服务密码小贴士：</li>
+        <!-- <li>根据您的手机号所属运营商(移动/联通/电信)，选择相应方法。</li> -->
+        <li>方法1：咨询客服。移动客服<span>10086</span>、联通客服<span>10010</span>、电信客服<span>10000</span>；</li>
+        <li>方法2：选择运营商官网重置，登录网上营业厅时选择忘记密码，按页面提示进行操作；</li>
+        <li> &nbsp;&nbsp;移动官网：www.10086.cn</li>
+        <li> &nbsp;&nbsp;联通官网：www.10010.cm</li>
+        <li> &nbsp;&nbsp;电信官网：www.189.cn</li>
+        <li>方法3：携带身份证至附近营业厅重置；</li>
+    </ul>
+</ion-content>

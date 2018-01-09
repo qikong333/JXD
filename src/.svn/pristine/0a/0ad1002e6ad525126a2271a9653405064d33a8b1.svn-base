@@ -1,0 +1,80 @@
+<ion-header>
+    <ion-navbar hideBackButton>
+        <button navPop><i class="icon iconfont icon-fanhui"></i></button>
+        <ion-title>个人信息</ion-title>
+
+    </ion-navbar>
+</ion-header>
+
+<ion-content style="background:#EDEDED;">
+    <div class="main">
+        <div class="top">
+            <p>以下信息请勿乱填，保存后无法修改 </p>
+            <p>大数据系统将根据您的真实度给予额度</p>
+        </div>
+
+        <div class="lis">
+
+            <ul>
+                <li>
+                    <i float-left>最高学历</i>
+                    <i class="icon iconfont icon-gengduo" float-right></i>
+                    <select dir="rtl" name="education" required [(ngModel)]="education">
+                        <option value="未填写" disabled>未填写</option>
+                        <option value="0">初中以下</option>
+                        <option value="1">高中或中专</option>
+                        <option value="2">大专</option>
+                        <option value="3">本科</option>
+                        <option value="4">研究生或以上</option>
+                     </select>
+                </li>
+                <li>
+                    <i float-left>婚姻状况</i>
+                    <i class="icon iconfont icon-gengduo" float-right></i>
+                    <select dir="rtl" name="marry" required [(ngModel)]="marry">
+                        <option value="未填写" disabled>未填写</option>
+                        <option value="0">未婚</option>
+                        <option value="1">已婚未育</option>
+                        <option value="2">已婚已育</option>
+                        <option value="3">离异</option>
+                    </select>
+                </li>
+                <li>
+                    <i float-left>现居住地</i>
+                    <i class="icon iconfont icon-gengduo" float-right></i>
+                    <ion-label for='city'>
+                    </ion-label>
+                    <ion-item>
+                        <city-picker id='city' item-content [cancelText]="'取消'" [doneText]="'完成'" [separator]="'-'" [citiesData]="cityData" [(ngModel)]='cityName'
+                            (ionChange)="cityChange($event)">
+                        </city-picker>
+                    </ion-item>
+                </li>
+                <li>
+                    <i float-left>详细地址</i>
+                    <i float-right></i>
+                    <input type="text" name="address" value="" placeholder='例如：××路××号××小区' required [(ngModel)]="address">
+
+                </li>
+                <li tappable (click)="addFriends()">
+                    <i float-left>紧急联系人</i>
+                    <i class="icon iconfont icon-gengduo" float-right></i>
+                    <i float-right *ngIf='!no_friends'>未填写</i>
+                    <i float-right *ngIf='no_friends'>已填写</i>
+                </li>
+                <!--<li tappable (click)="addidentity()">
+                    <i float-left>身份信息</i>
+                    <i class="icon iconfont icon-gengduo" float-right></i>
+                    <i float-right *ngIf='!no_upload'>未上传</i>
+                    <i float-right *ngIf='no_upload'>已上传</i>
+                </li>-->
+            </ul>
+        </div>
+
+        <div class="bottom">
+            <button ion-button full tappable (click)="save()" [disabled]='!butActive'>保 存</button>
+        </div>
+    </div>
+
+
+</ion-content>
